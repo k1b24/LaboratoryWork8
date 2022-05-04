@@ -1,7 +1,7 @@
 package kib.lab7.server;
 
 public final class Server {
-
+//
     private Server() {
         throw new UnsupportedOperationException("This is an utility class and can not be instantiated");
     }
