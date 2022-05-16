@@ -46,7 +46,14 @@
 					</execution>
 				</executions>
 			</plugin>
-
+			<plugin>
+				<groupId>org.openjfx</groupId>
+				<artifactId>javafx-maven-plugin</artifactId>
+				<version>0.0.3</version>
+				<configuration>
+					<mainClass>kib.lab8.client.gui.GUIApplication</mainClass>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
@@ -75,6 +82,11 @@
 		<dependency>
 			<groupId>org.openjfx</groupId>
 			<artifactId>javafx-controls</artifactId>
+			<version>18.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-fxml</artifactId>
 			<version>18.0.1</version>
 		</dependency>
 	</dependencies>
