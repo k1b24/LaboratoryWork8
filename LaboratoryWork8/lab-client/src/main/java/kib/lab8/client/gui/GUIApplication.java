@@ -19,9 +19,10 @@ public class GUIApplication extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(getClass().getResource("/layout/authorization.fxml"));
-        Parent root = fxmlLoader.load();
+        FXMLLoader connectionLoader = new FXMLLoader();
+        //connectionLoader.setLocation(getClass().getResource("/layout/authorization.fxml"));
+        connectionLoader.setLocation(getClass().getResource("/layout/serverConnection.fxml"));
+        Parent root = connectionLoader.load();
         InputStream iconStream = getClass().getResourceAsStream("/icons/img.png");
 
         stage.setTitle("Be human");
@@ -31,7 +32,7 @@ public class GUIApplication extends Application {
         stage.setScene(new Scene(root));
 
         stage.show();
-//        ExampleController controller = fxmlLoader.getController();
+//        ExampleController controller = connectionLoader.getController();
 
 //        stage.setTitle("Dogs application");
 //        stage.setWidth(500);
