@@ -1,9 +1,9 @@
-package kib.lab8.client.gui;
+package kib.lab8.client.gui.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-public class ExampleController {
+public class AuthorizationController {
 
     @FXML
     private Button button;

@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="372.0" prefWidth="295.0" style="-fx-background-color: #F4F1F2; -fx-border-radius: 10; -fx-background-radius: 10; -fx-max-width: 295.0; -fx-max-height: 372.0;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kib.lab8.client.gui.ExampleController">
+<AnchorPane prefHeight="372.0" prefWidth="295.0" style="-fx-background-color: #F4F1F2; -fx-border-radius: 10; -fx-background-radius: 10; -fx-max-width: 295.0; -fx-max-height: 372.0;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kib.lab8.client.gui.controllers.AuthorizationController">
    <children>
       <AnchorPane layoutX="-1.0" prefHeight="138.0" prefWidth="304.0" style="-fx-background-color: #4BBB56; -fx-border-color: #186C20;">
          <children>
