@@ -24,7 +24,14 @@ public class GUIApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(getClass().getResource("/maket/example.fxml"));
         Parent root = fxmlLoader.load();
+        InputStream iconStream = getClass().getResourceAsStream("/icons/img.png");
+
+        stage.setTitle("Be human");
+        stage.setResizable(false);
+        Image image = new Image(iconStream);
+        stage.getIcons().add(image);
         stage.setScene(new Scene(root));
+
         stage.show();
 //        ExampleController controller = fxmlLoader.getController();
 
@@ -32,9 +39,7 @@ public class GUIApplication extends Application {
 //        stage.setWidth(500);
 //        stage.setHeight(400);
 //
-//        InputStream iconStream = getClass().getResourceAsStream("/icons/logo.jpg");
-//        Image image = new Image(iconStream);
-//        stage.getIcons().add(image);
+//
 //
 //
 //
