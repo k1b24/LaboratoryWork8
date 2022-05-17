@@ -36,7 +36,7 @@
          </font>
       </Button>
       <TextField layoutX="46.0" layoutY="166.0" prefHeight="40.0" prefWidth="210.0" style="-fx-border-color: #186C20; -fx-border-radius: 5; -fx-background-radius: 5;" styleClass="Text Field" />
-      <Button layoutX="76.0" layoutY="327.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #F4F1F2;" text="Зарегистрироваться" textAlignment="CENTER" underline="true" />
+      <Button layoutX="46.0" layoutY="327.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="210.0" style="-fx-background-color: #F4F1F2;" text="Зарегистрироваться" textAlignment="CENTER" underline="true" />
       <Text layoutX="87.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Введите логин:">
          <font>
             <Font name="Exo 2 Regular" size="18.0" />
