@@ -20,7 +20,6 @@ public class GUIApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader connectionLoader = new FXMLLoader();
-        //connectionLoader.setLocation(getClass().getResource("/layout/authorization.fxml"));
         connectionLoader.setLocation(getClass().getResource("/layout/serverConnection.fxml"));
         Parent root = connectionLoader.load();
         InputStream iconStream = getClass().getResourceAsStream("/icons/img.png");

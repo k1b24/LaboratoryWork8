@@ -36,7 +36,7 @@
          <font>
             <Font name="Exo 2 Regular" size="18.0" />
          </font></TextField>
-        <Button fx:id="button" alignment="CENTER" layoutX="46.0" layoutY="289.0" maxHeight="38.0" mnemonicParsing="false" onAction="#buttonClicked" prefHeight="38.0" prefWidth="210.0" style="-fx-background-color: #78CC80; -fx-background-radius: 5; -fx-border-color: #186C20; -fx-border-radius: 5; -fx-max-height: 28;" text="Подключиться">
+        <Button fx:id="connectButton" alignment="CENTER" layoutX="46.0" layoutY="289.0" maxHeight="38.0" mnemonicParsing="false" onAction="#connect" prefHeight="38.0" prefWidth="210.0" style="-fx-background-color: #78CC80; -fx-background-radius: 5; -fx-border-color: #186C20; -fx-border-radius: 5; -fx-max-height: 28;" text="Подключиться">
             <font>
                 <Font name="Exo 2 Regular" size="18.0" />
             </font>
