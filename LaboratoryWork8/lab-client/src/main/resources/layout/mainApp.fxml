@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="674.0" prefWidth="926.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kib.lab8.client.gui.controllers.MenuController">
+   <children>
+      <AnchorPane prefHeight="674.0" prefWidth="238.0" style="-fx-background-color: #4BBB56; -fx-border-color: #186C20;">
+         <children>
+            <MenuButton id="COMMANDS" alignment="CENTER" layoutX="20.0" layoutY="196.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="198.0" style="-fx-background-color: #1EAB2C; -fx-background-radius: 10; -fx-border-color: #186C20; -fx-border-radius: 10;" text="COMMANDS" textFill="WHITE">
+              <items>
+                <MenuItem mnemonicParsing="false" text="ADD" />
+                <MenuItem mnemonicParsing="false" text="Action 2" />
+              </items>
+               <font>
+                  <Font name="Exo 2 Regular" size="18.0" />
+               </font>
+            </MenuButton>
+            <Button id="exitButton" layoutX="14.0" layoutY="596.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="65.0" style="-fx-background-color: #4BBB56;">
+               <graphic>
+                  <ImageView fitHeight="47.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/exit.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button id="FAQButton" layoutX="153.0" layoutY="596.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="69.0" style="-fx-background-color: #4BBB56;">
+               <graphic>
+                  <ImageView fitHeight="56.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/faq.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button id="settingsButton" layoutX="80.0" layoutY="596.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="62.0" style="-fx-background-color: #4BBB56;">
+               <graphic>
+                  <ImageView fitHeight="56.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/settings.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </AnchorPane>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dd5327" height="147.0" layoutX="256.0" layoutY="-22.0" stroke="#89361b" strokeType="INSIDE" width="671.0" />
+      <Circle fill="#d3d2d4" layoutX="214.0" layoutY="28.0" radius="156.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d3d2d4" height="184.0" layoutX="-1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="208.0" />
+      <ImageView fitHeight="147.0" fitWidth="184.0" layoutX="-15.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icons/img.png" />
+         </image>
+      </ImageView>
+      <Text fill="#b0ecab" layoutX="157.0" layoutY="67.0" stroke="#17331a" strokeType="OUTSIDE" text="BE HUMAN" textAlignment="CENTER">
+         <font>
+            <Font name="Rounded Mplus 1c" size="40.0" />
+         </font>
+         <effect>
+            <Blend />
+         </effect>
+      </Text>
+      <Text fill="#b0ecab" layoutX="175.0" layoutY="92.0" stroke="#17331a" strokeType="OUTSIDE" text="OR DON'T BE AT ALL" textAlignment="CENTER">
+         <font>
+            <Font name="Rounded Mplus 1c" size="17.0" />
+         </font>
+         <effect>
+            <Blend />
+         </effect>
+      </Text>
+   </children>
+</AnchorPane>
