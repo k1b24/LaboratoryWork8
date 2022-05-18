@@ -22,25 +22,16 @@ public class GUIApplication extends Application {
         FXMLLoader connectionLoader = new FXMLLoader();
         connectionLoader.setLocation(getClass().getResource("/layout/serverConnection.fxml"));
         Parent root = connectionLoader.load();
+
         InputStream iconStream = getClass().getResourceAsStream("/icons/img.png");
+        Image image = new Image(iconStream);
+        stage.getIcons().add(image);
 
         stage.setTitle("Be human");
         stage.setResizable(false);
-        Image image = new Image(iconStream);
-        stage.getIcons().add(image);
         stage.setScene(new Scene(root));
 
         stage.show();
-//        ExampleController controller = connectionLoader.getController();
-
-//        stage.setTitle("Dogs application");
-//        stage.setWidth(500);
-//        stage.setHeight(400);
-//
-//
-//
-//
-//
     }
 
 }

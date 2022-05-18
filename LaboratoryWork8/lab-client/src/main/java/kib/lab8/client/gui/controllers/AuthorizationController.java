@@ -17,14 +17,23 @@ public class AuthorizationController implements Initializable {
     @FXML
     private Button authorizationButton;
 
+    @FXML
+    private Button registerButton;
+
     public AuthorizationController() {
 
     }
 
     @FXML
-    private void buttonClicked() {
+    private void authorize() {
         System.out.println("dada");
         authorizationButton.setText("abhsba");
+    }
+
+    @FXML
+    private void register() {
+        System.out.println("dada");
+        registerButton.setText("abhsba");
     }
 
     @Override
