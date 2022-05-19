@@ -21,6 +21,8 @@ public class GUIApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader connectionLoader = new FXMLLoader();
         connectionLoader.setLocation(getClass().getResource("/layout/serverConnection.fxml"));
+        Localization localization = new Localization();
+        connectionLoader.setResources(localization.getResourceBundle());
         Parent root = connectionLoader.load();
 
         InputStream iconStream = getClass().getResourceAsStream("/icons/img.png");

@@ -7,6 +7,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import kib.lab8.client.gui.GUIConfig;
+import kib.lab8.client.gui.Localization;
 
 import java.io.InputStream;
 
@@ -20,14 +22,16 @@ public class ConnectionController {
     private void connect() throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/layout/authorization.fxml"));
         loader.setControllerFactory(controllerClass -> new AuthorizationController());
+        Localization localization = new Localization();
+        loader.setResources(localization.getResourceBundle());
         Parent parent = loader.load();
 
         Stage currentStage = (Stage) connectButton.getScene().getWindow();
-        InputStream iconStream = getClass().getResourceAsStream("/icons/img.png");
+        InputStream iconStream = getClass().getResourceAsStream(GUIConfig.CORNER_IMAGE);
         Image image = new Image(iconStream);
         currentStage.getIcons().add(image);
         Scene scene = new Scene(parent);
-        currentStage.setTitle("BE HUMAN");
+        currentStage.setTitle(GUIConfig.TITLE);
         currentStage.setScene(scene);
 //        System.out.println("dada");
 //        button.setText("abhsba");

@@ -16,10 +16,10 @@
    <children>
       <AnchorPane prefHeight="674.0" prefWidth="238.0" style="-fx-background-color: #4BBB56; -fx-border-color: #186C20;">
          <children>
-            <MenuButton id="COMMANDS" alignment="CENTER" layoutX="20.0" layoutY="196.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="198.0" style="-fx-background-color: #1EAB2C; -fx-background-radius: 10; -fx-border-color: #186C20; -fx-border-radius: 10;" text="COMMANDS" textFill="WHITE">
+            <MenuButton id="COMMANDS" alignment="CENTER" layoutX="20.0" layoutY="196.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="198.0" style="-fx-background-color: #1EAB2C; -fx-background-radius: 10; -fx-border-color: #186C20; -fx-border-radius: 10;" text="%commands_button" textFill="WHITE">
               <items>
-                <MenuItem mnemonicParsing="false" text="ADD" />
-                <MenuItem mnemonicParsing="false" text="Action 2" />
+                <MenuItem mnemonicParsing="false" text="add" /> <!-- TODO Локализовать все кнопки -->
+                <MenuItem mnemonicParsing="false" text="info" />
               </items>
                <font>
                   <Font name="Exo 2 Regular" size="18.0" />
