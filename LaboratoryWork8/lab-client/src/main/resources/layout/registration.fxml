@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="453.0" maxWidth="303.0" prefHeight="453.0" prefWidth="303.0" style="-fx-background-color: #F4F1F2; -fx-border-radius: 10; -fx-background-radius: 10; -fx-max-width: 295.0; -fx-max-height: 420.0;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kib.lab8.client.gui.controllers.RegistrationController">
+    <children>
+        <AnchorPane layoutX="-1.0" prefHeight="138.0" prefWidth="304.0" style="-fx-background-color: #4BBB56; -fx-border-color: #186C20;">
+            <children>
+                <Text fill="#b0ecab" layoutX="93.0" layoutY="124.0" stroke="#17331a" strokeType="OUTSIDE" text="BE HUMAN" textAlignment="CENTER">
+                    <font>
+                        <Font name="Rounded Mplus 1c" size="24.0" />
+                    </font>
+                    <effect>
+                        <Blend />
+                    </effect>
+                </Text>
+                <ImageView fitHeight="84.0" fitWidth="121.0" layoutX="99.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../icons/img.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </AnchorPane>
+        <TextField alignment="CENTER" layoutX="46.0" layoutY="166.0" prefHeight="40.0" prefWidth="210.0" style="-fx-border-color: #186C20; -fx-border-radius: 5; -fx-background-radius: 5;" styleClass="Text Field" />
+        <PasswordField alignment="CENTER" layoutX="46.0" layoutY="228.0" prefHeight="40.0" prefWidth="210.0" style="-fx-border-color: #186C20; -fx-background-radius: 5; -fx-border-radius: 5;" styleClass="Text Field" />
+        <Button fx:id="registrationButton" alignment="CENTER" contentDisplay="CENTER" layoutX="76.0" layoutY="340.0" maxHeight="422.0" mnemonicParsing="false" onAction="#register" prefHeight="422.0" prefWidth="150.0" style="-fx-background-color: #78CC80; -fx-background-radius: 5; -fx-border-color: #186C20; -fx-border-radius: 5; -fx-max-height: 28;" text="%sign_up_button_text" textAlignment="CENTER">
+            <font>
+                <Font name="Exo 2 Regular" size="18.0" />
+            </font>
+        </Button>
+        <Button fx:id="registerButton" alignment="CENTER" layoutX="46.0" layoutY="378.0" mnemonicParsing="false" onAction="#register" prefHeight="26.0" prefWidth="210.0" style="-fx-background-color: #F4F1F2;" text="%sign_in_button_text" textAlignment="CENTER" underline="true" />
+        <Text layoutX="46.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%enter_login" textAlignment="CENTER" wrappingWidth="210.39999999999986">
+            <font>
+                <Font name="Exo 2 Regular" size="18.0" />
+            </font>
+        </Text>
+        <Text layoutX="46.0" layoutY="224.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%enter_password" textAlignment="CENTER" wrappingWidth="210.39999999999986">
+            <font>
+                <Font name="Exo 2 Regular" size="18.0" />
+            </font>
+        </Text>
+      <PasswordField alignment="CENTER" layoutX="46.0" layoutY="290.0" prefHeight="40.0" prefWidth="210.0" style="-fx-border-color: #186C20; -fx-background-radius: 5; -fx-border-radius: 5;" styleClass="Text Field" />
+      <Text layoutX="46.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%repeat_password" textAlignment="CENTER" wrappingWidth="210.39999999999986">
+         <font>
+            <Font name="Exo 2 Regular" size="18.0" />
+         </font>
+      </Text>
+    </children>
+</AnchorPane>

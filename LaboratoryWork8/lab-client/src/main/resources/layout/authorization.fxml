@@ -31,18 +31,18 @@
       </AnchorPane>
       <TextField alignment="CENTER" layoutX="46.0" layoutY="166.0" prefHeight="40.0" prefWidth="210.0" style="-fx-border-color: #186C20; -fx-border-radius: 5; -fx-background-radius: 5;" styleClass="Text Field" />
       <PasswordField alignment="CENTER" layoutX="46.0" layoutY="236.0" prefHeight="40.0" prefWidth="210.0" style="-fx-border-color: #186C20; -fx-background-radius: 5; -fx-border-radius: 5;" styleClass="Text Field" />
-      <Button fx:id="authorizationButton" alignment="CENTER" layoutX="76.0" layoutY="289.0" maxHeight="422.0" mnemonicParsing="false" onAction="#authorize" prefHeight="422.0" prefWidth="150.0" style="-fx-background-color: #78CC80; -fx-background-radius: 5; -fx-border-color: #186C20; -fx-border-radius: 5; -fx-max-height: 28;" text="Войти">
+      <Button fx:id="authorizationButton" alignment="CENTER" contentDisplay="CENTER" layoutX="76.0" layoutY="289.0" maxHeight="422.0" mnemonicParsing="false" onAction="#authorize" prefHeight="422.0" prefWidth="150.0" style="-fx-background-color: #78CC80; -fx-background-radius: 5; -fx-border-color: #186C20; -fx-border-radius: 5; -fx-max-height: 28;" text="%sign_in_button_text" textAlignment="CENTER">
          <font>
             <Font name="Exo 2 Regular" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="registerButton" alignment="CENTER" layoutX="46.0" layoutY="327.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="210.0" style="-fx-background-color: #F4F1F2;" text="Зарегистрироваться" textAlignment="CENTER" underline="true" onAction="#register"/>
-      <Text layoutX="87.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Введите логин:" textAlignment="CENTER">
+      <Button fx:id="registerButton" alignment="CENTER" layoutX="46.0" layoutY="327.0" mnemonicParsing="false" onAction="#register" prefHeight="26.0" prefWidth="210.0" style="-fx-background-color: #F4F1F2;" text="%sign_up_button_text" textAlignment="CENTER" underline="true" />
+      <Text layoutX="46.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%enter_login" textAlignment="CENTER" wrappingWidth="210.39999999999986">
          <font>
             <Font name="Exo 2 Regular" size="18.0" />
          </font>
       </Text>
-      <Text layoutX="81.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Введите пароль:" textAlignment="CENTER">
+      <Text layoutX="46.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%enter_password" textAlignment="CENTER" wrappingWidth="210.39999999999986">
          <font>
             <Font name="Exo 2 Regular" size="18.0" />
          </font>

@@ -28,25 +28,25 @@
                 </ImageView>
             </children>
         </AnchorPane>
-        <TextField alignment="CENTER" layoutX="46.0" layoutY="166.0" prefHeight="40.0" prefWidth="210.0" promptText="HOST" style="-fx-border-color: #186C20; -fx-border-radius: 5; -fx-background-radius: 5;" styleClass="Text Field">
+        <TextField alignment="CENTER" layoutX="46.0" layoutY="166.0" prefHeight="40.0" prefWidth="210.0" promptText="%host" style="-fx-border-color: #186C20; -fx-border-radius: 5; -fx-background-radius: 5;" styleClass="Text Field">
          <font>
             <Font name="Exo 2 Regular" size="18.0" />
          </font></TextField>
-      <TextField alignment="CENTER" layoutX="46.0" layoutY="236.0" prefHeight="40.0" prefWidth="210.0" promptText="PORT" style="-fx-border-color: #186C20; -fx-border-radius: 5; -fx-background-radius: 5;" styleClass="Text Field">
+      <TextField alignment="CENTER" layoutX="46.0" layoutY="236.0" prefHeight="40.0" prefWidth="210.0" promptText="%port" style="-fx-border-color: #186C20; -fx-border-radius: 5; -fx-background-radius: 5;" styleClass="Text Field">
          <font>
             <Font name="Exo 2 Regular" size="18.0" />
          </font></TextField>
-        <Button fx:id="connectButton" alignment="CENTER" layoutX="46.0" layoutY="289.0" maxHeight="38.0" mnemonicParsing="false" onAction="#connect" prefHeight="38.0" prefWidth="210.0" style="-fx-background-color: #78CC80; -fx-background-radius: 5; -fx-border-color: #186C20; -fx-border-radius: 5; -fx-max-height: 28;" text="Подключиться">
+        <Button fx:id="connectButton" alignment="CENTER" layoutX="46.0" layoutY="289.0" maxHeight="38.0" mnemonicParsing="false" onAction="#connect" prefHeight="38.0" prefWidth="210.0" style="-fx-background-color: #78CC80; -fx-background-radius: 5; -fx-border-color: #186C20; -fx-border-radius: 5; -fx-max-height: 28;" text="%connect_button">
             <font>
                 <Font name="Exo 2 Regular" size="18.0" />
             </font>
         </Button>
-        <Text layoutX="57.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Введите хост сервера:" textAlignment="CENTER">
+        <Text layoutX="57.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%enter_host" textAlignment="CENTER">
             <font>
                 <Font name="Exo 2 Regular" size="18.0" />
             </font>
         </Text>
-        <Text layoutX="55.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Введите порт сервера:" textAlignment="CENTER">
+        <Text layoutX="55.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%enter_port" textAlignment="CENTER">
             <font>
                 <Font name="Exo 2 Regular" size="18.0" />
             </font>
