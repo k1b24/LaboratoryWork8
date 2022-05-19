@@ -36,7 +36,7 @@ public class AuthorizationController implements Initializable {
 
     @FXML
     private void register() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/layout/registration.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(GUIConfig.REGISTRATION_PATH));
         loader.setControllerFactory(controllerClass -> new RegistrationController());
         Localization localization = new Localization();
         loader.setResources(localization.getResourceBundle());

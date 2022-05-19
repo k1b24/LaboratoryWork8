@@ -10,6 +10,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.io.InputStream;
 
+import static kib.lab8.client.gui.GUIConfig.CONNECTION_PATH;
+import static kib.lab8.client.gui.GUIConfig.CORNER_IMAGE;
+
 
 public class GUIApplication extends Application {
 
@@ -20,12 +23,12 @@ public class GUIApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader connectionLoader = new FXMLLoader();
-        connectionLoader.setLocation(getClass().getResource("/layout/serverConnection.fxml"));
+        connectionLoader.setLocation(getClass().getResource(CONNECTION_PATH));
         Localization localization = new Localization();
         connectionLoader.setResources(localization.getResourceBundle());
         Parent root = connectionLoader.load();
 
-        InputStream iconStream = getClass().getResourceAsStream("/icons/img.png");
+        InputStream iconStream = getClass().getResourceAsStream(CORNER_IMAGE);
         Image image = new Image(iconStream);
         stage.getIcons().add(image);
 
