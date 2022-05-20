@@ -7,6 +7,8 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
@@ -14,6 +16,12 @@
 
 <AnchorPane prefHeight="674.0" prefWidth="926.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kib.lab8.client.gui.controllers.MenuController">
    <children>
+      <ImageView id="backgroundTexture" fitHeight="575.0" fitWidth="914.0" layoutX="14.0" layoutY="102.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icons/background_texture.jpg" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e47552" height="147.0" layoutX="256.0" layoutY="-22.0" stroke="#89361b" strokeType="INSIDE" width="673.0" />
       <AnchorPane prefHeight="674.0" prefWidth="238.0" style="-fx-background-color: #4BBB56; -fx-border-color: #186C20;">
          <children>
             <MenuButton id="COMMANDS" alignment="CENTER" layoutX="20.0" layoutY="196.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="198.0" style="-fx-background-color: #1EAB2C; -fx-background-radius: 10; -fx-border-color: #186C20; -fx-border-radius: 10;" text="%commands_button" textFill="WHITE">
@@ -25,7 +33,7 @@
                   <Font name="Exo 2 Regular" size="18.0" />
                </font>
             </MenuButton>
-            <Button id="exitButton" layoutX="14.0" layoutY="596.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="65.0" style="-fx-background-color: #4BBB56;">
+            <Button fx:id="exitButton" layoutX="14.0" layoutY="596.0" mnemonicParsing="false" onAction="#exitButtonClicked" prefHeight="64.0" prefWidth="65.0" style="-fx-background-color: #4BBB56;">
                <graphic>
                   <ImageView fitHeight="47.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -34,7 +42,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button id="FAQButton" layoutX="153.0" layoutY="596.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="69.0" style="-fx-background-color: #4BBB56;">
+            <Button fx:id="FAQButton" layoutX="153.0" layoutY="596.0" mnemonicParsing="false" onAction="#FAQButtonClicked" prefHeight="62.0" prefWidth="69.0" style="-fx-background-color: #4BBB56;">
                <graphic>
                   <ImageView fitHeight="56.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -43,7 +51,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button id="settingsButton" layoutX="80.0" layoutY="596.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="62.0" style="-fx-background-color: #4BBB56;">
+            <Button fx:id="settingsButton" layoutX="80.0" layoutY="596.0" mnemonicParsing="false" onAction="#settingsButtonClicked" prefHeight="56.0" prefWidth="62.0" style="-fx-background-color: #4BBB56;">
                <graphic>
                   <ImageView fitHeight="56.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -54,9 +62,8 @@
             </Button>
          </children>
       </AnchorPane>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dd5327" height="147.0" layoutX="256.0" layoutY="-22.0" stroke="#89361b" strokeType="INSIDE" width="671.0" />
-      <Circle fill="#d3d2d4" layoutX="214.0" layoutY="28.0" radius="156.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d3d2d4" height="184.0" layoutX="-1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="208.0" />
+      <Circle fill="#d3d2d4" layoutX="208.0" layoutY="6.0" radius="165.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d3d2d4" height="171.0" layoutX="-1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="197.0" />
       <ImageView fitHeight="147.0" fitWidth="184.0" layoutX="-15.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../icons/img.png" />
@@ -70,7 +77,7 @@
             <Blend />
          </effect>
       </Text>
-      <Text fill="#b0ecab" layoutX="175.0" layoutY="92.0" stroke="#17331a" strokeType="OUTSIDE" text="OR DON'T BE AT ALL" textAlignment="CENTER">
+      <Text fill="#b0ecab" layoutX="157.0" layoutY="91.0" stroke="#17331a" strokeType="OUTSIDE" text="OR DON'T BE AT ALL" textAlignment="CENTER">
          <font>
             <Font name="Rounded Mplus 1c" size="17.0" />
          </font>
@@ -78,5 +85,37 @@
             <Blend />
          </effect>
       </Text>
+      <VBox alignment="TOP_RIGHT" layoutX="599.0" layoutY="14.0" prefHeight="29.0" prefWidth="316.0">
+         <children>
+            <Button fx:id="signUpButton" alignment="TOP_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#signUpButtonClicked" styleClass="dark_orange_button" stylesheets="@../styles/dark_orange_button.css" text="%sign_up_button_text" textAlignment="RIGHT">
+               <font>
+                  <Font name="Exo 2 Regular" size="13.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+      <VBox alignment="TOP_RIGHT" layoutX="599.0" layoutY="52.0" prefHeight="31.0" prefWidth="316.0">
+         <children>
+            <Button fx:id="signInButton" alignment="TOP_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#signInButtonClicked" style="-fx-alignment: TOP_RIGHT;" styleClass="dark_orange_button" stylesheets="@../styles/dark_orange_button.css" text="%sign_in_button_text" textAlignment="RIGHT">
+               <font>
+                  <Font name="Exo 2 Regular" size="13.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+      <HBox alignment="TOP_CENTER" layoutX="338.0" layoutY="95.0" prefHeight="32.0" prefWidth="582.0">
+         <children>
+            <Text fx:id="userInfo" strokeType="OUTSIDE" strokeWidth="0.0" text="%user_info" textAlignment="RIGHT" wrappingWidth="316.4501051902771">
+               <font>
+                  <Font name="Exo 2 Regular" size="20.0" />
+               </font>
+            </Text>
+            <Text fx:id="nickname" strokeType="OUTSIDE" strokeWidth="0.0" text="nickname" wrappingWidth="252.8200839161873">
+               <font>
+                  <Font name="Exo 2 Regular" size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
    </children>
 </AnchorPane>

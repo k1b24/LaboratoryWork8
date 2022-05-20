@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import kib.lab8.client.gui.Localization;
 
@@ -28,6 +29,9 @@ public class ConnectionController {
     private TextField hostField;
 
     @FXML
+    private Text text;
+
+    @FXML
     private void connect() throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(AUTHORIZATION_PATH));
         loader.setControllerFactory(controllerClass -> new AuthorizationController());
@@ -42,6 +46,7 @@ public class ConnectionController {
         Scene scene = new Scene(parent);
         currentStage.setTitle(TITLE);
         currentStage.setScene(scene);
+
 //        System.out.println("dada");
 //        button.setText("abhsba");
     }
