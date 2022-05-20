@@ -11,6 +11,8 @@ import javafx.scene.image.Image;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import kib.lab8.client.gui.Localization;
+import kib.lab8.client.utils.Model;
+import kib.lab8.client.utils.UserException;
 
 import java.io.InputStream;
 
@@ -21,6 +23,7 @@ public class ConnectionController {
 
     @FXML
     private Button connectButton;
+    private final Model model = new Model();
 
     @FXML
     private TextField portField;
@@ -32,23 +35,29 @@ public class ConnectionController {
     private Text text;
 
     @FXML
-    private void connect() throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(AUTHORIZATION_PATH));
-        loader.setControllerFactory(controllerClass -> new AuthorizationController());
-        Localization localization = new Localization();
-        loader.setResources(localization.getResourceBundle());
-        Parent parent = loader.load();
-
-        Stage currentStage = (Stage) connectButton.getScene().getWindow();
-        InputStream iconStream = getClass().getResourceAsStream(CORNER_IMAGE);
-        Image image = new Image(iconStream);
-        currentStage.getIcons().add(image);
-        Scene scene = new Scene(parent);
-        currentStage.setTitle(TITLE);
-        currentStage.setScene(scene);
+    private void connect() {
+        try {
+            model.initializeConnectionHandler(hostField.getText(), portField.getText());
+        } catch (UserException e) {
+            e.showAlert();
+        }
+//        FXMLLoader loader = new FXMLLoader(getClass().getResource(AUTHORIZATION_PATH));
+//        loader.setControllerFactory(controllerClass -> new AuthorizationController());
+//        Localization localization = new Localization();
+//        loader.setResources(localization.getResourceBundle());
+//        Parent parent = loader.load();
+//
+//        Stage currentStage = (Stage) connectButton.getScene().getWindow();
+//        InputStream iconStream = getClass().getResourceAsStream(CORNER_IMAGE);
+//        Image image = new Image(iconStream);
+//        currentStage.getIcons().add(image);
+//        Scene scene = new Scene(parent);
+//        currentStage.setTitle(TITLE);
+//        currentStage.setScene(scene);
 
 //        System.out.println("dada");
 //        button.setText("abhsba");
     }
+
 
 }

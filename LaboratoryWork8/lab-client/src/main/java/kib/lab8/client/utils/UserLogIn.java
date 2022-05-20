@@ -1,5 +1,6 @@
-package kib.lab8.client;
+package kib.lab8.client.utils;
 
+import kib.lab8.client.utils.ConnectionHandlerClient;
 import kib.lab8.common.abstractions.RequestInterface;
 import kib.lab8.common.util.client_server_communication.requests.LoginRequest;
 import kib.lab8.common.util.client_server_communication.responses.AuthenticationResponse;

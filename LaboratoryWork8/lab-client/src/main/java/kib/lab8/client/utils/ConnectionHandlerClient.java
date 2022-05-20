@@ -1,4 +1,4 @@
-package kib.lab8.client;
+package kib.lab8.client.utils;
 
 import kib.lab8.common.abstractions.RequestInterface;
 import kib.lab8.common.abstractions.ResponseInterface;
