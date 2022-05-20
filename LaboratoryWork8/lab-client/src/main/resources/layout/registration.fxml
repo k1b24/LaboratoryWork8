@@ -29,14 +29,14 @@
                 </ImageView>
             </children>
         </AnchorPane>
-        <TextField alignment="CENTER" layoutX="46.0" layoutY="166.0" prefHeight="40.0" prefWidth="210.0" style="-fx-border-color: #186C20; -fx-border-radius: 5; -fx-background-radius: 5;" styleClass="Text Field" />
-        <PasswordField alignment="CENTER" layoutX="46.0" layoutY="228.0" prefHeight="40.0" prefWidth="210.0" style="-fx-border-color: #186C20; -fx-background-radius: 5; -fx-border-radius: 5;" styleClass="Text Field" />
-        <Button fx:id="registrationButton" alignment="CENTER" contentDisplay="CENTER" layoutX="76.0" layoutY="340.0" maxHeight="422.0" mnemonicParsing="false" onAction="#register" prefHeight="422.0" prefWidth="150.0" style="-fx-background-color: #78CC80; -fx-background-radius: 5; -fx-border-color: #186C20; -fx-border-radius: 5; -fx-max-height: 28;" text="%sign_up_button_text" textAlignment="CENTER">
+        <TextField fx:id="loginField" alignment="CENTER" layoutX="46.0" layoutY="166.0" prefHeight="40.0" prefWidth="210.0" style="-fx-border-color: #186C20; -fx-border-radius: 5; -fx-background-radius: 5;" styleClass="Text Field" />
+        <PasswordField fx:id="passwordField" alignment="CENTER" layoutX="46.0" layoutY="228.0" prefHeight="40.0" prefWidth="210.0" style="-fx-border-color: #186C20; -fx-background-radius: 5; -fx-border-radius: 5;" styleClass="Text Field" />
+        <Button fx:id="registerButton" alignment="CENTER" contentDisplay="CENTER" layoutX="76.0" layoutY="340.0" maxHeight="422.0" mnemonicParsing="false" onAction="#register" prefHeight="422.0" prefWidth="150.0" style="-fx-background-color: #78CC80; -fx-background-radius: 5; -fx-border-color: #186C20; -fx-border-radius: 5; -fx-max-height: 28;" text="%sign_up_button_text" textAlignment="CENTER">
             <font>
                 <Font name="Exo 2 Regular" size="18.0" />
             </font>
         </Button>
-        <Button fx:id="registerButton" alignment="CENTER" layoutX="46.0" layoutY="378.0" mnemonicParsing="false" onAction="#register" prefHeight="26.0" prefWidth="210.0" style="-fx-background-color: #F4F1F2;" text="%sign_in_button_text" textAlignment="CENTER" underline="true" />
+        <Button fx:id="authorizationButton" alignment="CENTER" layoutX="46.0" layoutY="378.0" mnemonicParsing="false" onAction="#register" prefHeight="26.0" prefWidth="210.0" style="-fx-background-color: #F4F1F2;" text="%sign_in_button_text" textAlignment="CENTER" underline="true" />
         <Text layoutX="46.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%enter_login" textAlignment="CENTER" wrappingWidth="210.39999999999986">
             <font>
                 <Font name="Exo 2 Regular" size="18.0" />
@@ -47,7 +47,7 @@
                 <Font name="Exo 2 Regular" size="18.0" />
             </font>
         </Text>
-      <PasswordField alignment="CENTER" layoutX="46.0" layoutY="290.0" prefHeight="40.0" prefWidth="210.0" style="-fx-border-color: #186C20; -fx-background-radius: 5; -fx-border-radius: 5;" styleClass="Text Field" />
+      <PasswordField fx:id="secondPasswordField" alignment="CENTER" layoutX="46.0" layoutY="290.0" prefHeight="40.0" prefWidth="210.0" style="-fx-border-color: #186C20; -fx-background-radius: 5; -fx-border-radius: 5;" styleClass="Text Field" />
       <Text layoutX="46.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%repeat_password" textAlignment="CENTER" wrappingWidth="210.39999999999986">
          <font>
             <Font name="Exo 2 Regular" size="18.0" />

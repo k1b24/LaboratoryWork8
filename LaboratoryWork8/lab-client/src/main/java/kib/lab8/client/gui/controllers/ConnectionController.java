@@ -5,6 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import kib.lab8.client.gui.Localization;
@@ -18,6 +20,12 @@ public class ConnectionController {
 
     @FXML
     private Button connectButton;
+
+    @FXML
+    private TextField portField;
+
+    @FXML
+    private TextField hostField;
 
     @FXML
     private void connect() throws Exception {

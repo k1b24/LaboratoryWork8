@@ -28,11 +28,11 @@
                 </ImageView>
             </children>
         </AnchorPane>
-        <TextField alignment="CENTER" layoutX="46.0" layoutY="166.0" prefHeight="40.0" prefWidth="210.0" promptText="%host" style="-fx-border-color: #186C20; -fx-border-radius: 5; -fx-background-radius: 5;" styleClass="Text Field">
+        <TextField fx:id="hostField" alignment="CENTER" layoutX="46.0" layoutY="166.0" prefHeight="40.0" prefWidth="210.0" promptText="%host" style="-fx-border-color: #186C20; -fx-border-radius: 5; -fx-background-radius: 5;" styleClass="Text Field">
          <font>
             <Font name="Exo 2 Regular" size="18.0" />
          </font></TextField>
-      <TextField alignment="CENTER" layoutX="46.0" layoutY="236.0" prefHeight="40.0" prefWidth="210.0" promptText="%port" style="-fx-border-color: #186C20; -fx-border-radius: 5; -fx-background-radius: 5;" styleClass="Text Field">
+      <TextField fx:id="portField" alignment="CENTER" layoutX="46.0" layoutY="236.0" prefHeight="40.0" prefWidth="210.0" promptText="%port" style="-fx-border-color: #186C20; -fx-border-radius: 5; -fx-background-radius: 5;" styleClass="Text Field">
          <font>
             <Font name="Exo 2 Regular" size="18.0" />
          </font></TextField>
