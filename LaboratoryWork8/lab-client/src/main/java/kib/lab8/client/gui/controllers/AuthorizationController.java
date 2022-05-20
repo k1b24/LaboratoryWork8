@@ -6,6 +6,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import kib.lab8.client.gui.GUIConfig;
@@ -24,6 +26,12 @@ public class AuthorizationController implements Initializable {
     @FXML
     private Button registerButton;
 
+    @FXML
+    private TextField loginField;
+
+    @FXML
+    private PasswordField passwordField;
+
     public AuthorizationController() {
 
     }
@@ -31,7 +39,10 @@ public class AuthorizationController implements Initializable {
     @FXML
     private void authorize() {
         System.out.println("dada");
-        authorizationButton.setText("abhsba");
+
+        //Достать текст из филдов логина и пароля (НЕ ЗАБУДЬ ХЭШИРОВАТЬ КОГДА НАДО)
+        System.out.println(passwordField.getText());
+        System.out.println(loginField.getText());
     }
 
     @FXML
