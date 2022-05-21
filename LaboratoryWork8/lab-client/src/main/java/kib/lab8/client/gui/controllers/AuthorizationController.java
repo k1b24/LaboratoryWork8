@@ -12,6 +12,8 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import kib.lab8.client.gui.GUIConfig;
 import kib.lab8.client.gui.Localization;
+import kib.lab8.client.utils.Model;
+import kib.lab8.client.utils.UserException;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -31,18 +33,24 @@ public class AuthorizationController implements Initializable {
 
     @FXML
     private PasswordField passwordField;
+    private final Model model;
 
-    public AuthorizationController() {
-
+    public AuthorizationController(Model model) {
+        this.model = model;
     }
 
     @FXML
     private void authorize() {
-        System.out.println("dada");
-
-        //Достать текст из филдов логина и пароля (НЕ ЗАБУДЬ ХЭШИРОВАТЬ КОГДА НАДО)
-        System.out.println(passwordField.getText());
-        System.out.println(loginField.getText());
+        try {
+            boolean success = model.authorize(loginField.getText(), passwordField.getText());
+            if (success) {
+                //переходи в MAIN WINDOW
+            } else {
+                //покажи текст об ошибке авторизации
+            }
+        } catch (UserException e) {
+            e.showAlert();
+        }
     }
 
     @FXML
