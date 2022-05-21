@@ -39,22 +39,22 @@ public class ConnectionController {
     private void connect() throws IOException {
         try {
             model.initializeConnectionHandler(hostField.getText(), portField.getText());
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(AUTHORIZATION_PATH));
+            loader.setControllerFactory(controllerClass -> new AuthorizationController(model));
+            Localization localization = new Localization();
+            loader.setResources(localization.getResourceBundle());
+            Parent parent = loader.load();
+
+            Stage currentStage = (Stage) connectButton.getScene().getWindow();
+            InputStream iconStream = getClass().getResourceAsStream(CORNER_IMAGE);
+            Image image = new Image(iconStream);
+            currentStage.getIcons().add(image);
+            Scene scene = new Scene(parent);
+            currentStage.setTitle(TITLE);
+            currentStage.setScene(scene);
         } catch (UserException e) {
             e.showAlert();
         }
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(AUTHORIZATION_PATH));
-        loader.setControllerFactory(controllerClass -> new AuthorizationController(model));
-        Localization localization = new Localization();
-        loader.setResources(localization.getResourceBundle());
-        Parent parent = loader.load();
-
-        Stage currentStage = (Stage) connectButton.getScene().getWindow();
-        InputStream iconStream = getClass().getResourceAsStream(CORNER_IMAGE);
-        Image image = new Image(iconStream);
-        currentStage.getIcons().add(image);
-        Scene scene = new Scene(parent);
-        currentStage.setTitle(TITLE);
-        currentStage.setScene(scene);
     }
 
 

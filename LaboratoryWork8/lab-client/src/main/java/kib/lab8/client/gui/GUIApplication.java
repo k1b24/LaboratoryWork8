@@ -22,7 +22,7 @@ public class GUIApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader connectionLoader = new FXMLLoader();
-        connectionLoader.setLocation(getClass().getResource(CONNECTION_PATH));
+        connectionLoader.setLocation(getClass().getResource(MAIN_WINDOW_PATH));
         Localization localization = new Localization();
         connectionLoader.setResources(localization.getResourceBundle());
         Parent root = connectionLoader.load();
