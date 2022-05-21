@@ -44,8 +44,11 @@ public class AuthorizationController implements Initializable {
         try {
             boolean success = model.authorize(loginField.getText(), passwordField.getText());
             if (success) {
-                //переходи в MAIN WINDOW
+                System.out.println("authorized");
+                //переходи в MAIN WINDOW в модельке уже хранится логин и пароль
+                // есть метод
             } else {
+                System.out.println("net takogo uzera");
                 //покажи текст об ошибке авторизации
             }
         } catch (UserException e) {

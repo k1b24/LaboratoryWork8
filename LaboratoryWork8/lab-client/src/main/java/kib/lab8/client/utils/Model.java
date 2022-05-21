@@ -14,6 +14,8 @@ public class Model {
     private String userPassword;
 
     private ConnectionHandlerClient connectionHandler;
+    //TODO Это все надо разбить по отдельным моделям по хорошему, с другой стороны помимо
+    //отправки запросов они больше делать ничего не будут
 
     public void initializeConnectionHandler(String address, String port) throws UserException {
         try {
@@ -48,9 +50,9 @@ public class Model {
                 return false;
             }
         } catch (ClassNotFoundException e) {
-            throw new UserException("Произошла ошибка при чтении ответа от сервера. Пожалуйста, повторите ввод")
+            throw new UserException("Произошла ошибка при чтении ответа от сервера. Пожалуйста, повторите ввод");
         } catch (IOException e) {
-            throw new UserException("Произошла ошибка при отправке запроса на сервер. Пожалуйста, повторите ввод")
+            throw new UserException("Произошла ошибка при отправке запроса на сервер. Пожалуйста, повторите ввод");
         }
     }
 }
