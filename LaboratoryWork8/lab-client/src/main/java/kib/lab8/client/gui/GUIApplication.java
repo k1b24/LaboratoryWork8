@@ -35,7 +35,6 @@ public class GUIApplication extends Application {
         stage.setTitle("Be human");
         stage.setResizable(false);
         stage.setScene(new Scene(root));
-
         stage.show();
     }
 

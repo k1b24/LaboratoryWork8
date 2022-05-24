@@ -21,6 +21,7 @@ public class MenuController {
 
     @FXML
     private AnchorPane mainPane;
+
     @FXML
     private Button signUpButton;
 
