@@ -24,8 +24,6 @@ public class ConnectionController {
 
     @FXML
     private Button connectButton;
-    private final Model model = new Model();
-
     @FXML
     private TextField portField;
 
@@ -34,6 +32,11 @@ public class ConnectionController {
 
     @FXML
     private Text text;
+    private final Model model;
+
+    public ConnectionController(Model model) {
+        this.model = model;
+    }
 
     @FXML
     private void connect() throws IOException {

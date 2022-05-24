@@ -1,11 +1,26 @@
 package kib.lab8.client.gui.controllers;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import kib.lab8.client.gui.Localization;
+import kib.lab8.client.utils.Model;
+
+import java.io.IOException;
+
+import static kib.lab8.client.gui.GUIConfig.CONNECTION_PATH;
+import static kib.lab8.client.gui.GUIConfig.MAIN_WINDOW_PATH;
 
 public class MenuController {
 
+    @FXML
+    private AnchorPane mainPane;
     @FXML
     private Button signUpButton;
 
@@ -47,6 +62,32 @@ public class MenuController {
 
     @FXML
     private Text nickname;
+    private Model model;
+
+    @FXML
+    public void initialize() {
+        model = new Model();
+
+
+        FXMLLoader connectionLoader = new FXMLLoader();
+        connectionLoader.setLocation(getClass().getResource(CONNECTION_PATH));
+        connectionLoader.setControllerFactory(controllerClass -> new ConnectionController(model));
+        Localization localization = new Localization();
+        connectionLoader.setResources(localization.getResourceBundle());
+        try {
+            Parent root = connectionLoader.load();
+            Stage stage = new Stage();
+
+            stage.setTitle("Be human");
+            stage.setResizable(false);
+            stage.setScene(new Scene(root));
+            stage.show();
+            stage.initModality(Modality.WINDOW_MODAL);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
 
     @FXML
     private void signUpButtonClicked() {

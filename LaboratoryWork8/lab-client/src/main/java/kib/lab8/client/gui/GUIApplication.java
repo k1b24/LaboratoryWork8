@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import kib.lab8.client.gui.controllers.MenuController;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -21,11 +22,11 @@ public class GUIApplication extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader connectionLoader = new FXMLLoader();
-        connectionLoader.setLocation(getClass().getResource(MAIN_WINDOW_PATH));
+        FXMLLoader mainWindowLoader = new FXMLLoader();
+        mainWindowLoader.setLocation(getClass().getResource(MAIN_WINDOW_PATH));
         Localization localization = new Localization();
-        connectionLoader.setResources(localization.getResourceBundle());
-        Parent root = connectionLoader.load();
+        mainWindowLoader.setResources(localization.getResourceBundle());
+        Parent root = mainWindowLoader.load();
 
         InputStream iconStream = getClass().getResourceAsStream(CORNER_IMAGE);
         Image image = new Image(iconStream);
