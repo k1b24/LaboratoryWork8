@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller=".Tableview"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kib.lab8.client.gui.controllers.TableViewController">
+   <children>
+      <TableView layoutX="134.0" layoutY="72.0" prefHeight="242.0" prefWidth="362.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="sdss" />
+          <TableColumn prefWidth="75.0" text="sd" />
+        </columns>
+      </TableView>
+   </children>
 </AnchorPane>

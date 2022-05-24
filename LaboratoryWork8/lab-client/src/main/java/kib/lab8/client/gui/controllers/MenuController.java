@@ -14,8 +14,7 @@ import kib.lab8.client.utils.Model;
 
 import java.io.IOException;
 
-import static kib.lab8.client.gui.GUIConfig.CONNECTION_PATH;
-import static kib.lab8.client.gui.GUIConfig.MAIN_WINDOW_PATH;
+import static kib.lab8.client.gui.GUIConfig.*;
 
 public class MenuController {
 
@@ -59,6 +58,9 @@ public class MenuController {
     private Button FAQButton;
 
     @FXML
+    private Button tableButton;
+
+    @FXML
     private Text userInfo;
 
     @FXML
@@ -82,8 +84,8 @@ public class MenuController {
             stage.setTitle("Be human");
             stage.setResizable(false);
             stage.setScene(new Scene(root));
-            stage.show();
             stage.initModality(Modality.WINDOW_MODAL);
+            stage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -158,5 +160,24 @@ public class MenuController {
     @FXML
     private void FAQButtonClicked() {
         System.out.println("dada");
+    }
+
+    @FXML
+    private void tableButtonClicked() {
+        loadUI(TABLEVIEW_PATH);
+    }
+
+    private void loadUI(String uiPath) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(uiPath));
+            //loader.setControllerFactory(controllerClass -> new TableViewController());
+
+            Localization localization = new Localization();
+            loader.setResources(localization.getResourceBundle());
+            Parent parent = loader.load();
+            mainPane.getChildren().add(parent);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
