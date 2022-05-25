@@ -4,3 +4,10 @@
     -fx-border-color: #B34421;
     -fx-border-radius: 5;
 }
+
+.light_orange_button{
+    -fx-background-color: #E47552;
+    -fx-background-radius: 5;
+    -fx-border-color: #B34421;
+    -fx-border-radius: 5;
+}

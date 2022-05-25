@@ -175,6 +175,8 @@ public class MenuController {
             Localization localization = new Localization();
             loader.setResources(localization.getResourceBundle());
             Parent parent = loader.load();
+            parent.setLayoutX(239);
+            parent.setLayoutY(170);
             mainPane.getChildren().add(parent);
         } catch (IOException e) {
             e.printStackTrace();

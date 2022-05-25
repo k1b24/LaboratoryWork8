@@ -1,0 +1,10 @@
+.table_pane{
+    -fx-pref-width: 690.0;
+    -fx-pref-height: 503.0;
+    -fx-max-width: 690.0;
+    -fx-max-height: 503.0;
+}
+
+.table{
+    -fx-background-color: #F4F1F2;
+}

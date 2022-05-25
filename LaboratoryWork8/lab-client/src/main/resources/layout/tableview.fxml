@@ -1,17 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kib.lab8.client.gui.controllers.TableViewController">
+<AnchorPane prefHeight="503.0" prefWidth="690.0" styleClass="table_pane" stylesheets="@../styles/table.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kib.lab8.client.gui.controllers.TableViewController">
    <children>
-      <TableView layoutX="134.0" layoutY="72.0" prefHeight="242.0" prefWidth="362.0">
-        <columns>
-          <TableColumn prefWidth="75.0" text="sdss" />
-          <TableColumn prefWidth="75.0" text="sd" />
-        </columns>
-      </TableView>
+      <ScrollPane prefHeight="503.0" prefWidth="690.0">
+         <content>
+            <TableView fx:id="humanTable" prefHeight="599.0" prefWidth="902.0" styleClass="table" stylesheets="@../styles/table.css">
+              <columns>
+                <TableColumn fx:id="id" prefWidth="60.799986243247986" text="ID" />
+                <TableColumn fx:id="name" prefWidth="101.59998321533203" text="NAME" />
+                <TableColumn fx:id="x" prefWidth="63.20001220703125" text="X" />
+                <TableColumn fx:id="y" prefWidth="75.0" text="Y" />
+                <TableColumn fx:id="creationDate" prefWidth="75.0" text="CREATION DATE" />
+                <TableColumn fx:id="realHero" prefWidth="75.0" text="REAL HERO" />
+                <TableColumn fx:id="popularity" prefWidth="75.0" text="POPULARITY" />
+                <TableColumn fx:id="impactSpeed" prefWidth="75.0" text="IMPACT SPEED" />
+                <TableColumn fx:id="weapon" prefWidth="75.0" text="WEAPON" />
+                <TableColumn fx:id="mood" prefWidth="75.0" text="MOOD" />
+              </columns>
+            </TableView>
+         </content>
+      </ScrollPane>
    </children>
 </AnchorPane>
