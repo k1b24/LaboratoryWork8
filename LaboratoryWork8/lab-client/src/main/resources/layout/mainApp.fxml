@@ -51,7 +51,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Pane fx:id="menuButtonsPane" layoutX="19.0" layoutY="183.0" prefHeight="407.0" prefWidth="200.0">
+            <Pane fx:id="buttonsPane" layoutX="19.0" layoutY="183.0" prefHeight="407.0" prefWidth="200.0" styleClass="left_menu_pane" stylesheets="@../styles/menu_pane.css">
                <children>
                   <Button fx:id="addButton" layoutX="5.0" layoutY="14.0" mnemonicParsing="false" onAction="#addButtonClicked" prefHeight="39.0" prefWidth="190.0" styleClass="light_green_button" stylesheets="@../styles/green_button.css" text="%ADD">
                      <font>
@@ -83,6 +83,7 @@
                      </font></Button>
                </children>
             </Pane>
+            <Pane fx:id="menuPane" layoutX="16.0" layoutY="183.0" prefHeight="407.0" prefWidth="206.0" styleClass="left_menu_pane" stylesheets="@../styles/menu_pane.css" visible="false" />
          </children>
       </AnchorPane>
       <Circle fill="#d3d2d4" layoutX="141.0" layoutY="-146.0" radius="330.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
@@ -149,5 +150,6 @@
             <Font name="Exo 2 Regular" size="18.0" />
          </font>
       </Button>
+      <Pane fx:id="visualPane" layoutX="238.0" layoutY="171.0" prefHeight="503.0" prefWidth="692.0" />
    </children>
 </AnchorPane>

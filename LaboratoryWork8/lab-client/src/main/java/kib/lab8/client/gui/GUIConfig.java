@@ -9,4 +9,5 @@ public class GUIConfig {
     public static final String AUTHORIZATION_PATH = "/layout/authorization.fxml";
     public static final String MAIN_WINDOW_PATH = "/layout/mainApp.fxml";
     public static final String TABLEVIEW_PATH = "/layout/tableview.fxml";
+    public static final String SETTINGS_PANE_PATH = "/layout/settingsPane.fxml";
 }
