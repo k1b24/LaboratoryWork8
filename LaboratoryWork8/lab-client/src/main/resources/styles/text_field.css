@@ -1,0 +1,5 @@
+.green_bordered_text_field{
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-border-color:  #186C20;
+}

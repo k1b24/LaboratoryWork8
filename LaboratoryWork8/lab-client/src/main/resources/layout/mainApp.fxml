@@ -144,5 +144,10 @@
             <Font name="Exo 2 Regular" size="18.0" />
          </font>
       </Button>
+      <Button fx:id="visualizeButton" layoutX="662.0" layoutY="127.0" mnemonicParsing="false" onAction="#visualizeButtonClicked" prefHeight="39.0" prefWidth="190.0" styleClass="light_orange_button" stylesheets="@../styles/orange_button.css" text="%VISUALIZE">
+         <font>
+            <Font name="Exo 2 Regular" size="18.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

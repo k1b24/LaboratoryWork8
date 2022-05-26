@@ -1,5 +1,6 @@
 package kib.lab8.client.gui.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -59,6 +60,9 @@ public class MenuController {
 
     @FXML
     private Button tableButton;
+
+    @FXML
+    private Button visualizeButton;
 
     @FXML
     private Text userInfo;
@@ -163,8 +167,17 @@ public class MenuController {
     }
 
     @FXML
+    private void visualizeButtonClicked() {
+        System.out.println("dada");
+        visualizeButton.setDisable(true);
+        tableButton.setDisable(false);
+    }
+
+    @FXML
     private void tableButtonClicked() {
         loadUI(TABLEVIEW_PATH);
+        visualizeButton.setDisable(false);
+        tableButton.setDisable(true);
     }
 
     private void loadUI(String uiPath) {
@@ -182,4 +195,5 @@ public class MenuController {
             e.printStackTrace();
         }
     }
+
 }

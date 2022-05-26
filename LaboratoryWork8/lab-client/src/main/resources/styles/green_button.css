@@ -1,8 +1,8 @@
 .light_green_button{
     -fx-background-color:  #78CC80;
-    -fx-background-radius: 5;
+    -fx-background-radius: 12;
     -fx-border-color:  #186C20;
-    -fx-border-radius: 5;
+    -fx-border-radius: 12;
     -fx-max-width: 190;
     -fx-max-height: 39;
     -fx-text-alignment: CENTER;
@@ -10,8 +10,8 @@
 
 .dark_green_button{
     -fx-background-color:  #1B8C26;
-    -fx-background-radius: 5;
+    -fx-background-radius: 12;
     -fx-border-color:  #186C20;
-    -fx-border-radius: 5;
+    -fx-border-radius: 12;
     -fx-text-alignment: CENTER;
 }

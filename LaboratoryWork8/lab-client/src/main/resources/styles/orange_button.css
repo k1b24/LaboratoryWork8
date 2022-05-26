@@ -1,13 +1,23 @@
 .dark_orange_button{
     -fx-background-color: #DD5327;
-    -fx-background-radius: 5;
+    -fx-background-radius: 12;
     -fx-border-color: #B34421;
-    -fx-border-radius: 5;
+    -fx-border-radius: 12;
+    -fx-text-alignment: CENTER;
 }
 
 .light_orange_button{
     -fx-background-color: #E47552;
-    -fx-background-radius: 5;
+    -fx-background-radius: 12;
     -fx-border-color: #B34421;
-    -fx-border-radius: 5;
+    -fx-border-radius: 12;
+    -fx-text-alignment: CENTER;
+}
+
+.disabled_light_orange_button{
+    -fx-background-color: #f29c78;
+    -fx-background-radius: 12;
+    -fx-border-color: #E47552;
+    -fx-border-radius: 12;
+    -fx-text-alignment: CENTER;
 }

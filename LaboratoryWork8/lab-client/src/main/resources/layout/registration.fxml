@@ -29,9 +29,9 @@
                 </ImageView>
             </children>
         </AnchorPane>
-        <TextField fx:id="loginField" alignment="CENTER" layoutX="46.0" layoutY="166.0" prefHeight="40.0" prefWidth="210.0" style="-fx-border-color: #186C20; -fx-border-radius: 5; -fx-background-radius: 5;" styleClass="Text Field" />
-        <PasswordField fx:id="passwordField" alignment="CENTER" layoutX="46.0" layoutY="228.0" prefHeight="40.0" prefWidth="210.0" style="-fx-border-color: #186C20; -fx-background-radius: 5; -fx-border-radius: 5;" styleClass="Text Field" />
-        <Button fx:id="registerButton" alignment="CENTER" contentDisplay="CENTER" layoutX="76.0" layoutY="340.0" maxHeight="422.0" mnemonicParsing="false" onAction="#register" prefHeight="422.0" prefWidth="150.0" style="-fx-background-color: #78CC80; -fx-background-radius: 5; -fx-border-color: #186C20; -fx-border-radius: 5; -fx-max-height: 28;" text="%sign_up_button_text" textAlignment="CENTER">
+        <TextField fx:id="loginField" alignment="CENTER" layoutX="46.0" layoutY="166.0" prefHeight="40.0" prefWidth="210.0" styleClass="green_bordered_text_field" stylesheets="@../styles/text_field.css" />
+        <PasswordField fx:id="passwordField" alignment="CENTER" layoutX="46.0" layoutY="228.0" prefHeight="40.0" prefWidth="210.0" styleClass="green_bordered_text_field" stylesheets="@../styles/text_field.css" />
+        <Button fx:id="registerButton" alignment="CENTER" contentDisplay="CENTER" layoutX="76.0" layoutY="340.0" maxHeight="422.0" mnemonicParsing="false" onAction="#register" prefHeight="33.0" prefWidth="150.0" styleClass="light_green_button" stylesheets="@../styles/green_button.css" text="%sign_up_button_text" textAlignment="CENTER">
             <font>
                 <Font name="Exo 2 Regular" size="18.0" />
             </font>
@@ -47,7 +47,7 @@
                 <Font name="Exo 2 Regular" size="18.0" />
             </font>
         </Text>
-      <PasswordField fx:id="secondPasswordField" alignment="CENTER" layoutX="46.0" layoutY="290.0" prefHeight="40.0" prefWidth="210.0" style="-fx-border-color: #186C20; -fx-background-radius: 5; -fx-border-radius: 5;" styleClass="Text Field" />
+      <PasswordField fx:id="secondPasswordField" alignment="CENTER" layoutX="46.0" layoutY="290.0" prefHeight="40.0" prefWidth="210.0" styleClass="green_bordered_text_field" stylesheets="@../styles/text_field.css" />
       <Text layoutX="46.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%repeat_password" textAlignment="CENTER" wrappingWidth="210.39999999999986">
          <font>
             <Font name="Exo 2 Regular" size="18.0" />
