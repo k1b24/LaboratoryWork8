@@ -5,22 +5,24 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="503.0" prefWidth="690.0" styleClass="table_pane" stylesheets="@../styles/table.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kib.lab8.client.gui.controllers.TableViewController">
+<AnchorPane maxHeight="591.0" maxWidth="1079.0" prefHeight="591.0" prefWidth="690.0" styleClass="table_pane" stylesheets="@../styles/table.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kib.lab8.client.gui.controllers.TableViewController">
    <children>
       <ScrollPane prefHeight="503.0" prefWidth="690.0">
          <content>
-            <TableView fx:id="humanTable" prefHeight="599.0" prefWidth="902.0" styleClass="table" stylesheets="@../styles/table.css">
+            <TableView fx:id="humanTable" prefHeight="659.0" prefWidth="1247.0" styleClass="table" stylesheets="@../styles/table.css">
               <columns>
-                <TableColumn fx:id="id" prefWidth="60.799986243247986" text="ID" />
-                <TableColumn fx:id="name" prefWidth="101.59998321533203" text="NAME" />
-                <TableColumn fx:id="x" prefWidth="63.20001220703125" text="X" />
-                <TableColumn fx:id="y" prefWidth="75.0" text="Y" />
-                <TableColumn fx:id="creationDate" prefWidth="75.0" text="CREATION DATE" />
-                <TableColumn fx:id="realHero" prefWidth="75.0" text="REAL HERO" />
-                <TableColumn fx:id="popularity" prefWidth="75.0" text="POPULARITY" />
-                <TableColumn fx:id="impactSpeed" prefWidth="75.0" text="IMPACT SPEED" />
-                <TableColumn fx:id="weapon" prefWidth="75.0" text="WEAPON" />
-                <TableColumn fx:id="mood" prefWidth="75.0" text="MOOD" />
+                <TableColumn fx:id="id" prefWidth="44.800019800662994" text="ID" />
+                <TableColumn fx:id="name" prefWidth="128.80001068115234" text="%NAME" />
+                <TableColumn prefWidth="79.19998168945312" text="X" fx:id="x" />
+                <TableColumn fx:id="y" prefWidth="68.00006103515625" text="Y" />
+                <TableColumn fx:id="creationDate" prefWidth="120.79998779296875" text="%CREATION_DATE" />
+                <TableColumn fx:id="realHero" prefWidth="76.0" text="%REAL_HERO" />
+                <TableColumn fx:id="popularity" minWidth="0.79998779296875" prefWidth="82.4000244140625" text="%POPULARITY" />
+                <TableColumn fx:id="impactSpeed" minWidth="5.60003662109375" prefWidth="118.40008544921875" text="%IMPACT_SPEED" />
+                <TableColumn fx:id="weapon" minWidth="0.0" prefWidth="135.99993896484375" text="%WEAPON" />
+                <TableColumn fx:id="mood" minWidth="0.0" prefWidth="112.00006103515625" text="%MOOD" />
+                <TableColumn fx:id="carCoolness" prefWidth="97.5999755859375" text="%CAR_COOLNESS" />
+                <TableColumn fx:id="carSpeed" prefWidth="120.7999267578125" text="%CAR_SPEED" />
               </columns>
             </TableView>
          </content>

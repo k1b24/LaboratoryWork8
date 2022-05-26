@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -20,6 +21,15 @@ public class MenuController {
 
     @FXML
     private AnchorPane mainPane;
+
+    @FXML
+    private Pane menuPane;
+
+    @FXML
+    private Pane buttonsPane;
+
+    @FXML
+    private Pane visualPane;
 
     @FXML
     private Button signUpButton;
@@ -156,6 +166,14 @@ public class MenuController {
     @FXML
     private void settingsButtonClicked() {
         System.out.println("dada");
+        if (menuPane.isVisible()) {
+            buttonsPane.setVisible(true);
+            menuPane.setVisible(false);
+        } else {
+            buttonsPane.setVisible(false);
+            menuPane.setVisible(true);
+        }
+        loadUI(SETTINGS_PANE_PATH, menuPane);
     }
 
     @FXML
@@ -172,12 +190,12 @@ public class MenuController {
 
     @FXML
     private void tableButtonClicked() {
-        loadUI(TABLEVIEW_PATH);
+        loadUI(TABLEVIEW_PATH, visualPane);
         visualizeButton.setDisable(false);
         tableButton.setDisable(true);
     }
 
-    private void loadUI(String uiPath) {
+    private void loadUI(String uiPath, Pane targetPane) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(uiPath));
             //loader.setControllerFactory(controllerClass -> new TableViewController());
@@ -185,9 +203,7 @@ public class MenuController {
             Localization localization = new Localization();
             loader.setResources(localization.getResourceBundle());
             Parent parent = loader.load();
-            parent.setLayoutX(239);
-            parent.setLayoutY(170);
-            mainPane.getChildren().add(parent);
+            targetPane.getChildren().add(parent);
         } catch (IOException e) {
             e.printStackTrace();
         }
