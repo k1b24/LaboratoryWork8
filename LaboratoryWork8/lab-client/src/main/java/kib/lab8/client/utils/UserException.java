@@ -9,6 +9,7 @@ public class UserException extends Exception {
     public UserException(String message) {
         super(message);
         alert = new Alert(Alert.AlertType.ERROR);
+        alert.setHeaderText(null);
         alert.setContentText(message);
     }
 

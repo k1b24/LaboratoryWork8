@@ -21,21 +21,21 @@ public class GUIApplication extends Application {
     }
 
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage primaryStage) throws IOException {
         FXMLLoader mainWindowLoader = new FXMLLoader();
-        mainWindowLoader.setLocation(getClass().getResource(MAIN_WINDOW_PATH));
+        mainWindowLoader.setLocation(getClass().getResource(CONNECTION_PATH));
         Localization localization = new Localization();
         mainWindowLoader.setResources(localization.getResourceBundle());
         Parent root = mainWindowLoader.load();
 
         InputStream iconStream = getClass().getResourceAsStream(CORNER_IMAGE);
         Image image = new Image(iconStream);
-        stage.getIcons().add(image);
+        primaryStage.getIcons().add(image);
 
-        stage.setTitle("Be human");
-        stage.setResizable(false);
-        stage.setScene(new Scene(root));
-        stage.show();
+        primaryStage.setTitle("Be human");
+        primaryStage.setResizable(false);
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
     }
 
 }
