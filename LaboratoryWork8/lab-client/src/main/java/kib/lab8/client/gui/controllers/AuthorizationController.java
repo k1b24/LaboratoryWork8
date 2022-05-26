@@ -12,6 +12,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import kib.lab8.client.gui.GUIConfig;
 import kib.lab8.client.gui.Localization;
+import kib.lab8.client.gui.abstractions.AbstractController;
 import kib.lab8.client.utils.AuthorizationModel;
 import kib.lab8.client.utils.ConnectionHandlerClient;
 import kib.lab8.client.utils.Model;
@@ -22,7 +23,7 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class AuthorizationController implements Initializable {
+public class AuthorizationController extends AbstractController {
 
     @FXML
     private Button authorizationButton;
@@ -74,11 +75,6 @@ public class AuthorizationController implements Initializable {
         Scene scene = new Scene(parent);
         currentStage.setTitle(GUIConfig.TITLE);
         currentStage.setScene(scene);
-
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
 }

@@ -9,14 +9,16 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import kib.lab8.client.gui.GUIConfig;
 import kib.lab8.client.gui.Localization;
+import kib.lab8.client.gui.abstractions.AbstractController;
 import kib.lab8.client.utils.Model;
 
 import java.io.IOException;
 
-import static kib.lab8.client.gui.GUIConfig.*;
 
-public class MenuController {
+
+public class MenuController extends AbstractController {
 
     @FXML
     private AnchorPane mainPane;
@@ -138,7 +140,7 @@ public class MenuController {
 
     @FXML
     private void tableButtonClicked() {
-        loadUI(TABLEVIEW_PATH);
+        loadUI(GUIConfig.TABLEVIEW_PATH);
     }
 
     private void loadUI(String uiPath) {

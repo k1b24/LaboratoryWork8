@@ -1,10 +1,6 @@
 package kib.lab8.client.utils;
 
 
-import kib.lab8.common.util.client_server_communication.requests.LoginRequest;
-import kib.lab8.common.util.client_server_communication.responses.AuthenticationResponse;
-
-import java.io.IOException;
 import java.net.SocketException;
 import java.net.UnknownHostException;
 

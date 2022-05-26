@@ -11,6 +11,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import kib.lab8.client.gui.GUIConfig;
 import kib.lab8.client.gui.Localization;
+import kib.lab8.client.gui.abstractions.AbstractController;
 import kib.lab8.client.utils.ConnectionModel;
 import kib.lab8.client.utils.UserException;
 
@@ -18,7 +19,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 
-public class ConnectionController {
+public class ConnectionController extends AbstractController {
 
     @FXML
     private Button connectButton;
