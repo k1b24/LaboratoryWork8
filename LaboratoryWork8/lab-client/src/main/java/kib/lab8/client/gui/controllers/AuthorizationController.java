@@ -12,6 +12,8 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import kib.lab8.client.gui.GUIConfig;
 import kib.lab8.client.gui.Localization;
+import kib.lab8.client.utils.AuthorizationModel;
+import kib.lab8.client.utils.ConnectionHandlerClient;
 import kib.lab8.client.utils.Model;
 import kib.lab8.client.utils.UserException;
 
@@ -33,10 +35,11 @@ public class AuthorizationController implements Initializable {
 
     @FXML
     private PasswordField passwordField;
-    private final Model model;
+    private final AuthorizationModel model = new AuthorizationModel();
 
-    public AuthorizationController(Model model) {
-        this.model = model;
+
+    public AuthorizationController(ConnectionHandlerClient connectionHandler) {
+        model.setConnectionHandler(connectionHandler);
     }
 
     @FXML

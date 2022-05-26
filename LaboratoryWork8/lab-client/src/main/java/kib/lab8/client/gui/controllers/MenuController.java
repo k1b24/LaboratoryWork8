@@ -65,32 +65,6 @@ public class MenuController {
 
     @FXML
     private Text nickname;
-    private Model model;
-
-    @FXML
-    public void initialize() {
-        model = new Model();
-
-
-        FXMLLoader connectionLoader = new FXMLLoader();
-        connectionLoader.setLocation(getClass().getResource(CONNECTION_PATH));
-        connectionLoader.setControllerFactory(controllerClass -> new ConnectionController(model));
-        Localization localization = new Localization();
-        connectionLoader.setResources(localization.getResourceBundle());
-        try {
-            Parent root = connectionLoader.load();
-            Stage stage = new Stage();
-
-            stage.setTitle("Be human");
-            stage.setResizable(false);
-            stage.setScene(new Scene(root));
-            stage.initModality(Modality.WINDOW_MODAL);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }
 
     @FXML
     private void signUpButtonClicked() {

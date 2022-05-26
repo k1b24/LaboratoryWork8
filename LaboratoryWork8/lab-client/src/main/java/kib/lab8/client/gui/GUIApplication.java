@@ -23,7 +23,7 @@ public class GUIApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader mainWindowLoader = new FXMLLoader();
-        mainWindowLoader.setLocation(getClass().getResource(MAIN_WINDOW_PATH));
+        mainWindowLoader.setLocation(getClass().getResource(CONNECTION_PATH));
         Localization localization = new Localization();
         mainWindowLoader.setResources(localization.getResourceBundle());
         Parent root = mainWindowLoader.load();
