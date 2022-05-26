@@ -11,7 +11,6 @@ import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import kib.lab8.client.gui.Localization;
-import kib.lab8.client.utils.Model;
 
 import java.io.IOException;
 
@@ -69,16 +68,14 @@ public class MenuController {
 
     @FXML
     private Text nickname;
-    private Model model;
 
     @FXML
     public void initialize() {
-        model = new Model();
 
 
         FXMLLoader connectionLoader = new FXMLLoader();
         connectionLoader.setLocation(getClass().getResource(CONNECTION_PATH));
-        connectionLoader.setControllerFactory(controllerClass -> new ConnectionController(model));
+        connectionLoader.setControllerFactory(controllerClass -> new ConnectionController());
         Localization localization = new Localization();
         connectionLoader.setResources(localization.getResourceBundle());
         try {

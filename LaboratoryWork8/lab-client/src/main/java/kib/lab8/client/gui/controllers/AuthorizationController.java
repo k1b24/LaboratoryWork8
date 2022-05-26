@@ -2,7 +2,6 @@ package kib.lab8.client.gui.controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -15,7 +14,6 @@ import kib.lab8.client.gui.Localization;
 import kib.lab8.client.gui.abstractions.AbstractController;
 import kib.lab8.client.utils.AuthorizationModel;
 import kib.lab8.client.utils.ConnectionHandlerClient;
-import kib.lab8.client.utils.Model;
 import kib.lab8.client.utils.UserException;
 
 import java.io.IOException;
