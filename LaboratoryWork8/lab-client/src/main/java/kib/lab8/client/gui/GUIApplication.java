@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import kib.lab8.client.gui.abstractions.AbstractController;
 import kib.lab8.client.gui.controllers.MenuController;
 
 import java.io.IOException;
@@ -27,6 +28,8 @@ public class GUIApplication extends Application {
         Localization localization = new Localization();
         mainWindowLoader.setResources(localization.getResourceBundle());
         Parent root = mainWindowLoader.load();
+        AbstractController controller = mainWindowLoader.getController();
+        controller.setStage(primaryStage);
 
         InputStream iconStream = getClass().getResourceAsStream(CORNER_IMAGE);
         Image image = new Image(iconStream);

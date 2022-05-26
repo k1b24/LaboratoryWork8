@@ -1,5 +1,6 @@
 package kib.lab8.client.utils;
 
+import kib.lab8.client.gui.controllers.ConnectionController;
 import kib.lab8.common.util.client_server_communication.requests.LoginRequest;
 import kib.lab8.common.util.client_server_communication.responses.AuthenticationResponse;
 
@@ -10,6 +11,10 @@ public class AuthorizationModel {
     private ConnectionHandlerClient connectionHandler;
     private String userLogin;
     private String userPassword;
+
+    public AuthorizationModel(ConnectionHandlerClient connectionHandler) {
+        this.connectionHandler = connectionHandler;
+    }
 
     public void setConnectionHandler(ConnectionHandlerClient connectionHandler) {
         this.connectionHandler = connectionHandler;

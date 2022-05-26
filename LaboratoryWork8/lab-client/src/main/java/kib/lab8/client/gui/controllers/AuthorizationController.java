@@ -34,11 +34,10 @@ public class AuthorizationController extends AbstractController {
 
     @FXML
     private PasswordField passwordField;
-    private final AuthorizationModel model = new AuthorizationModel();
-
+    private final AuthorizationModel model;
 
     public AuthorizationController(ConnectionHandlerClient connectionHandler) {
-        model.setConnectionHandler(connectionHandler);
+        model = new AuthorizationModel(connectionHandler);
     }
 
     @FXML
@@ -47,8 +46,7 @@ public class AuthorizationController extends AbstractController {
             boolean success = model.authorize(loginField.getText(), passwordField.getText());
             if (success) {
                 System.out.println("authorized");
-                //переходи в MAIN WINDOW в модельке уже хранится логин и пароль
-                // есть метод
+                changeScene(GUIConfig.MAIN_WINDOW_PATH, controllerClass -> new MenuController());
             } else {
                 System.out.println("net takogo uzera");
                 //покажи текст об ошибке авторизации

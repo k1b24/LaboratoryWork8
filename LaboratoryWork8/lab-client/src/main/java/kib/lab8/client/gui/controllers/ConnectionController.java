@@ -31,35 +31,21 @@ public class ConnectionController extends AbstractController {
 
     @FXML
     private Text text;
-    private ConnectionModel model;
+    private final ConnectionModel model;
 
     public ConnectionController() {
         this.model = new ConnectionModel();
     }
 
     @FXML
-    private void connect() throws IOException {
+    private void connect() {
         try {
             model.initializeConnectionHandler(hostField.getText(), portField.getText());
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(GUIConfig.AUTHORIZATION_PATH));
-            loader.setControllerFactory(controllerClass -> new AuthorizationController(model.getConnectionHandler()));
-            Localization localization = new Localization();
-            loader.setResources(localization.getResourceBundle());
-            Parent parent = loader.load();
-
-            Stage currentStage = (Stage) connectButton.getScene().getWindow();
-            InputStream iconStream = getClass().getResourceAsStream(GUIConfig.CORNER_IMAGE);
-            Image image = new Image(iconStream);
-            currentStage.getIcons().add(image);
-            Scene scene = new Scene(parent);
-            currentStage.setTitle(GUIConfig.TITLE);
-            currentStage.setScene(scene);
+            changeScene(GUIConfig.AUTHORIZATION_PATH, controllerClass -> new AuthorizationController(model.getConnectionHandler()));
         } catch (UserException e) {
             e.showAlert();
             hostField.clear();
             portField.clear();
         }
     }
-
-
 }

@@ -11,12 +11,13 @@ import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import kib.lab8.client.gui.Localization;
+import kib.lab8.client.gui.abstractions.AbstractController;
 
 import java.io.IOException;
 
 import static kib.lab8.client.gui.GUIConfig.*;
 
-public class MenuController {
+public class MenuController extends AbstractController {
 
     @FXML
     private AnchorPane mainPane;
@@ -71,25 +72,6 @@ public class MenuController {
 
     @FXML
     public void initialize() {
-
-
-        FXMLLoader connectionLoader = new FXMLLoader();
-        connectionLoader.setLocation(getClass().getResource(CONNECTION_PATH));
-        connectionLoader.setControllerFactory(controllerClass -> new ConnectionController());
-        Localization localization = new Localization();
-        connectionLoader.setResources(localization.getResourceBundle());
-        try {
-            Parent root = connectionLoader.load();
-            Stage stage = new Stage();
-
-            stage.setTitle("Be human");
-            stage.setResizable(false);
-            stage.setScene(new Scene(root));
-            stage.initModality(Modality.WINDOW_MODAL);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
     }
 
