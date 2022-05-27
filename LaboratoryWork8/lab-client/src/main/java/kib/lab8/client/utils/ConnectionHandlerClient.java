@@ -47,4 +47,8 @@ public class ConnectionHandlerClient {
         return serializer.deserializeResponse(bytesFromServer);
     }
 
+    public void closeConnection() {
+        datagramSocket.close();
+
+    }
 }

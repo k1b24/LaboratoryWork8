@@ -1,25 +1,15 @@
 package kib.lab8.client.gui.controllers;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.stage.Stage;
+
 import kib.lab8.client.gui.GUIConfig;
-import kib.lab8.client.gui.Localization;
 import kib.lab8.client.gui.abstractions.AbstractController;
 import kib.lab8.client.utils.AuthorizationModel;
 import kib.lab8.client.utils.ConnectionHandlerClient;
 import kib.lab8.client.utils.UserException;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 public class AuthorizationController extends AbstractController {
 
@@ -46,7 +36,8 @@ public class AuthorizationController extends AbstractController {
             boolean success = model.authorize(loginField.getText(), passwordField.getText());
             if (success) {
                 System.out.println("authorized");
-                changeScene(GUIConfig.MAIN_WINDOW_PATH, controllerClass -> new MenuController());
+                changeScene(GUIConfig.MAIN_WINDOW_PATH, controllerClass ->
+                        new MenuController(model.getConnectionHandler(), model.getUserLogin(), model.getUserPassword()));
             } else {
                 System.out.println("net takogo uzera");
                 //покажи текст об ошибке авторизации
@@ -57,20 +48,11 @@ public class AuthorizationController extends AbstractController {
     }
 
     @FXML
-    private void register() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(GUIConfig.REGISTRATION_PATH));
-        loader.setControllerFactory(controllerClass -> new RegistrationController());
-        Localization localization = new Localization();
-        loader.setResources(localization.getResourceBundle());
-        Parent parent = loader.load();
-
-        Stage currentStage = (Stage) registerButton.getScene().getWindow();
-        InputStream iconStream = getClass().getResourceAsStream(GUIConfig.CORNER_IMAGE);
-        Image image = new Image(iconStream);
-        currentStage.getIcons().add(image);
-        Scene scene = new Scene(parent);
-        currentStage.setTitle(GUIConfig.TITLE);
-        currentStage.setScene(scene);
-
+    private void register() {
+        try {
+            changeScene(GUIConfig.REGISTRATION_PATH, controllerClass -> new RegistrationController(model.getConnectionHandler()));
+        } catch (UserException e) {
+            e.showAlert();
+        }
     }
 }

@@ -1,22 +1,21 @@
 package kib.lab8.client.gui.controllers;
 
-import javafx.event.ActionEvent;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
+import kib.lab8.client.gui.GUIConfig;
 import kib.lab8.client.gui.Localization;
 import kib.lab8.client.gui.abstractions.AbstractController;
+import kib.lab8.client.utils.ConnectionHandlerClient;
+import kib.lab8.client.utils.MenuModel;
 
 import java.io.IOException;
 
-import static kib.lab8.client.gui.GUIConfig.*;
 
 public class MenuController extends AbstractController {
 
@@ -79,10 +78,15 @@ public class MenuController extends AbstractController {
 
     @FXML
     private Text nickname;
+    private final MenuModel model;
 
     @FXML
-    public void initialize() {
+    private void initialize() {
+        nickname.setText(model.getUserLogin());
+    }
 
+    public MenuController(ConnectionHandlerClient connectionHandler, String username, String password) {
+        model = new MenuModel(connectionHandler, username, password);
     }
 
     @FXML
@@ -142,12 +146,12 @@ public class MenuController extends AbstractController {
 
     @FXML
     private void exitButtonClicked() {
-        System.out.println("dada");
+        model.prepareForExit();
+        Platform.exit();
     }
 
     @FXML
     private void settingsButtonClicked() {
-        System.out.println("dada");
         if (menuPane.isVisible()) {
             buttonsPane.setVisible(true);
             menuPane.setVisible(false);
@@ -155,7 +159,7 @@ public class MenuController extends AbstractController {
             buttonsPane.setVisible(false);
             menuPane.setVisible(true);
         }
-        loadUI(SETTINGS_PANE_PATH, menuPane);
+        loadUI(GUIConfig.SETTINGS_PANE_PATH, menuPane);
     }
 
     @FXML
@@ -172,7 +176,7 @@ public class MenuController extends AbstractController {
 
     @FXML
     private void tableButtonClicked() {
-        loadUI(TABLEVIEW_PATH, visualPane);
+        loadUI(GUIConfig.TABLEVIEW_PATH, visualPane);
         visualizeButton.setDisable(false);
         tableButton.setDisable(true);
     }

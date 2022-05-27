@@ -1,4 +1,41 @@
 package kib.lab8.client.utils;
 
+import kib.lab8.common.util.client_server_communication.requests.SignUpRequest;
+import kib.lab8.common.util.client_server_communication.responses.AuthenticationResponse;
+
+import java.io.IOException;
+
 public class RegistrationModel {
+
+    private final ConnectionHandlerClient connectionHandler;
+
+    public RegistrationModel(ConnectionHandlerClient connectionHandler) {
+        this.connectionHandler = connectionHandler;
+    }
+
+    public ConnectionHandlerClient getConnectionHandler() {
+        return connectionHandler;
+    }
+
+    public void sendSignUpRequest(String userLogin, String userPassword) throws UserException {
+        SignUpRequest signUpRequest = new SignUpRequest();
+        signUpRequest.setUserLogin(userLogin);
+        signUpRequest.setUserPassword(userPassword);
+        try {
+            connectionHandler.sendRequest(signUpRequest);
+        } catch (IOException e) {
+            throw new UserException("Произошла ошибка при отправке запроса на сервер, "
+                    + "повторите попытку");
+        }
+        try {
+            AuthenticationResponse authenticationResponse = (AuthenticationResponse) connectionHandler.recieveResponse();
+            if (!authenticationResponse.getResponseSuccess()) {
+                throw new UserException(authenticationResponse.getMessage().getMessage());
+            }
+        } catch (IOException e) {
+            throw new UserException("Произошла ошибка при чтении ответа от сервера. Пожалуйста, повторите ввод");
+        } catch (ClassNotFoundException e) {
+            throw new UserException("Произошла ошибка при отправке запроса на сервер. Пожалуйста, повторите ввод");
+        }
+    }
 }
