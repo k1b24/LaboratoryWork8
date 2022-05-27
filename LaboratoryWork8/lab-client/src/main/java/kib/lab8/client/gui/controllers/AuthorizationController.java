@@ -35,7 +35,6 @@ public class AuthorizationController extends AbstractController {
         try {
             boolean success = model.authorize(loginField.getText(), passwordField.getText());
             if (success) {
-                System.out.println("authorized");
                 changeScene(GUIConfig.MAIN_WINDOW_PATH, controllerClass ->
                         new MenuController(model.getConnectionHandler(), model.getUserLogin(), model.getUserPassword()));
             } else {
@@ -43,6 +42,8 @@ public class AuthorizationController extends AbstractController {
                 //покажи текст об ошибке авторизации
             }
         } catch (UserException e) {
+            loginField.clear();
+            passwordField.clear();
             e.showAlert();
         }
     }
