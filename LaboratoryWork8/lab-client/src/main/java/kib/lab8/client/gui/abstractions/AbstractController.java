@@ -37,9 +37,7 @@ public abstract class AbstractController {
             T controller = loader.getController();
 
             controller.setStage(getStage());
-            InputStream iconStream = getClass().getResourceAsStream(GUIConfig.CORNER_IMAGE);
-            Image image = new Image(iconStream);
-            currentStage.getIcons().add(image);
+            currentStage.getIcons().add(GUIConfig.getCornerImage());
             Scene scene = new Scene(parent);
             currentStage.setTitle(GUIConfig.TITLE);
             currentStage.setScene(scene);

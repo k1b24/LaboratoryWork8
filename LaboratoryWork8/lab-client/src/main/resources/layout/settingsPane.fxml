@@ -5,7 +5,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<AnchorPane fx:id="settingsPane" prefHeight="400.0" prefWidth="600.0" styleClass="left_menu_pane" stylesheets="@../styles/menu_pane.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kib.lab8.client.gui.controllers.SettingsController">
+<AnchorPane fx:id="settingsPane" prefHeight="400.0" prefWidth="600.0" styleClass="left_menu_pane" stylesheets="@../styles/pane.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kib.lab8.client.gui.controllers.SettingsController">
    <children>
       <Text layoutX="46.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SETTINGS">
          <font>
