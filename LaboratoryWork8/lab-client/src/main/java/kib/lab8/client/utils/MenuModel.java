@@ -1,7 +1,11 @@
 package kib.lab8.client.utils;
 
+import kib.lab8.common.entities.HumanBeing;
+
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class MenuModel {
 
@@ -10,6 +14,7 @@ public class MenuModel {
     private final String userLogin;
     private final String userPassword;
     private final Timer timer = new Timer(true);
+    private List<HumanBeing> humanCollection = new CopyOnWriteArrayList<>();
 
 
 
