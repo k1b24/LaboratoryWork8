@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
@@ -34,10 +35,7 @@ public class MenuController extends AbstractController {
     private Pane visualPane;
 
     @FXML
-    private Button signUpButton;
-
-    @FXML
-    private Button signInButton;
+    private TextArea terminal;
 
     @FXML
     private Button addButton;
@@ -61,9 +59,6 @@ public class MenuController extends AbstractController {
     private Button updateButton;
 
     @FXML
-    private Button exitButton;
-
-    @FXML
     private Button settingsButton;
 
     @FXML
@@ -74,9 +69,6 @@ public class MenuController extends AbstractController {
 
     @FXML
     private Button visualizeButton;
-
-    @FXML
-    private Text userInfo;
 
     @FXML
     private Text nickname;
@@ -92,19 +84,6 @@ public class MenuController extends AbstractController {
     }
 
     @FXML
-    private void signUpButtonClicked() {
-        signUpButton.setText("qwe");
-        nickname.setText("rondize");
-        System.out.println("dada");
-    }
-
-    @FXML
-    private void signInButtonClicked() {
-        signInButton.setText("qwe");
-        System.out.println("dada");
-    }
-
-    @FXML
     private void addButtonClicked() {
         //TODO реализовать открытие окна с добавлением
         System.out.println("dada");
@@ -112,8 +91,12 @@ public class MenuController extends AbstractController {
 
     @FXML
     private void clearButtonClicked() {
-        //TODO скорее всего придется делать очистку по-другому, но пока так
-        System.out.println("dada");
+        ExecutableCommand clearCommand = ExecutableCommand.CLEAR_COMMAND;
+        try {
+            terminal.appendText(model.executeCommand(clearCommand) + "\n");
+        } catch (UserException e) {
+            e.showAlert();
+        }
     }
 
     @FXML
@@ -145,6 +128,8 @@ public class MenuController extends AbstractController {
         ExecutableCommand command = ExecutableCommand.INFO_COMMAND;
         try {
             String s = model.executeCommand(command);
+            terminal.appendText(s + "\n");
+//            terminal.setText(s);
             System.out.println(s);
         } catch (UserException e) {
             e.showAlert();

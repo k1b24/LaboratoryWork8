@@ -3,3 +3,9 @@
     -fx-background-radius: 8;
     -fx-border-color:  #186C20;
 }
+
+.orange_text_field{
+    -fx-background-color: #f29c78;
+    -fx-border-color: #B34421;
+    -fx-color: #f29c78;
+}

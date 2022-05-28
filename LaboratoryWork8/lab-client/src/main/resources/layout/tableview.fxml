@@ -1,31 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="591.0" maxWidth="1079.0" prefHeight="591.0" prefWidth="690.0" styleClass="table_pane" stylesheets="@../styles/table.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kib.lab8.client.gui.controllers.TableViewController">
+<AnchorPane maxHeight="659.0" maxWidth="1074.0" prefHeight="659.0" prefWidth="954.0" styleClass="table_pane" stylesheets="@../styles/table.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kib.lab8.client.gui.controllers.TableViewController">
    <children>
-      <ScrollPane prefHeight="503.0" prefWidth="690.0">
-         <content>
-            <TableView fx:id="humanTable" prefHeight="659.0" prefWidth="1247.0" styleClass="table" stylesheets="@../styles/table.css">
-              <columns>
-                <TableColumn fx:id="id" prefWidth="44.800019800662994" text="ID" />
-                <TableColumn fx:id="name" prefWidth="128.80001068115234" text="%NAME" />
-                <TableColumn prefWidth="79.19998168945312" text="X" fx:id="x" />
-                <TableColumn fx:id="y" prefWidth="68.00006103515625" text="Y" />
-                <TableColumn fx:id="creationDate" prefWidth="120.79998779296875" text="%CREATION_DATE" />
-                <TableColumn fx:id="realHero" prefWidth="76.0" text="%REAL_HERO" />
-                <TableColumn fx:id="popularity" minWidth="0.79998779296875" prefWidth="82.4000244140625" text="%POPULARITY" />
-                <TableColumn fx:id="impactSpeed" minWidth="5.60003662109375" prefWidth="118.40008544921875" text="%IMPACT_SPEED" />
-                <TableColumn fx:id="weapon" minWidth="0.0" prefWidth="135.99993896484375" text="%WEAPON" />
-                <TableColumn fx:id="mood" minWidth="0.0" prefWidth="112.00006103515625" text="%MOOD" />
-                <TableColumn fx:id="carCoolness" prefWidth="97.5999755859375" text="%CAR_COOLNESS" />
-                <TableColumn fx:id="carSpeed" prefWidth="120.7999267578125" text="%CAR_SPEED" />
-              </columns>
-            </TableView>
-         </content>
-      </ScrollPane>
+      <TableView fx:id="humanTable" prefHeight="659.0" prefWidth="1030.0" styleClass="table" stylesheets="@../styles/test.css">
+        <columns>
+          <TableColumn fx:id="id" prefWidth="31.999970972537994" text="ID" />
+          <TableColumn fx:id="name" prefWidth="95.99999618530273" text="%NAME" />
+          <TableColumn prefWidth="35.999969482421875" text="X" fx:id="x" />
+          <TableColumn fx:id="y" prefWidth="45.5999755859375" text="Y" />
+          <TableColumn fx:id="creationDate" prefWidth="113.59999084472656" text="%CREATION_DATE" />
+          <TableColumn fx:id="realHero" prefWidth="78.4000244140625" text="%REAL_HERO" />
+          <TableColumn fx:id="popularity" minWidth="0.79998779296875" prefWidth="84.79998779296875" text="%POPULARITY" />
+          <TableColumn fx:id="impactSpeed" minWidth="5.60003662109375" prefWidth="122.4000244140625" text="%IMPACT_SPEED" />
+          <TableColumn fx:id="weapon" minWidth="0.0" prefWidth="73.5999755859375" text="%WEAPON" />
+          <TableColumn fx:id="mood" minWidth="0.0" prefWidth="105.60009765625" text="%MOOD" />
+          <TableColumn fx:id="carCoolness" prefWidth="106.4000244140625" text="%CAR_COOLNESS" />
+          <TableColumn fx:id="carSpeed" prefWidth="141.60003662109375" text="%CAR_SPEED" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>

@@ -3,7 +3,9 @@ package kib.lab8.client.gui.controllers;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import kib.lab8.client.gui.abstractions.AbstractController;
+import kib.lab8.client.utils.MenuModel;
 import kib.lab8.common.entities.HumanBeing;
 import kib.lab8.common.entities.enums.Mood;
 import kib.lab8.common.entities.enums.WeaponType;
@@ -51,4 +53,14 @@ public class TableViewController extends AbstractController {
     @FXML
     private TableColumn<HumanBeing, Boolean> carSpeed;
 
+    private final MenuModel model;
+
+    public TableViewController(MenuModel model) {
+        this.model = model;
+    }
+
+    private void initializeTable() {
+
+
+    }
 }

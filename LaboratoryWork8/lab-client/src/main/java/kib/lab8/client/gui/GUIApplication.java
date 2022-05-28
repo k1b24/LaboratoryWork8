@@ -7,7 +7,6 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import kib.lab8.client.gui.abstractions.AbstractController;
-import kib.lab8.client.gui.controllers.MenuController;
 
 import java.io.IOException;
 import java.io.InputStream;

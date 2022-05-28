@@ -9,6 +9,7 @@
 .light_orange_button{
     -fx-background-color: #E47552;
     -fx-background-radius: 12;
+    -fx-line-spacing: 10;
     -fx-border-color: #B34421;
     -fx-border-radius: 12;
     -fx-text-alignment: CENTER;
