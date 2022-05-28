@@ -12,7 +12,9 @@ import kib.lab8.client.gui.GUIConfig;
 import kib.lab8.client.gui.Localization;
 import kib.lab8.client.gui.abstractions.AbstractController;
 import kib.lab8.client.utils.ConnectionHandlerClient;
+import kib.lab8.client.utils.ExecutableCommand;
 import kib.lab8.client.utils.MenuModel;
+import kib.lab8.client.utils.UserException;
 
 import java.io.IOException;
 
@@ -140,8 +142,13 @@ public class MenuController extends AbstractController {
 
     @FXML
     private void infoButtonClicked() {
-        //TODO можно убрать в FAQ, или опять же просто отображать по нажатию, а лучше и то, и другое
-        System.out.println("dada");
+        ExecutableCommand command = ExecutableCommand.INFO_COMMAND;
+        try {
+            String s = model.executeCommand(command);
+            System.out.println(s);
+        } catch (UserException e) {
+            e.showAlert();
+        }
     }
 
     @FXML
@@ -180,6 +187,7 @@ public class MenuController extends AbstractController {
         visualizeButton.setDisable(false);
         tableButton.setDisable(true);
     }
+
 
     private void loadUI(String uiPath, Pane targetPane) {
         try {

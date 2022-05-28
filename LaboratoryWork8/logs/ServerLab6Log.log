@@ -1,13 +1,16 @@
-2022/05/27 15:21 INFO Вызван метод: launchApplication
-2022/05/27 15:21 INFO Обращение к менеджеру базы данных: initializeDB
-2022/05/27 15:21 INFO HV000001: Hibernate Validator 6.0.10.Final
-2022/05/27 15:21 INFO Обращение к менеджеру коллекции: fillWithArray / Аргументы: [[3. Valera, X: 222, Y: 22.0, CREATION DATE: 2022-04-27, REAL HERO: true, HAS TOOTHPICK: false, IMPACT SPEED: 22, WEAPON TYPE: AXE, MOOD: RAGE, CAR INFO: CAR COOLNESS: false CAR SPEED: 222, Author: k1b ]]
-2022/05/27 15:21 INFO Коллекция успешно заполнена из файла
-2022/05/27 15:21 INFO Вызван метод: launchMainLoop
-2022/05/27 15:21 INFO Обращение к менеджеру базы данных: checkIfUserRegistered
-2022/05/27 15:21 INFO Обращение к менеджеру базы данных: checkIfUserRegistered
-2022/05/27 15:21 INFO Обращение к менеджеру коллекции: getSortedArrayListFromQueue / Аргументы: []
-2022/05/27 15:21 INFO Исполнена команда: show
-2022/05/27 15:21 INFO Обращение к менеджеру базы данных: checkIfUserRegistered
-2022/05/27 15:21 INFO Обращение к менеджеру коллекции: getSortedArrayListFromQueue / Аргументы: []
-2022/05/27 15:21 INFO Исполнена команда: show
+2022/05/28 13:45 INFO Вызван метод: launchApplication
+2022/05/28 13:45 INFO Обращение к менеджеру базы данных: initializeDB
+2022/05/28 13:45 INFO HV000001: Hibernate Validator 6.0.10.Final
+2022/05/28 13:45 INFO Обращение к менеджеру коллекции: fillWithArray / Аргументы: [[3. Valera, X: 222, Y: 22.0, CREATION DATE: 2022-04-27, REAL HERO: true, HAS TOOTHPICK: false, IMPACT SPEED: 22, WEAPON TYPE: AXE, MOOD: RAGE, CAR INFO: CAR COOLNESS: false CAR SPEED: 222, Author: k1b ]]
+2022/05/28 13:45 INFO Коллекция успешно заполнена из файла
+2022/05/28 13:45 INFO Вызван метод: launchMainLoop
+2022/05/28 13:45 INFO Обращение к менеджеру базы данных: checkIfUserRegistered
+2022/05/28 13:45 INFO Обращение к менеджеру базы данных: checkIfUserRegistered
+2022/05/28 13:46 INFO Обращение к менеджеру базы данных: checkIfUserRegistered
+2022/05/28 13:46 INFO Обращение к менеджеру коллекции: getInfoAboutCollection / Аргументы: []
+2022/05/28 13:46 INFO Исполнена команда: info
+2022/05/28 15:22 INFO Обращение к менеджеру базы данных: checkIfUserRegistered
+2022/05/28 15:22 INFO Обращение к менеджеру базы данных: checkIfUserRegistered
+2022/05/28 15:22 INFO Обращение к менеджеру коллекции: getInfoAboutCollection / Аргументы: []
+2022/05/28 15:22 INFO Исполнена команда: info
+2022/05/28 15:26 INFO Обращение к менеджеру базы данных: checkIfUserRegistered

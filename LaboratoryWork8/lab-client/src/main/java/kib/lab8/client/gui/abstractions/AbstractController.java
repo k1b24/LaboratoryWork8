@@ -9,12 +9,10 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 import kib.lab8.client.gui.GUIConfig;
 import kib.lab8.client.gui.Localization;
-import kib.lab8.client.gui.controllers.AuthorizationController;
 import kib.lab8.client.utils.UserException;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.function.Supplier;
 
 
 public abstract class AbstractController {

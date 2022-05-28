@@ -1,6 +1,5 @@
 package kib.lab8.client.utils;
 
-import kib.lab8.client.gui.controllers.ConnectionController;
 import kib.lab8.common.util.client_server_communication.requests.LoginRequest;
 import kib.lab8.common.util.client_server_communication.responses.AuthenticationResponse;
 
@@ -37,13 +36,7 @@ public class AuthorizationModel {
         loginRequest.setUserLogin(login);
         loginRequest.setUserPassword(password);
         try {
-            connectionHandler.sendRequest(loginRequest);
-        } catch (IOException e) {
-            throw new UserException("Произошла ошибка при отправке запроса на сервер, "
-                    + "повторите попытку");
-        }
-        try {
-            AuthenticationResponse authenticationResponse = (AuthenticationResponse) connectionHandler.recieveResponse();
+            AuthenticationResponse authenticationResponse = (AuthenticationResponse) connectionHandler.sendRequest(loginRequest);
             if (authenticationResponse.getResponseSuccess()) {
                 userLogin = login;
                 userPassword = password;
@@ -51,10 +44,11 @@ public class AuthorizationModel {
             } else {
                 return false;
             }
-        } catch (ClassNotFoundException e) {
-            throw new UserException("Произошла ошибка при чтении ответа от сервера. Пожалуйста, повторите ввод");
         } catch (IOException e) {
-            throw new UserException("Произошла ошибка при отправке запроса на сервер. Пожалуйста, повторите ввод");
+            throw new UserException("Произошла ошибка при коммуникации с сервером, "
+                    + "повторите попытку");
+        } catch (ClassNotFoundException e) {
+            throw new UserException("Произошла ошибка при получении ответа с сервера. Пожалуйста, повторите попытку");
         }
     }
 }

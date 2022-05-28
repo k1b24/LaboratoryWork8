@@ -1,9 +1,5 @@
 package kib.lab8.client.utils;
 
-import kib.lab8.common.util.client_server_communication.requests.CommandRequest;
-import kib.lab8.common.util.client_server_communication.responses.CommandResponse;
-
-import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -25,18 +21,7 @@ public class MenuModel {
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
-                //затычка
-                CommandRequest request = new CommandRequest("show");
-                request.setUserLogin(userLogin);
-                request.setUserPassword(userPassword);
-                try {
-                    connectionHandler.sendRequest(request);
-                    CommandResponse response = (CommandResponse) connectionHandler.recieveResponse();
-                    System.out.println(response.getPeople());
-                } catch (IOException | ClassNotFoundException ignored) {
-
-                }
-                //затычка
+                //TODO Recieve collection in loop
             }
         }, 0, UPDATE_TIME);
     }
@@ -49,7 +34,7 @@ public class MenuModel {
         return userLogin;
     }
 
-    public void executeCommand() {
-
+    public String executeCommand(ExecutableCommand command) throws UserException {
+        return command.action(connectionHandler, userLogin, userPassword).getMessage();
     }
 }

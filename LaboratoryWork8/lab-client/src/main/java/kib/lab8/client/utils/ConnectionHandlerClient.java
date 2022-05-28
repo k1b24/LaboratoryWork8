@@ -11,10 +11,13 @@ import java.net.InetAddress;
 import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.nio.ByteBuffer;
+import java.util.concurrent.locks.ReadWriteLock;
+import java.util.concurrent.locks.ReentrantLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class ConnectionHandlerClient {
 
-    private static final int RESPONSE_TIMER = 5000;
+    private static final int RESPONSE_TIMER = 2000;
     private int serverPort;
     private final DatagramSocket datagramSocket;
     private final InetAddress serverAddress;
@@ -29,15 +32,12 @@ public class ConnectionHandlerClient {
         this.serverPort = serverPort;
     }
 
-    public void sendRequest(RequestInterface request) throws IOException {
+    public synchronized ResponseInterface sendRequest(RequestInterface request) throws IOException, ClassNotFoundException {
         request.setClientInfo(InetAddress.getLocalHost().toString() + ":" + datagramSocket.getLocalPort());
         ByteBuffer byteBuffer = serializer.serializeRequest(request);
         byte[] bufferToSend = byteBuffer.array();
         DatagramPacket datagramPacket = new DatagramPacket(bufferToSend, bufferToSend.length, serverAddress, serverPort);
         datagramSocket.send(datagramPacket);
-    }
-
-    public ResponseInterface recieveResponse() throws ClassNotFoundException, IOException {
         datagramSocket.setSoTimeout(RESPONSE_TIMER);
         int byteBufSize = datagramSocket.getReceiveBufferSize();
         byte[] byteBuf = new byte[byteBufSize];
@@ -49,6 +49,5 @@ public class ConnectionHandlerClient {
 
     public void closeConnection() {
         datagramSocket.close();
-
     }
 }

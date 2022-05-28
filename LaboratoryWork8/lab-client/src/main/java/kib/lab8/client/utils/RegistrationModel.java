@@ -22,20 +22,15 @@ public class RegistrationModel {
         signUpRequest.setUserLogin(userLogin);
         signUpRequest.setUserPassword(userPassword);
         try {
-            connectionHandler.sendRequest(signUpRequest);
-        } catch (IOException e) {
-            throw new UserException("Произошла ошибка при отправке запроса на сервер, "
-                    + "повторите попытку");
-        }
-        try {
-            AuthenticationResponse authenticationResponse = (AuthenticationResponse) connectionHandler.recieveResponse();
+            AuthenticationResponse authenticationResponse = (AuthenticationResponse)connectionHandler.sendRequest(signUpRequest);
             if (!authenticationResponse.getResponseSuccess()) {
                 throw new UserException(authenticationResponse.getMessage().getMessage());
             }
         } catch (IOException e) {
-            throw new UserException("Произошла ошибка при чтении ответа от сервера. Пожалуйста, повторите ввод");
+            throw new UserException("Произошла ошибка при коммуникации с сервером, "
+                    + "повторите попытку");
         } catch (ClassNotFoundException e) {
-            throw new UserException("Произошла ошибка при отправке запроса на сервер. Пожалуйста, повторите ввод");
+            throw new UserException("Произошла ошибка при получении ответа с сервера. Пожалуйста, повторите попытку");
         }
     }
 }
