@@ -1,12 +1,17 @@
 package kib.lab8.client.gui.controllers;
 
 import javafx.beans.binding.BooleanBinding;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import kib.lab8.client.gui.abstractions.AbstractController;
+import kib.lab8.common.entities.enums.Mood;
+import kib.lab8.common.entities.enums.WeaponType;
 
 public class AddCommandController extends AbstractController {
 
@@ -20,22 +25,22 @@ public class AddCommandController extends AbstractController {
     private TextField y;
 
     @FXML
-    private TextField realHero;
+    private CheckBox realHero;
 
     @FXML
-    private TextField popularity;
+    private CheckBox popularity;
 
     @FXML
     private TextField impactSpeed;
 
     @FXML
-    private TextField weapon;
+    private ChoiceBox<WeaponType> weapon;
 
     @FXML
-    private TextField mood;
+    private ChoiceBox<Mood> mood;
 
     @FXML
-    private TextField carCoolness;
+    private CheckBox carCoolness;
 
     @FXML
     private TextField carSpeed;
@@ -58,9 +63,14 @@ public class AddCommandController extends AbstractController {
     @FXML
     private CheckBox addIfMinCheckBox;
 
+    ObservableList<WeaponType> weaponTypes = FXCollections.observableArrayList(WeaponType.values());
+    ObservableList<Mood> moods = FXCollections.observableArrayList(Mood.values());
+
     @FXML
     private void initialize() {
         bindProperties();
+        weapon.setItems(weaponTypes);
+        mood.setItems(moods);
     }
 
     @FXML
@@ -77,9 +87,7 @@ public class AddCommandController extends AbstractController {
     protected void bindProperties() {
         BooleanBinding booleanBind = name.textProperty().isEmpty()
                 .or(x.textProperty().isEmpty())
-                .or(y.textProperty().isEmpty())
-                .or(realHero.textProperty().isEmpty())
-                .or(popularity.textProperty().isEmpty());
+                .or(y.textProperty().isEmpty());
 
         applyButton.disableProperty().bind(booleanBind);
 
