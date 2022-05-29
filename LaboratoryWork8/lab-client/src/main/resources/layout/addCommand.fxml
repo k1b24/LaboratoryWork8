@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
@@ -12,9 +13,9 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="457.0" styleClass="openable_command_pane" stylesheets="@../styles/pane.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kib.lab8.client.gui.controllers.AddCommandController">
    <children>
-      <Pane prefHeight="69.0" prefWidth="351.0" style="-fx-background-color: #4BBB56;">
+      <Pane prefHeight="64.0" prefWidth="351.0" style="-fx-background-color: #4BBB56;">
          <children>
-            <Text layoutX="72.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%ADD_COMMAND">
+            <Text layoutX="72.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%ADD_COMMAND">
                <font>
                   <Font name="Exo 2 Regular" size="25.0" />
                </font>
@@ -28,19 +29,37 @@
       </Button>
       <Pane fx:id="fillingPane" layoutX="10.0" layoutY="101.0" prefHeight="441.0" prefWidth="332.0">
          <children>
-            <VBox layoutX="172.0" layoutY="32.0" prefHeight="396.0" prefWidth="154.0" spacing="12.0">
+            <VBox layoutX="172.0" layoutY="32.0" prefHeight="396.0" prefWidth="154.0" spacing="13.0">
                <children>
                   <TextField fx:id="name" styleClass="green_bordered_text_field" stylesheets="@../styles/text_field.css" />
                   <TextField styleClass="green_bordered_text_field" stylesheets="@../styles/text_field.css" fx:id="x" />
                   <TextField fx:id="y" styleClass="green_bordered_text_field" stylesheets="@../styles/text_field.css" />
-                  <TextField fx:id="realHero" styleClass="green_bordered_text_field" stylesheets="@../styles/text_field.css" />
-                  <TextField fx:id="popularity" styleClass="green_bordered_text_field" stylesheets="@../styles/text_field.css" />
+                  <CheckBox fx:id="realHero" mnemonicParsing="false" stylesheets="@../styles/checkbox.css">
+                     <font>
+                        <Font name="Exo 2 Regular" size="19.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox fx:id="popularity" mnemonicParsing="false" stylesheets="@../styles/checkbox.css">
+                     <font>
+                        <Font name="Exo 2 Regular" size="19.0" />
+                     </font>
+                  </CheckBox>
                   <TextField fx:id="impactSpeed" styleClass="green_bordered_text_field" stylesheets="@../styles/text_field.css" />
-                  <TextField fx:id="weapon" styleClass="green_bordered_text_field" stylesheets="@../styles/text_field.css" />
-                  <TextField fx:id="mood" styleClass="green_bordered_text_field" stylesheets="@../styles/text_field.css" />
-                  <TextField fx:id="carCoolness" styleClass="green_bordered_text_field" stylesheets="@../styles/text_field.css" />
+                  <ChoiceBox fx:id="weapon" prefHeight="30.0" prefWidth="154.0" stylesheets="@../styles/choisebox.css" />
+                  <ChoiceBox fx:id="mood" prefHeight="31.0" prefWidth="154.0" styleClass="green_bordered_text_field" stylesheets="@../styles/choisebox.css" />
+                  <CheckBox fx:id="carCoolness" mnemonicParsing="false" stylesheets="@../styles/checkbox.css">
+                     <font>
+                        <Font name="Exo 2 Regular" size="19.0" />
+                     </font>
+                  </CheckBox>
                   <TextField fx:id="carSpeed" styleClass="green_bordered_text_field" stylesheets="@../styles/text_field.css" />
                </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets top="1.0" />
+               </padding>
             </VBox>
             <VBox alignment="TOP_RIGHT" layoutY="32.0" prefHeight="396.0" prefWidth="164.0" spacing="18.0">
                <children>
@@ -99,12 +118,12 @@
                   <Insets right="2.0" top="3.0" />
                </padding>
             </VBox>
-            <CheckBox fx:id="carCheckBox" layoutX="14.0" layoutY="5.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="154.0" selected="true" text="%CAR">
+            <CheckBox fx:id="carCheckBox" layoutX="14.0" layoutY="5.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="154.0" selected="true" stylesheets="@../styles/checkbox.css" text="%CAR">
                <font>
                   <Font name="Exo 2 Regular" size="13.0" />
                </font>
             </CheckBox>
-            <CheckBox fx:id="addIfMinCheckBox" layoutX="172.0" layoutY="5.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="154.0" text="%ADD_IF_MIN">
+            <CheckBox fx:id="addIfMinCheckBox" layoutX="172.0" layoutY="5.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="154.0" stylesheets="@../styles/checkbox.css" text="%ADD_IF_MIN">
                <font>
                   <Font name="Exo 2 Regular" size="13.0" />
                </font>
@@ -116,9 +135,9 @@
             <Font name="Exo 2 Regular" size="18.0" />
          </font>
       </Button>
-      <Text fx:id="fillingText" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%fill_all_fields" textAlignment="CENTER" wrappingWidth="350.39999999999986">
+      <Text fx:id="fillingText" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%fill_all_fields" textAlignment="CENTER" wrappingWidth="350.39999999999986">
          <font>
-            <Font name="Exo 2 Regular" size="21.0" />
+            <Font name="Exo 2 Regular" size="19.0" />
          </font>
       </Text>
    </children>
