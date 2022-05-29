@@ -3,18 +3,26 @@ package kib.lab8.client.gui.controllers;
 import javafx.beans.binding.BooleanBinding;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
-import kib.lab8.client.gui.abstractions.AbstractController;
+import javafx.stage.Stage;
+import kib.lab8.client.gui.abstractions.ChildWindowController;
+import kib.lab8.client.utils.AddCommandModel;
+import kib.lab8.client.utils.ExecutableCommand;
+import kib.lab8.client.utils.UserException;
 import kib.lab8.common.entities.HumanBeing;
 import kib.lab8.common.entities.enums.Mood;
 import kib.lab8.common.entities.enums.WeaponType;
 
-public class AddCommandController extends AbstractController {
+
+public class AddCommandController extends ChildWindowController {
 
     @FXML
     private TextField name;
@@ -43,6 +51,50 @@ public class AddCommandController extends AbstractController {
     @FXML
     private CheckBox carCoolness;
 
+    public TextField getName() {
+        return name;
+    }
+
+    public TextField getX() {
+        return x;
+    }
+
+    public TextField getY() {
+        return y;
+    }
+
+    public CheckBox getRealHero() {
+        return realHero;
+    }
+
+    public CheckBox getPopularity() {
+        return popularity;
+    }
+
+    public TextField getImpactSpeed() {
+        return impactSpeed;
+    }
+
+    public ChoiceBox<WeaponType> getWeapon() {
+        return weapon;
+    }
+
+    public ChoiceBox<Mood> getMood() {
+        return mood;
+    }
+
+    public CheckBox getCarCoolness() {
+        return carCoolness;
+    }
+
+    public TextField getCarSpeed() {
+        return carSpeed;
+    }
+
+    public CheckBox getCarCheckBox() {
+        return carCheckBox;
+    }
+
     @FXML
     private TextField carSpeed;
 
@@ -64,8 +116,10 @@ public class AddCommandController extends AbstractController {
     @FXML
     private CheckBox addIfMinCheckBox;
 
-    ObservableList<WeaponType> weaponTypes = FXCollections.observableArrayList(WeaponType.values());
-    ObservableList<Mood> moods = FXCollections.observableArrayList(Mood.values());
+    private final ObservableList<WeaponType> weaponTypes = FXCollections.observableArrayList(WeaponType.values());
+    private final ObservableList<Mood> moods = FXCollections.observableArrayList(Mood.values());
+    private final AddCommandModel model = new AddCommandModel(this);
+
 
     @FXML
     private void initialize() {
@@ -80,15 +134,21 @@ public class AddCommandController extends AbstractController {
     }
 
     @FXML
-    private void apply() {
-        //TODO гетим текст из филдов и закрываемся
-        HumanBeing newHuman = new HumanBeing();
-        newHuman.setName(name.getText());
-        newHuman.getCoordinates().setX(Long.parseLong(x.getText()));
-        newHuman.getCoordinates().setY(Long.parseLong(y.getText()));
-        newHuman.setImpactSpeed(Integer.parseInt(impactSpeed.getText()));
-        if (!carCheckBox.isSelected()) {
-            newHuman.setCar(null);
+    private void apply(Event event) {
+        try {
+            HumanBeing createdHuman = model.createHuman();
+            createdHuman.setAuthor(super.getParentModel().getUserLogin());
+            ExecutableCommand command;
+            if (addIfMinCheckBox.isSelected()) {
+                command = ExecutableCommand.ADD_IF_MIN_COMMAND;
+            } else {
+                command = ExecutableCommand.ADD_COMMAND;
+            }
+            super.getParentModel().executeCommand(command, createdHuman);
+            ((Stage) ((Node) event.getSource()).getScene().getWindow()).close();
+            super.getParentModel().updateCollection();
+        } catch (UserException e) {
+            e.showAlert();
         }
     }
 
@@ -111,6 +171,27 @@ public class AddCommandController extends AbstractController {
                 carSpeedText.setVisible(true);
                 carCoolness.setVisible(true);
                 carCoolnessText.setVisible(true);
+            }
+        });
+
+        impactSpeed.addEventFilter(KeyEvent.KEY_TYPED, keyEvent -> {
+            if (!"-0123456789".contains(keyEvent.getCharacter())) {
+                keyEvent.consume();
+            }
+        });
+        x.addEventFilter(KeyEvent.KEY_TYPED, keyEvent -> {
+            if (!"-0123456789".contains(keyEvent.getCharacter())) {
+                keyEvent.consume();
+            }
+        });
+        y.addEventFilter(KeyEvent.KEY_TYPED, keyEvent -> {
+            if (!"-0123456789.".contains(keyEvent.getCharacter())) {
+                keyEvent.consume();
+            }
+        });
+        carSpeed.addEventFilter(KeyEvent.KEY_TYPED, keyEvent -> {
+            if (!"-0123456789".contains(keyEvent.getCharacter())) {
+                keyEvent.consume();
             }
         });
     }

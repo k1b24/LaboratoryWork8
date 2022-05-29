@@ -72,7 +72,6 @@ public class Application {
                             .thenAcceptAsync(response -> {
                                 try {
                                     connectionHandlerServer.sendResponse(response, acceptedRequest.getSocketAddress());
-                                    System.out.println(acceptedRequest.getSocketAddress());
                                 } catch (IOException e) {
                                     Config.getTextSender().printMessage(new ErrorMessage("Не удалось отправить ответ клиенту"));
                                 }

@@ -7,6 +7,8 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 import java.util.logging.Level;
 
@@ -18,7 +20,7 @@ public final class HumanValidator {
 
     private static final ValidatorFactory VALIDATOR_FACTORY = Validation.buildDefaultValidatorFactory();
     private static final Validator VALIDATOR = VALIDATOR_FACTORY.getValidator();
-    private final TextSender textSender;
+    private TextSender textSender;
 
     public HumanValidator(TextSender textSender) {
         this.textSender = textSender;

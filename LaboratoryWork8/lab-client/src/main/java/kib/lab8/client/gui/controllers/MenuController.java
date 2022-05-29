@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import kib.lab8.client.gui.GUIConfig;
 import kib.lab8.client.gui.Localization;
 import kib.lab8.client.gui.abstractions.AbstractController;
+import kib.lab8.client.gui.abstractions.ChildWindowController;
 import kib.lab8.client.utils.ConnectionHandlerClient;
 import kib.lab8.client.utils.ExecutableCommand;
 import kib.lab8.client.utils.MenuModel;
@@ -101,6 +102,7 @@ public class MenuController extends AbstractController {
         ExecutableCommand clearCommand = ExecutableCommand.CLEAR_COMMAND;
         try {
             terminal.appendText(model.executeCommand(clearCommand) + "\n");
+            model.updateCollection();
         } catch (UserException e) {
             e.showAlert();
         }
@@ -196,6 +198,8 @@ public class MenuController extends AbstractController {
                 currentVisualizerController.updateInfo(model.getCollection());
             }
             if (inNewWindow) {
+                ChildWindowController controller = loader.getController();
+                controller.setMenuModel(model);
                 Stage stage = new Stage();
                 stage.getIcons().add(GUIConfig.getCornerImage());
                 stage.setTitle(GUIConfig.TITLE);

@@ -5,7 +5,6 @@ import kib.lab8.common.entities.HumanBeing;
 import kib.lab8.common.util.client_server_communication.requests.CommandRequest;
 import kib.lab8.common.util.client_server_communication.responses.CommandResponse;
 
-import java.awt.*;
 import java.io.IOException;
 import java.util.List;
 import java.util.Timer;
@@ -46,8 +45,8 @@ public class MenuModel {
         return userLogin;
     }
 
-    public String executeCommand(ExecutableCommand command) throws UserException {
-        return command.action(connectionHandler, userLogin, userPassword).getMessage();
+    public String executeCommand(ExecutableCommand command, Object... args) throws UserException {
+        return command.action(connectionHandler, userLogin, userPassword, args).getMessage();
     }
 
     public List<HumanBeing> getCollection() {

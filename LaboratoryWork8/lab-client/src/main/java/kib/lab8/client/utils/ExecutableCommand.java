@@ -36,6 +36,12 @@ public enum ExecutableCommand {
             CommandRequest request = new CommandRequest("clear");
             return executeCommand(connectionHandler, request, login, password);
         }
+    }, ADD_IF_MIN_COMMAND {
+        @Override
+        public AbstractMessage action(ConnectionHandlerClient connectionHandler, String login, String password, Object... args) throws UserException {
+            CommandRequest request = new CommandRequest("add_if_min", (HumanBeing) args[0]);
+            return executeCommand(connectionHandler, request, login, password);
+        }
     };
 
     public abstract AbstractMessage action(ConnectionHandlerClient connectionHandler, String login, String password, Object... args) throws UserException;
