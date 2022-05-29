@@ -1,7 +1,6 @@
 package kib.lab8.client.gui.controllers;
 
 import javafx.beans.property.SimpleFloatProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -10,16 +9,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import kib.lab8.client.gui.abstractions.AbstractController;
-import kib.lab8.client.utils.MenuModel;
-import kib.lab8.common.abstractions.DataVisualizerController;
+import kib.lab8.client.gui.abstractions.DataVisualizerController;
 import kib.lab8.common.entities.HumanBeing;
-import kib.lab8.common.entities.enums.Mood;
-import kib.lab8.common.entities.enums.WeaponType;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class TableViewController extends DataVisualizerController {

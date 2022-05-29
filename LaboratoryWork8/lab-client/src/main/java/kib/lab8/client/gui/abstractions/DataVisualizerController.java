@@ -1,4 +1,4 @@
-package kib.lab8.common.abstractions;
+package kib.lab8.client.gui.abstractions;
 
 import kib.lab8.common.entities.HumanBeing;
 

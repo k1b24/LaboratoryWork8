@@ -18,11 +18,10 @@ import kib.lab8.client.utils.ConnectionHandlerClient;
 import kib.lab8.client.utils.ExecutableCommand;
 import kib.lab8.client.utils.MenuModel;
 import kib.lab8.client.utils.UserException;
-import kib.lab8.common.abstractions.DataVisualizerController;
+import kib.lab8.client.gui.abstractions.DataVisualizerController;
 import kib.lab8.common.entities.HumanBeing;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -93,7 +92,7 @@ public class MenuController extends AbstractController {
     @FXML
     private void addButtonClicked() {
         //TODO реализовать открытие окна с добавлением
-        loadUI(GUIConfig.ADD_MENU_PATH, null, true);
+        loadUI(GUIConfig.ADD_MENU_PATH, null, true, false);
 
     }
 
@@ -163,7 +162,7 @@ public class MenuController extends AbstractController {
             buttonsPane.setVisible(false);
             menuPane.setVisible(true);
         }
-        loadUI(GUIConfig.SETTINGS_PANE_PATH, menuPane, false);
+        loadUI(GUIConfig.SETTINGS_PANE_PATH, menuPane, false, false);
     }
 
     @FXML
@@ -180,21 +179,22 @@ public class MenuController extends AbstractController {
 
     @FXML
     private void tableButtonClicked() {
-        loadUI(GUIConfig.TABLEVIEW_PATH, visualPane, false);
+        loadUI(GUIConfig.TABLEVIEW_PATH, visualPane, false, true);
         visualizeButton.setDisable(false);
         tableButton.setDisable(true);
     }
 
 
-    private void loadUI(String uiPath, Pane targetPane, boolean inNewWindow) {
+    private void loadUI(String uiPath, Pane targetPane, boolean inNewWindow, boolean visualization) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(uiPath));
             Localization localization = new Localization();
             loader.setResources(localization.getResourceBundle());
             Parent parent = loader.load();
-            currentVisualizerController = loader.getController();
-            targetPane.getChildren().add(parent);
-            currentVisualizerController.updateInfo(model.getCollection());
+            if (visualization) {
+                currentVisualizerController = loader.getController();
+                currentVisualizerController.updateInfo(model.getCollection());
+            }
             if (inNewWindow) {
                 Stage stage = new Stage();
                 stage.getIcons().add(GUIConfig.getCornerImage());
