@@ -33,18 +33,7 @@ public class MenuModel {
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
-                CommandRequest request = new CommandRequest("show");
-                request.setUserLogin(userLogin);
-                request.setUserPassword(userPassword);
-                try {
-                    CommandResponse response = (CommandResponse) connectionHandler.sendRequest(request);
-                    humanCollection.clear();
-                    humanCollection.addAll(response.getPeople());
-                    controller.notifyDataChanged(humanCollection);
-                } catch (IOException | ClassNotFoundException e) {
-                    //show alert
-                    controller.closeApplication();
-                }
+                updateCollection();
             }
         }, 0, UPDATE_TIME);
     }
@@ -63,5 +52,20 @@ public class MenuModel {
 
     public List<HumanBeing> getCollection() {
         return humanCollection;
+    }
+
+    public void updateCollection() {
+        CommandRequest request = new CommandRequest("show");
+        request.setUserLogin(userLogin);
+        request.setUserPassword(userPassword);
+        try {
+            CommandResponse response = (CommandResponse) connectionHandler.sendRequest(request);
+            humanCollection.clear();
+            humanCollection.addAll(response.getPeople());
+            controller.notifyDataChanged(humanCollection);
+        } catch (IOException | ClassNotFoundException e) {
+            //show alert
+            controller.closeApplication();
+        }
     }
 }

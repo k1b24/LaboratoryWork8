@@ -24,6 +24,10 @@ public final class HumanValidator {
         this.textSender = textSender;
     }
 
+    public HumanValidator() {
+
+    }
+
     public boolean validateHuman(HumanBeing human) {
         Set<ConstraintViolation<HumanBeing>> validateResult = VALIDATOR.validate(human);
         if (validateResult.size() > 0) {

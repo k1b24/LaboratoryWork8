@@ -7,6 +7,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import kib.lab8.client.gui.abstractions.AbstractController;
+import kib.lab8.common.entities.HumanBeing;
 
 public class AddCommandController extends AbstractController {
 
@@ -71,6 +72,14 @@ public class AddCommandController extends AbstractController {
     @FXML
     private void apply() {
         //TODO гетим текст из филдов и закрываемся
+        HumanBeing newHuman = new HumanBeing();
+        newHuman.setName(name.getText());
+        newHuman.getCoordinates().setX(Long.parseLong(x.getText()));
+        newHuman.getCoordinates().setY(Long.parseLong(y.getText()));
+        newHuman.setImpactSpeed(Integer.parseInt(impactSpeed.getText()));
+        if (!carCheckBox.isSelected()) {
+            newHuman.setCar(null);
+        }
     }
 
 
