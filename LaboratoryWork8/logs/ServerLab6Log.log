@@ -7,3 +7,13 @@
 2022/05/29 13:58 INFO Обращение к менеджеру базы данных: checkIfUserRegistered
 2022/05/29 13:58 INFO Обращение к менеджеру коллекции: getInfoAboutCollection / Аргументы: []
 2022/05/29 13:58 INFO Обращение к менеджеру базы данных: checkIfUserRegistered
+2022/05/29 14:05 INFO Обращение к менеджеру базы данных: checkIfUserRegistered
+2022/05/29 14:05 INFO Обращение к менеджеру базы данных: checkIfUserRegistered
+2022/05/29 14:05 INFO Обращение к менеджеру коллекции: getSortedArrayListFromQueue / Аргументы: []
+2022/05/29 14:06 INFO Обращение к менеджеру базы данных: checkIfUserRegistered
+2022/05/29 14:06 INFO Обращение к менеджеру базы данных: checkIfUserRegistered
+2022/05/29 14:06 INFO Обращение к менеджеру коллекции: getSortedArrayListFromQueue / Аргументы: []
+2022/05/29 14:06 INFO Обращение к менеджеру базы данных: checkIfUserRegistered
+2022/05/29 14:06 INFO Обращение к менеджеру коллекции: getSortedArrayListFromQueue / Аргументы: []
+2022/05/29 14:07 INFO Обращение к менеджеру базы данных: checkIfUserRegistered
+2022/05/29 14:07 INFO Обращение к менеджеру коллекции: getSortedArrayListFromQueue / Аргументы: []
