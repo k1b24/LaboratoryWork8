@@ -1,11 +1,11 @@
 .table-view .column-header-background .filler {
-    -fx-background-color: transparent;
+    -fx-background-color: #e6e6e6;
 }
 .table-view {
-    -fx-background-color: transparent;
+    -fx-background-color: #e6e6e6;
 }
 .table-view .corner {
-    -fx-background-color: transparent;
+    -fx-background-color: #e6e6e6;
 }
 .table-view .column-header-background{
     -fx-background-color: #e6e6e6;

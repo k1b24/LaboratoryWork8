@@ -15,7 +15,7 @@
    <children>
       <Pane prefHeight="64.0" prefWidth="351.0" style="-fx-background-color: #4BBB56;">
          <children>
-            <Text layoutX="72.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%ADD_COMMAND">
+            <Text layoutX="72.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%ADD_COMMAND">
                <font>
                   <Font name="Exo 2 Regular" size="25.0" />
                </font>

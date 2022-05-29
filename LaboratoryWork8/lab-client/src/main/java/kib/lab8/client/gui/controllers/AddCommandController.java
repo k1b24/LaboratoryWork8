@@ -126,6 +126,7 @@ public class AddCommandController extends ChildWindowController {
         bindProperties();
         weapon.setItems(weaponTypes);
         mood.setItems(moods);
+
     }
 
     @FXML
