@@ -50,6 +50,21 @@ public class MenuModel {
     }
 
     public List<HumanBeing> getCollection() {
+        humanCollection.add(new HumanBeing());
+        humanCollection.add(new HumanBeing());
+        humanCollection.add(new HumanBeing());
+        humanCollection.add(new HumanBeing());
+        humanCollection.add(new HumanBeing());
+        humanCollection.add(new HumanBeing());
+        humanCollection.add(new HumanBeing());
+        humanCollection.add(new HumanBeing());
+        humanCollection.add(new HumanBeing());
+        humanCollection.add(new HumanBeing());
+        humanCollection.add(new HumanBeing());
+        humanCollection.add(new HumanBeing());
+        humanCollection.add(new HumanBeing());
+        humanCollection.add(new HumanBeing());
+        humanCollection.add(new HumanBeing());
         return humanCollection;
     }
 

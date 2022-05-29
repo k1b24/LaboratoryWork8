@@ -1,7 +1,9 @@
 package kib.lab8.client.gui.controllers;
 
 import javafx.beans.property.SimpleFloatProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleLongProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -43,7 +45,7 @@ public class TableViewController extends DataVisualizerController {
     private TableColumn<HumanBeing, Boolean> popularity;
 
     @FXML
-    private TableColumn<HumanBeing, String> impactSpeed;
+    private TableColumn<HumanBeing, Integer> impactSpeed;
 
     @FXML
     private TableColumn<HumanBeing, String> weapon;
@@ -67,9 +69,7 @@ public class TableViewController extends DataVisualizerController {
         creationDate.setCellValueFactory(new PropertyValueFactory<>("creationDate"));
         realHero.setCellValueFactory(new PropertyValueFactory<>("realHero"));
         popularity.setCellValueFactory(new PropertyValueFactory<>("hasToothpick"));
-        impactSpeed.setCellValueFactory(humanBeing -> new SimpleStringProperty(humanBeing.getValue().getImpactSpeed() != null
-                ? humanBeing.getValue().getImpactSpeed().toString()
-                : "-"));
+        impactSpeed.setCellValueFactory(humanBeing -> new SimpleObjectProperty<>(humanBeing.getValue().getImpactSpeed()));
         weapon.setCellValueFactory(humanBeing -> new SimpleStringProperty(humanBeing.getValue().getWeaponType() != null
                 ? humanBeing.getValue().getWeaponType().toString()
                 : "-"));
@@ -81,7 +81,7 @@ public class TableViewController extends DataVisualizerController {
                 ? humanBeing.getValue().getCar().getCarCoolness().toString()
                 : "-"
                 : "-"));
-        carSpeed.setCellValueFactory(humanBeing -> new SimpleStringProperty(humanBeing.getValue().getCar() != null
+        carSpeed.setCellValueFactory(humanBeing -> new SimpleObjectProperty<>(humanBeing.getValue().getCar() != null
                 ? String.valueOf(humanBeing.getValue().getCar().getCarSpeed())
                 : "-"));
     }
