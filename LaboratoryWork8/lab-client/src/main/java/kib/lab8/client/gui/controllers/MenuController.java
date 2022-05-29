@@ -4,11 +4,13 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import kib.lab8.client.gui.GUIConfig;
 import kib.lab8.client.gui.Localization;
 import kib.lab8.client.gui.abstractions.AbstractController;
@@ -91,7 +93,8 @@ public class MenuController extends AbstractController {
     @FXML
     private void addButtonClicked() {
         //TODO реализовать открытие окна с добавлением
-        System.out.println("dada");
+        loadUI(GUIConfig.ADD_MENU_PATH, null, true);
+
     }
 
     @FXML
@@ -160,7 +163,7 @@ public class MenuController extends AbstractController {
             buttonsPane.setVisible(false);
             menuPane.setVisible(true);
         }
-        loadUI(GUIConfig.SETTINGS_PANE_PATH, menuPane);
+        loadUI(GUIConfig.SETTINGS_PANE_PATH, menuPane, false);
     }
 
     @FXML
@@ -177,13 +180,13 @@ public class MenuController extends AbstractController {
 
     @FXML
     private void tableButtonClicked() {
-        loadUI(GUIConfig.TABLEVIEW_PATH, visualPane);
+        loadUI(GUIConfig.TABLEVIEW_PATH, visualPane, false);
         visualizeButton.setDisable(false);
         tableButton.setDisable(true);
     }
 
 
-    private void loadUI(String uiPath, Pane targetPane) {
+    private void loadUI(String uiPath, Pane targetPane, boolean inNewWindow) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(uiPath));
             Localization localization = new Localization();
@@ -192,6 +195,16 @@ public class MenuController extends AbstractController {
             currentVisualizerController = loader.getController();
             targetPane.getChildren().add(parent);
             currentVisualizerController.updateInfo(model.getCollection());
+            if (inNewWindow) {
+                Stage stage = new Stage();
+                stage.getIcons().add(GUIConfig.getCornerImage());
+                stage.setTitle(GUIConfig.TITLE);
+                stage.setResizable(false);
+                stage.setScene(new Scene(parent));
+                stage.show();
+            } else {
+                targetPane.getChildren().add(parent);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }

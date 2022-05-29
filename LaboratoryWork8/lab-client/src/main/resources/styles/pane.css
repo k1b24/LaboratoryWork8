@@ -5,3 +5,10 @@
     -fx-max-height: 407.0;
     -fx-max-width: 206.0;
 }
+
+.openable_command_pane{
+    -fx-pref-height: 600.0;
+    -fx-pref-width: 350.0;
+    -fx-max-height: 600.0;
+    -fx-max-width: 350.0;
+}

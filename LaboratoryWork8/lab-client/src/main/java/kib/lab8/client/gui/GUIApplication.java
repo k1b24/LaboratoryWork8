@@ -30,9 +30,8 @@ public class GUIApplication extends Application {
         AbstractController controller = mainWindowLoader.getController();
         controller.setStage(primaryStage);
 
-        InputStream iconStream = getClass().getResourceAsStream(CORNER_IMAGE);
-        Image image = new Image(iconStream);
-        primaryStage.getIcons().add(image);
+
+        primaryStage.getIcons().add(getCornerImage());
 
         primaryStage.setTitle("Be human");
         primaryStage.setResizable(false);
