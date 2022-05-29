@@ -53,4 +53,4 @@ public enum ExecutableCommand {
             throw new UserException("Произошла ошибка при получении ответа с сервера. Пожалуйста, повторите попытку");
         }
     }
-    }
+}

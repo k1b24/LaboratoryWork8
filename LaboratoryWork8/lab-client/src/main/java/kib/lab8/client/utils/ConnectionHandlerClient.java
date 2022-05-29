@@ -17,7 +17,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class ConnectionHandlerClient {
 
-    private static final int RESPONSE_TIMER = 2000;
+    private static final int RESPONSE_TIMER = 6000;
     private int serverPort;
     private final DatagramSocket datagramSocket;
     private final InetAddress serverAddress;
@@ -25,6 +25,7 @@ public class ConnectionHandlerClient {
 
     public ConnectionHandlerClient(String address) throws UnknownHostException, SocketException {
         datagramSocket = new DatagramSocket();
+        datagramSocket.setSoTimeout(RESPONSE_TIMER);
         serverAddress = InetAddress.getByName(address);
     }
 
@@ -38,7 +39,6 @@ public class ConnectionHandlerClient {
         byte[] bufferToSend = byteBuffer.array();
         DatagramPacket datagramPacket = new DatagramPacket(bufferToSend, bufferToSend.length, serverAddress, serverPort);
         datagramSocket.send(datagramPacket);
-        datagramSocket.setSoTimeout(RESPONSE_TIMER);
         int byteBufSize = datagramSocket.getReceiveBufferSize();
         byte[] byteBuf = new byte[byteBufSize];
         DatagramPacket dpFromServer = new DatagramPacket(byteBuf, byteBuf.length);

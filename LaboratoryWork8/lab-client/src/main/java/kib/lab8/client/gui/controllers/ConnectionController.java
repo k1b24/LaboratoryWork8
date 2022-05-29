@@ -1,8 +1,11 @@
 package kib.lab8.client.gui.controllers;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.text.Text;
 import kib.lab8.client.gui.GUIConfig;
 import kib.lab8.client.gui.abstractions.AbstractController;
@@ -23,6 +26,15 @@ public class ConnectionController extends AbstractController {
     @FXML
     private Text text;
     private final ConnectionModel model;
+
+    @FXML
+    private void initialize() {
+        portField.setOnKeyPressed(keyEvent -> {
+            if (keyEvent.getCode() == KeyCode.ENTER) {
+                connect();
+            }
+        });
+    }
 
     public ConnectionController() {
         this.model = new ConnectionModel();

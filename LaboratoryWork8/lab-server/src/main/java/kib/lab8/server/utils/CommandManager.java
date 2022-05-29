@@ -19,16 +19,17 @@ import kib.lab8.server.commands.RemoveByID;
 import kib.lab8.server.commands.Show;
 import kib.lab8.server.commands.Update;
 
+import java.util.ArrayDeque;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Queue;
-import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class CommandManager {
 
     private static final int AMOUNT_OF_COMMANDS_TO_SAVE = 10;
     private final Map<String, AbstractCommand> commands = new HashMap<>();
-    private final Queue<AbstractCommand> lastExecutedCommands = new ConcurrentLinkedQueue<>();
+    //TODO КАКИМ ЛИБО СПОСОБОМ ПОМЕНЯТЬ ЭТУ ОЧЕРЕДЬ ПОТОМУ ЧТО ОНА НЕ РАБОТАЕТ
+    private final Queue<AbstractCommand> lastExecutedCommands = new ArrayDeque<>();
     private final DataManager dataManager;
 
     public CommandManager(DataManager dataManager) {
@@ -87,7 +88,7 @@ public class CommandManager {
         return lastExecutedCommands;
     }
 
-    private void appendCommandToHistory(String name) {
+    private synchronized void appendCommandToHistory(String name) {
         lastExecutedCommands.add(commands.get(name));
         if (lastExecutedCommands.size() == AMOUNT_OF_COMMANDS_TO_SAVE + 1) {
             lastExecutedCommands.poll();

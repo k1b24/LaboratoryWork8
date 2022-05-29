@@ -16,8 +16,12 @@ import kib.lab8.client.utils.ConnectionHandlerClient;
 import kib.lab8.client.utils.ExecutableCommand;
 import kib.lab8.client.utils.MenuModel;
 import kib.lab8.client.utils.UserException;
+import kib.lab8.common.abstractions.DataVisualizerController;
+import kib.lab8.common.entities.HumanBeing;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MenuController extends AbstractController {
@@ -73,6 +77,7 @@ public class MenuController extends AbstractController {
     @FXML
     private Text nickname;
     private final MenuModel model;
+    private DataVisualizerController currentVisualizerController;
 
     @FXML
     private void initialize() {
@@ -80,7 +85,7 @@ public class MenuController extends AbstractController {
     }
 
     public MenuController(ConnectionHandlerClient connectionHandler, String username, String password) {
-        model = new MenuModel(connectionHandler, username, password);
+        model = new MenuModel(connectionHandler, username, password, this);
     }
 
     @FXML
@@ -113,8 +118,13 @@ public class MenuController extends AbstractController {
 
     @FXML
     private void historyButtonClicked() {
-        //TODO мб сделать отдельное поле куда по дефолту будут все команды падать, либо по нажатию открывать в мейне ее
-        System.out.println("dada");
+        ExecutableCommand command = ExecutableCommand.HISTORY_COMMAND;
+        try {
+            String s = model.executeCommand(command);
+            terminal.appendText(s + "\n");
+        } catch (UserException e) {
+            e.showAlert();
+        }
     }
 
     @FXML
@@ -138,8 +148,7 @@ public class MenuController extends AbstractController {
 
     @FXML
     private void exitButtonClicked() {
-        model.prepareForExit();
-        Platform.exit();
+        closeApplication();
     }
 
     @FXML
@@ -177,15 +186,25 @@ public class MenuController extends AbstractController {
     private void loadUI(String uiPath, Pane targetPane) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(uiPath));
-            //loader.setControllerFactory(controllerClass -> new TableViewController());
-
             Localization localization = new Localization();
             loader.setResources(localization.getResourceBundle());
             Parent parent = loader.load();
+            currentVisualizerController = loader.getController();
             targetPane.getChildren().add(parent);
+            currentVisualizerController.updateInfo(model.getCollection());
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    public void closeApplication() {
+        model.prepareForExit();
+        Platform.exit();
+    }
+
+    public void notifyDataChanged(List<HumanBeing> humanBeingList) {
+        if (currentVisualizerController != null) {
+            currentVisualizerController.updateInfo(humanBeingList);
+        }
+    }
 }

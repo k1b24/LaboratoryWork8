@@ -5,6 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
+import javafx.scene.input.KeyCode;
 import kib.lab8.client.gui.GUIConfig;
 import kib.lab8.client.gui.abstractions.AbstractController;
 import kib.lab8.client.utils.AuthorizationModel;
@@ -25,6 +26,15 @@ public class AuthorizationController extends AbstractController {
     @FXML
     private PasswordField passwordField;
     private final AuthorizationModel model;
+
+    @FXML
+    private void initialize() {
+        passwordField.setOnKeyPressed(keyEvent -> {
+            if (keyEvent.getCode() == KeyCode.ENTER) {
+                authorize();
+            }
+        });
+    }
 
     public AuthorizationController(ConnectionHandlerClient connectionHandler) {
         model = new AuthorizationModel(connectionHandler);

@@ -1,7 +1,12 @@
 package kib.lab8.client.utils;
 
+import kib.lab8.client.gui.controllers.MenuController;
 import kib.lab8.common.entities.HumanBeing;
+import kib.lab8.common.util.client_server_communication.requests.CommandRequest;
+import kib.lab8.common.util.client_server_communication.responses.CommandResponse;
 
+import java.awt.*;
+import java.io.IOException;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -14,19 +19,32 @@ public class MenuModel {
     private final String userLogin;
     private final String userPassword;
     private final Timer timer = new Timer(true);
-    private List<HumanBeing> humanCollection = new CopyOnWriteArrayList<>();
+    private final List<HumanBeing> humanCollection = new CopyOnWriteArrayList<>();
+    private final MenuController controller;
 
 
 
 
-    public MenuModel(ConnectionHandlerClient connectionHandler, String userLogin, String userPassword) {
+    public MenuModel(ConnectionHandlerClient connectionHandler, String userLogin, String userPassword, MenuController controller) {
         this.connectionHandler = connectionHandler;
         this.userLogin = userLogin;
         this.userPassword = userPassword;
+        this.controller = controller;
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
-                //TODO Recieve collection in loop
+                CommandRequest request = new CommandRequest("show");
+                request.setUserLogin(userLogin);
+                request.setUserPassword(userPassword);
+                try {
+                    CommandResponse response = (CommandResponse) connectionHandler.sendRequest(request);
+                    humanCollection.clear();
+                    humanCollection.addAll(response.getPeople());
+                    controller.notifyDataChanged(humanCollection);
+                } catch (IOException | ClassNotFoundException e) {
+                    //show alert
+                    controller.closeApplication();
+                }
             }
         }, 0, UPDATE_TIME);
     }
@@ -41,5 +59,9 @@ public class MenuModel {
 
     public String executeCommand(ExecutableCommand command) throws UserException {
         return command.action(connectionHandler, userLogin, userPassword).getMessage();
+    }
+
+    public List<HumanBeing> getCollection() {
+        return humanCollection;
     }
 }
