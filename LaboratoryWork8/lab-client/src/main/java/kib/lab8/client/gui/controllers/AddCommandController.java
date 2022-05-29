@@ -71,6 +71,7 @@ public class AddCommandController extends AbstractController {
         bindProperties();
         weapon.setItems(weaponTypes);
         mood.setItems(moods);
+
     }
 
     @FXML

@@ -83,6 +83,9 @@ public class MenuController extends AbstractController {
     @FXML
     private void initialize() {
         nickname.setText(model.getUserLogin());
+        loadUI(GUIConfig.VISUAL_PANE_PATH, visualPane, false, true);
+        tableButton.setDisable(false);
+        visualizeButton.setDisable(true);
     }
 
     public MenuController(ConnectionHandlerClient connectionHandler, String username, String password) {
@@ -172,9 +175,9 @@ public class MenuController extends AbstractController {
 
     @FXML
     private void visualizeButtonClicked() {
-        System.out.println("dada");
-        visualizeButton.setDisable(true);
+        loadUI(GUIConfig.VISUAL_PANE_PATH, visualPane, false, true);
         tableButton.setDisable(false);
+        visualizeButton.setDisable(true);
     }
 
     @FXML
