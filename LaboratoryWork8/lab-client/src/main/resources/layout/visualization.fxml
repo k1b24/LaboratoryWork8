@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.canvas.Canvas?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Line?>
-
 
 <AnchorPane fx:id="visualizationPane" prefHeight="400.0" prefWidth="600.0" styleClass="vis_pane" stylesheets="@../styles/visualization_pane.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kib.lab8.client.gui.controllers.VisualizationController">
    <children>
@@ -15,6 +15,7 @@
             <Line endX="122.9000244140625" endY="-43.29999923706055" layoutX="393.0" layoutY="54.0" startX="114.20001220703125" startY="-29.999996185302734" strokeLineCap="ROUND" strokeWidth="2.0" />
             <Line endX="-107.5999755859375" endY="-48.60000228881836" layoutX="634.0" layoutY="71.0" startX="-117.0999755859375" startY="-60.29999923706055" strokeLineCap="ROUND" strokeWidth="2.0" />
             <Line endX="239.2001953125" endY="-69.29289245605469" layoutX="780.0" layoutY="322.0" startX="226.4000244140625" startY="-57.199981689453125" strokeLineCap="ROUND" strokeWidth="2.0" />
+            <Canvas fx:id="canvas" height="503.0" width="1030.0" />
          </children>
       </Pane>
    </children>
