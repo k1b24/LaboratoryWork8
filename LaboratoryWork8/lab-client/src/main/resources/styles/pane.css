@@ -12,3 +12,11 @@
     -fx-max-height: 600.0;
     -fx-max-width: 350.0;
 }
+
+.openable_profile_pane{
+    -fx-background-color: #d5d3d3;
+    -fx-pref-height: 500.0;
+    -fx-pref-width: 500.0;
+    -fx-max-height: 500.0;
+    -fx-max-width: 500.0;
+}
