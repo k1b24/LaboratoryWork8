@@ -14,6 +14,9 @@ public class GUIConfig {
     public static final String SETTINGS_PANE_PATH = "/layout/settingsPane.fxml";
     public static final String ADD_MENU_PATH = "/layout/addCommand.fxml";
     public static final String VISUAL_PANE_PATH = "/layout/visualization.fxml";
+    public static final String REMOVE_WINDOW_PATH = "/layout/removeWindow.fxml";
+    public static final String PROFILE_WINDOW_PATH = "/layout/humanProfile.fxml";
+
 
     public static Image getCornerImage() {
         InputStream iconStream = GUIConfig.class.getResourceAsStream(CORNER_IMAGE);
