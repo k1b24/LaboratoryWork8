@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="openable_remove_pane" stylesheets="@../styles/pane.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kib.lab8.client.gui.controllers.UpdateByIdWindowController">
+
+    <children>
+        <Pane prefHeight="62.0" prefWidth="400.0" style="-fx-background-color: #4BBB56;">
+            <children>
+                <Text layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%UPDATE_HUMAN_BY_ID" textAlignment="CENTER" wrappingWidth="400.0">
+                    <font>
+                        <Font name="Exo 2 Regular" size="26.0" />
+                    </font>
+                </Text>
+            </children>
+        </Pane>
+        <Button fx:id="updateButton" layoutX="207.0" layoutY="96.0" maxHeight="40.0" mnemonicParsing="false" onAction="#update" prefHeight="31.0" prefWidth="172.0" styleClass="light_green_button" stylesheets="@../styles/green_button.css" text="%UPDATE">
+            <font>
+                <Font name="Exo 2 Regular" size="17.0" />
+            </font>
+        </Button>
+        <TextField fx:id="idField" layoutX="21.0" layoutY="96.0" prefHeight="35.0" prefWidth="166.0" styleClass="green_bordered_text_field" stylesheets="@../styles/text_field.css">
+            <font>
+                <Font name="Exo 2 Regular" size="17.0" />
+            </font>
+        </TextField>
+        <Text layoutX="21.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%Enter_ID" wrappingWidth="166.4000000000001">
+            <font>
+                <Font name="Exo 2 Regular" size="18.0" />
+            </font>
+        </Text>
+    </children>
+</AnchorPane>

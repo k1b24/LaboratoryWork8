@@ -15,6 +15,7 @@ public class GUIConfig {
     public static final String ADD_MENU_PATH = "/layout/addCommand.fxml";
     public static final String VISUAL_PANE_PATH = "/layout/visualization.fxml";
     public static final String REMOVE_WINDOW_PATH = "/layout/removeWindow.fxml";
+    public static final String UPDATE_WINDOW_PATH = "/layout/updateByIdWindow.fxml";
     public static final String PROFILE_WINDOW_PATH = "/layout/humanProfile.fxml";
 
 

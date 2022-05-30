@@ -116,6 +116,7 @@ public class HumanProfileController extends ChildWindowController {
     @FXML
     private void initialize() {
         //TODO енэйблить и дисэйблить кнопки в зависимости от того, кто открыл
+        bindProperties();
         weaponChoiceBox.setItems(weaponTypes);
         moodChoiceBox.setItems(moods);
         updateVBox.setVisible(false);
@@ -138,5 +139,18 @@ public class HumanProfileController extends ChildWindowController {
     @FXML
     private void close() {
 
+    }
+
+    private void bindProperties() {
+        carCheckBox.setSelected(true);
+        carCheckBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            if (carSpeedField.isVisible()) {
+                carSpeedField.setVisible(false);
+                carCoolnessCheckBox.setVisible(false);
+            } else {
+                carSpeedField.setVisible(true);
+                carCoolnessCheckBox.setVisible(true);
+            }
+        });
     }
 }

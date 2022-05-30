@@ -123,8 +123,7 @@ public class MenuController extends AbstractController {
 
     @FXML
     private void updateButtonClicked() {
-        //TODO реализовать открытие окна с полями для ввода
-        System.out.println("dada");
+        loadUI(GUIConfig.UPDATE_WINDOW_PATH, null, true, false);
     }
 
     @FXML
