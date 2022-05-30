@@ -25,4 +25,10 @@ public class VisualizationController extends DataVisualizerController {
     public void updateInfo(List<HumanBeing> humanBeingList) {
 
     }
+
+    @Override
+    public HumanBeing getChosenHuman() {
+        //TODO Возвращать выбранного в визуализации человека, для того, чтобы менюха с апдейтом красиво открывалась
+        return null;
+    }
 }

@@ -18,4 +18,6 @@ public abstract class DataVisualizerController {
     public void setParentController(MenuController parentController) {
         this.parentController = parentController;
     }
+
+    public abstract HumanBeing getChosenHuman();
 }

@@ -228,4 +228,8 @@ public class MenuController extends AbstractController {
             currentVisualizerController.updateInfo(humanBeingList);
         }
     }
+
+    public HumanBeing getSelectedHumanBeingInVisualisationWindow() {
+        return currentVisualizerController.getChosenHuman();
+    }
 }

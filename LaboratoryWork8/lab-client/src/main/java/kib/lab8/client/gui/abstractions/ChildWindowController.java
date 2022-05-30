@@ -13,4 +13,5 @@ public abstract class ChildWindowController {
     public MenuModel getParentModel() {
         return parentModel;
     }
+
 }

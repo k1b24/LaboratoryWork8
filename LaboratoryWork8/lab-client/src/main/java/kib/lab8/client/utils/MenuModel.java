@@ -81,4 +81,8 @@ public class MenuModel {
             controller.closeApplication();
         }
     }
+
+    public MenuController getController() {
+        return controller;
+    }
 }

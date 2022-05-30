@@ -62,13 +62,14 @@ public class TableViewController extends DataVisualizerController {
     @FXML
     private TableColumn<HumanBeing, String> carSpeed;
     private final ObservableList<HumanBeing> observableHumanBeingList = FXCollections.observableArrayList();
+    private HumanBeing chosenHuman;
 
     @FXML
     private void initialize() {
         humanTable.setOnMousePressed(mouseEvent -> {
             if (mouseEvent.isPrimaryButtonDown() && mouseEvent.getClickCount() == 2) {
-//                getParentController().loadUI();
-                System.out.println(humanTable.getSelectionModel().getSelectedItem());
+                chosenHuman = humanTable.getSelectionModel().getSelectedItem();
+                getParentController().loadUI(GUIConfig.PROFILE_WINDOW_PATH, null, true, false);
             }
         });
         id.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -93,6 +94,11 @@ public class TableViewController extends DataVisualizerController {
         carSpeed.setCellValueFactory(humanBeing -> new SimpleObjectProperty<>(humanBeing.getValue().getCar() != null
                 ? String.valueOf(humanBeing.getValue().getCar().getCarSpeed())
                 : "-"));
+    }
+
+    public HumanBeing getChosenHuman() {
+        System.out.println(chosenHuman);
+        return chosenHuman;
     }
 
     @Override
