@@ -23,7 +23,7 @@
             </Text>
          </children>
       </Pane>
-      <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="14.0" layoutY="85.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imageView" fitHeight="200.0" fitWidth="200.0" layoutX="14.0" layoutY="85.0" pickOnBounds="true" preserveRatio="true" />
       <VBox fx:id="buttonsVBox" alignment="TOP_CENTER" layoutX="14.0" layoutY="285.0" prefHeight="200.0" prefWidth="200.0" spacing="25.0">
          <children>
             <Button fx:id="updateButton" alignment="TOP_CENTER" disable="true" maxHeight="40.0" maxWidth="202.0" mnemonicParsing="false" onAction="#update" prefHeight="40.0" prefWidth="202.0" styleClass="light_green_button" stylesheets="@../styles/green_button.css" text="%UPDATE" textAlignment="CENTER">

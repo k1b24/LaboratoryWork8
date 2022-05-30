@@ -73,7 +73,7 @@
                      <font>
                         <Font name="Exo 2 Regular" size="18.0" />
                      </font></Button>
-                  <Button fx:id="updateButton" layoutX="5.0" layoutY="345.0" mnemonicParsing="false" onAction="#updateButtonClicked" prefHeight="39.0" prefWidth="190.0" styleClass="light_green_button" stylesheets="@../styles/green_button.css" text="%UPDATE">
+                  <Button fx:id="updateButton" layoutX="5.0" layoutY="345.0" mnemonicParsing="false" onAction="#updateButtonClicked" prefHeight="39.0" prefWidth="190.0" styleClass="light_green_button" stylesheets="@../styles/green_button.css" text="%OPEN_PROFILE">
                      <font>
                         <Font name="Exo 2 Regular" size="18.0" />
                      </font></Button>

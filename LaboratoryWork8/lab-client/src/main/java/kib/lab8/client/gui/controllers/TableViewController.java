@@ -16,6 +16,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import kib.lab8.client.gui.GUIConfig;
 import kib.lab8.client.gui.abstractions.DataVisualizerController;
+import kib.lab8.client.utils.ChildUIType;
 import kib.lab8.common.entities.HumanBeing;
 
 import java.text.SimpleDateFormat;
@@ -69,7 +70,7 @@ public class TableViewController extends DataVisualizerController {
         humanTable.setOnMousePressed(mouseEvent -> {
             if (mouseEvent.isPrimaryButtonDown() && mouseEvent.getClickCount() == 2) {
                 chosenHuman = humanTable.getSelectionModel().getSelectedItem();
-                getParentController().loadUI(GUIConfig.PROFILE_WINDOW_PATH, null, true, false);
+                getParentController().loadUI(GUIConfig.PROFILE_WINDOW_PATH, null, ChildUIType.HUMAN_PROFILE_CHILD_WINDOW);
             }
         });
         id.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -97,8 +98,12 @@ public class TableViewController extends DataVisualizerController {
     }
 
     public HumanBeing getChosenHuman() {
-        System.out.println(chosenHuman);
         return chosenHuman;
+    }
+
+    @Override
+    public void setChosenHuman(HumanBeing human) {
+        this.chosenHuman = human;
     }
 
     @Override

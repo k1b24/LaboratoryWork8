@@ -6,11 +6,13 @@ import kib.lab8.common.util.client_server_communication.requests.CommandRequest;
 import kib.lab8.common.util.client_server_communication.responses.CommandResponse;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.stream.Collectors;
 
 public class MenuModel {
 
@@ -61,7 +63,9 @@ public class MenuModel {
         request.setUserPassword(userPassword);
         try {
             CommandResponse response = (CommandResponse) connectionHandler.sendRequest(request);
+            List<Long> recievedIDs = new ArrayList<>();
             for (HumanBeing recievedHuman : response.getPeople()) {
+                recievedIDs.add(recievedHuman.getId());
                 boolean updated = false;
                 for (int i = 0; i < humanCollection.size(); i++) {
                     if (Objects.equals(recievedHuman.getId(), humanCollection.get(i).getId())) {
@@ -75,6 +79,7 @@ public class MenuModel {
                     humanCollection.add(recievedHuman);
                 }
             }
+            humanCollection.removeIf(human -> !recievedIDs.contains(human.getId()));
             controller.notifyDataChanged(humanCollection);
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
@@ -84,5 +89,13 @@ public class MenuModel {
 
     public MenuController getController() {
         return controller;
+    }
+
+    public HumanBeing getHumanById(int id) throws UserException {
+        HumanBeing chosenHuman = humanCollection.stream().filter(human -> human.getId() == id).findFirst().orElse(null);
+        if (chosenHuman == null) {
+            throw new UserException("Нет человека с таким ID");
+        }
+        return chosenHuman;
     }
 }

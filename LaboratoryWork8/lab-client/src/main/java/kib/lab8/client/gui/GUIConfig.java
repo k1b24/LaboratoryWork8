@@ -1,6 +1,8 @@
 package kib.lab8.client.gui;
 
 import java.io.InputStream;
+import java.util.Random;
+
 import javafx.scene.image.Image;
 
 public class GUIConfig {
@@ -22,5 +24,11 @@ public class GUIConfig {
     public static Image getCornerImage() {
         InputStream iconStream = GUIConfig.class.getResourceAsStream(CORNER_IMAGE);
         return new Image(iconStream);
+    }
+
+    public static Image getRandomHumanImage() {
+        Random random = new Random();
+        InputStream imageStream = GUIConfig.class.getResourceAsStream("/human_images/" + String.valueOf(random.nextInt(8) + 1 ) + ".jpg");
+        return new Image(imageStream);
     }
 }

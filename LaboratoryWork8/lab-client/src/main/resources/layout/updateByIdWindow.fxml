@@ -12,14 +12,14 @@
     <children>
         <Pane prefHeight="62.0" prefWidth="400.0" style="-fx-background-color: #4BBB56;">
             <children>
-                <Text layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%UPDATE_HUMAN_BY_ID" textAlignment="CENTER" wrappingWidth="400.0">
+                <Text layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%OPEN_PROFILE_BY_ID" textAlignment="CENTER" wrappingWidth="400.0">
                     <font>
                         <Font name="Exo 2 Regular" size="26.0" />
                     </font>
                 </Text>
             </children>
         </Pane>
-        <Button fx:id="updateButton" layoutX="207.0" layoutY="96.0" maxHeight="40.0" mnemonicParsing="false" onAction="#update" prefHeight="31.0" prefWidth="172.0" styleClass="light_green_button" stylesheets="@../styles/green_button.css" text="%UPDATE">
+        <Button fx:id="updateButton" layoutX="207.0" layoutY="96.0" maxHeight="40.0" mnemonicParsing="false" onAction="#update" prefHeight="31.0" prefWidth="172.0" styleClass="light_green_button" stylesheets="@../styles/green_button.css" text="%OPEN_PROFILE">
             <font>
                 <Font name="Exo 2 Regular" size="17.0" />
             </font>
