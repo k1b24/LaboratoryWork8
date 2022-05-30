@@ -190,7 +190,7 @@ public class MenuController extends AbstractController {
     }
 
 
-    private void loadUI(String uiPath, Pane targetPane, boolean inNewWindow, boolean visualization) {
+    protected void loadUI(String uiPath, Pane targetPane, boolean inNewWindow, boolean visualization) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(uiPath));
             Localization localization = new Localization();
@@ -199,6 +199,7 @@ public class MenuController extends AbstractController {
             if (visualization) {
                 currentVisualizerController = loader.getController();
                 currentVisualizerController.updateInfo(model.getCollection());
+                currentVisualizerController.setParentController(this);
             }
             if (inNewWindow) {
                 ChildWindowController controller = loader.getController();

@@ -4,7 +4,6 @@ package kib.lab8.client.gui.abstractions;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import kib.lab8.client.gui.GUIConfig;
@@ -12,7 +11,6 @@ import kib.lab8.client.gui.Localization;
 import kib.lab8.client.utils.UserException;
 
 import java.io.IOException;
-import java.io.InputStream;
 
 
 public abstract class AbstractController {

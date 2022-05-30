@@ -3,9 +3,10 @@ package kib.lab8.client.gui.controllers;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
+import kib.lab8.client.gui.abstractions.ChildWindowController;
 
 
-public class HumanProfileController {
+public class HumanProfileController extends ChildWindowController {
 
     @FXML
     private Text nameValue;

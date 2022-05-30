@@ -62,11 +62,17 @@ public class MenuModel {
         try {
             CommandResponse response = (CommandResponse) connectionHandler.sendRequest(request);
             for (HumanBeing recievedHuman : response.getPeople()) {
+                boolean updated = false;
                 for (int i = 0; i < humanCollection.size(); i++) {
-                    if (Objects.equals(recievedHuman.getId(), humanCollection.get(i).getId())
-                            && (recievedHuman.hashCode() != humanCollection.get(i).hashCode())) {
-                        humanCollection.set(i, recievedHuman);
+                    if (Objects.equals(recievedHuman.getId(), humanCollection.get(i).getId())) {
+                        if ((recievedHuman.hashCode() != humanCollection.get(i).hashCode())) {
+                            humanCollection.set(i, recievedHuman);
+                        }
+                        updated = true;
                     }
+                }
+                if (!updated) {
+                    humanCollection.add(recievedHuman);
                 }
             }
             controller.notifyDataChanged(humanCollection);
