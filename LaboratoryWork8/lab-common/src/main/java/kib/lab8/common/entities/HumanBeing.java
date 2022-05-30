@@ -223,4 +223,12 @@ public class HumanBeing implements Comparable<HumanBeing>, Serializable {
                 + ", HAS TOOTHPICK: " + hasToothpick + ", IMPACT SPEED: " + impactSpeed
                 + ", WEAPON TYPE: " + weaponType + ", MOOD: " + mood + ", CAR INFO: " + (car == null ? "no car" : car.toString()) + ", Author: " + author;
     }
+
+    @Override
+    public int hashCode() {
+        return (int) (id + name.hashCode() + realHero.hashCode() + (impactSpeed == null ? 0 : impactSpeed)
+                + (hasToothpick ? 1 : 0) + (weaponType == null ? 0 : weaponType.hashCode())
+                + (mood == null ? 0 : mood.hashCode()) + coordinates.hashCode()
+                + (car == null ? 0 : car.hashCode()));
+    }
 }

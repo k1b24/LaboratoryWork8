@@ -7,7 +7,7 @@ import java.io.Serializable;
  */
 public class Car implements Serializable {
 
-    private Boolean carCoolness; //Поле может быть null
+    private Boolean carCoolness;
     private int carSpeed;
 
     /**
@@ -43,5 +43,10 @@ public class Car implements Serializable {
     @Override
     public String toString() {
         return "CAR COOLNESS: " + this.getCarCoolness() + " CAR SPEED: " + this.getCarSpeed();
+    }
+
+    @Override
+    public int hashCode() {
+        return carSpeed + (carCoolness ? 1 : 0);
     }
 }

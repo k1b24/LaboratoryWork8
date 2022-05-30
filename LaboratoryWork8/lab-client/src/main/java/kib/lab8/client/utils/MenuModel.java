@@ -7,6 +7,7 @@ import kib.lab8.common.util.client_server_communication.responses.CommandRespons
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -51,21 +52,6 @@ public class MenuModel {
     }
 
     public List<HumanBeing> getCollection() {
-        humanCollection.add(new HumanBeing());
-        humanCollection.add(new HumanBeing());
-        humanCollection.add(new HumanBeing());
-        humanCollection.add(new HumanBeing());
-        humanCollection.add(new HumanBeing());
-        humanCollection.add(new HumanBeing());
-        humanCollection.add(new HumanBeing());
-        humanCollection.add(new HumanBeing());
-        humanCollection.add(new HumanBeing());
-        humanCollection.add(new HumanBeing());
-        humanCollection.add(new HumanBeing());
-        humanCollection.add(new HumanBeing());
-        humanCollection.add(new HumanBeing());
-        humanCollection.add(new HumanBeing());
-        humanCollection.add(new HumanBeing());
         return humanCollection;
     }
 
@@ -75,10 +61,17 @@ public class MenuModel {
         request.setUserPassword(userPassword);
         try {
             CommandResponse response = (CommandResponse) connectionHandler.sendRequest(request);
-            humanCollection.clear();
-            humanCollection.addAll(response.getPeople());
+            for (HumanBeing recievedHuman : response.getPeople()) {
+                for (int i = 0; i < humanCollection.size(); i++) {
+                    if (Objects.equals(recievedHuman.getId(), humanCollection.get(i).getId())
+                            && (recievedHuman.hashCode() != humanCollection.get(i).hashCode())) {
+                        humanCollection.set(i, recievedHuman);
+                    }
+                }
+            }
             controller.notifyDataChanged(humanCollection);
         } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
             controller.closeApplication();
         }
     }
