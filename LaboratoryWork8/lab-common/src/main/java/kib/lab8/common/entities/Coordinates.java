@@ -42,4 +42,9 @@ public class Coordinates implements Serializable {
     public void setY(float y) {
         this.y = y;
     }
+
+    @Override
+    public int hashCode() {
+        return (int) (x + y);
+    }
 }
