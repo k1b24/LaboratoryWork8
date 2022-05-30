@@ -140,7 +140,7 @@ public class MenuController extends AbstractController {
     @FXML
     private void removeButtonClicked() {
         //TODO пока сделать открытие окна по кнопке, в дальнейшем придумать как удалять их прям из таблицы или из координат
-        System.out.println("dada");
+        loadUI(GUIConfig.REMOVE_WINDOW_PATH, null, true, false);
     }
 
     @FXML
