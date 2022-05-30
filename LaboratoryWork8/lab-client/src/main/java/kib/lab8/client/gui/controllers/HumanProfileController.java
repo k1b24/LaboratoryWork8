@@ -11,9 +11,11 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import kib.lab8.common.entities.enums.Mood;
 import kib.lab8.common.entities.enums.WeaponType;
+import kib.lab8.client.gui.abstractions.ChildWindowController;
+import kib.lab8.common.entities.HumanBeing;
 
 
-public class HumanProfileController {
+public class HumanProfileController extends ChildWindowController {
 
     @FXML
     private Text nameValue;
@@ -118,10 +120,13 @@ public class HumanProfileController {
         moodChoiceBox.setItems(moods);
         updateVBox.setVisible(false);
         valuesVBox.setVisible(true);
+        updateButton.setDisable(false);
     }
 
     @FXML
     private void update() {
+        updateVBox.setVisible(true);
+        valuesVBox.setVisible(false);
 
     }
 

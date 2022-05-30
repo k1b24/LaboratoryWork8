@@ -7,10 +7,14 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
+import kib.lab8.client.gui.GUIConfig;
 import kib.lab8.client.gui.abstractions.DataVisualizerController;
 import kib.lab8.common.entities.HumanBeing;
 
@@ -19,7 +23,6 @@ import java.util.List;
 
 public class TableViewController extends DataVisualizerController {
 
-    private final SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
     @FXML
     private TableView<HumanBeing> humanTable;
 
@@ -59,9 +62,16 @@ public class TableViewController extends DataVisualizerController {
     @FXML
     private TableColumn<HumanBeing, String> carSpeed;
     private final ObservableList<HumanBeing> observableHumanBeingList = FXCollections.observableArrayList();
+    private HumanBeing chosenHuman;
 
     @FXML
     private void initialize() {
+        humanTable.setOnMousePressed(mouseEvent -> {
+            if (mouseEvent.isPrimaryButtonDown() && mouseEvent.getClickCount() == 2) {
+                chosenHuman = humanTable.getSelectionModel().getSelectedItem();
+                getParentController().loadUI(GUIConfig.PROFILE_WINDOW_PATH, null, true, false);
+            }
+        });
         id.setCellValueFactory(new PropertyValueFactory<>("id"));
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
         x.setCellValueFactory(humanBeing -> new SimpleLongProperty(humanBeing.getValue().getCoordinates().getX()).asObject());
@@ -84,6 +94,11 @@ public class TableViewController extends DataVisualizerController {
         carSpeed.setCellValueFactory(humanBeing -> new SimpleObjectProperty<>(humanBeing.getValue().getCar() != null
                 ? String.valueOf(humanBeing.getValue().getCar().getCarSpeed())
                 : "-"));
+    }
+
+    public HumanBeing getChosenHuman() {
+        System.out.println(chosenHuman);
+        return chosenHuman;
     }
 
     @Override
