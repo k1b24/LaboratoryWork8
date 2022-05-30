@@ -13,7 +13,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public class MenuModel {
 
-    private final static int UPDATE_TIME = 30000; //2 mins
+    private final static int UPDATE_TIME = 5000;
     private final ConnectionHandlerClient connectionHandler;
     private final String userLogin;
     private final String userPassword;
@@ -45,8 +45,9 @@ public class MenuModel {
         return userLogin;
     }
 
-    public String executeCommand(ExecutableCommand command, Object... args) throws UserException {
-        return command.action(connectionHandler, userLogin, userPassword, args).getMessage();
+    public void executeCommand(ExecutableCommand command, Object... args) throws UserException {
+        String message = command.action(connectionHandler, userLogin, userPassword, args).getMessage();
+        controller.getTerminal().appendText(message + "\n");
     }
 
     public List<HumanBeing> getCollection() {
@@ -78,7 +79,6 @@ public class MenuModel {
             humanCollection.addAll(response.getPeople());
             controller.notifyDataChanged(humanCollection);
         } catch (IOException | ClassNotFoundException e) {
-            //show alert
             controller.closeApplication();
         }
     }

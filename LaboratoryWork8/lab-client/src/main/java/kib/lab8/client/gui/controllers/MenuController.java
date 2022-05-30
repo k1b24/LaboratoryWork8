@@ -93,6 +93,10 @@ public class MenuController extends AbstractController {
         model = new MenuModel(connectionHandler, username, password, this);
     }
 
+    public TextArea getTerminal() {
+        return terminal;
+    }
+
     @FXML
     private void addButtonClicked() {
         //TODO реализовать открытие окна с добавлением
@@ -104,7 +108,7 @@ public class MenuController extends AbstractController {
     private void clearButtonClicked() {
         ExecutableCommand clearCommand = ExecutableCommand.CLEAR_COMMAND;
         try {
-            terminal.appendText(model.executeCommand(clearCommand) + "\n");
+            model.executeCommand(clearCommand);
             model.updateCollection();
         } catch (UserException e) {
             e.showAlert();
@@ -127,8 +131,7 @@ public class MenuController extends AbstractController {
     private void historyButtonClicked() {
         ExecutableCommand command = ExecutableCommand.HISTORY_COMMAND;
         try {
-            String s = model.executeCommand(command);
-            terminal.appendText(s + "\n");
+            model.executeCommand(command);
         } catch (UserException e) {
             e.showAlert();
         }
@@ -144,10 +147,7 @@ public class MenuController extends AbstractController {
     private void infoButtonClicked() {
         ExecutableCommand command = ExecutableCommand.INFO_COMMAND;
         try {
-            String s = model.executeCommand(command);
-            terminal.appendText(s + "\n");
-//            terminal.setText(s);
-            System.out.println(s);
+            model.executeCommand(command);
         } catch (UserException e) {
             e.showAlert();
         }
