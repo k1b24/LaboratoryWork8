@@ -34,7 +34,7 @@
     -fx-background-insets: 0, 0 0 1 0;
 }
 .table-row-cell:selected {
-    -fx-background-color: #FFB366;
+    -fx-background-color: #4BBB56;
     -fx-text-background-color: #000000;
 }
 .table-view .virtual-flow .scroll-bar:vertical,

@@ -16,8 +16,8 @@
 
 <AnchorPane fx:id="mainPane" prefHeight="674.0" prefWidth="1261.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kib.lab8.client.gui.controllers.MenuController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f29c78" height="49.0" layoutX="238.0" layoutY="122.0" stroke="#811e1e" strokeType="INSIDE" width="1030.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e47552" height="147.0" layoutX="256.0" layoutY="-22.0" stroke="#89361b" strokeType="INSIDE" width="1012.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f29c78" height="49.0" layoutX="238.0" layoutY="122.0" stroke="#811e1e" strokeType="INSIDE" width="1100.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e47552" height="147.0" layoutX="256.0" layoutY="-22.0" stroke="#89361b" strokeType="INSIDE" width="1082.0" />
       <AnchorPane prefHeight="674.0" prefWidth="238.0" style="-fx-background-color: #4BBB56; -fx-border-color: #186C20;">
          <children>
             <Button fx:id="exitButton" layoutX="14.0" layoutY="596.0" mnemonicParsing="false" onAction="#exitButtonClicked" prefHeight="64.0" prefWidth="65.0" style="-fx-background-color: #4BBB56;">
@@ -104,14 +104,14 @@
             <Blend />
          </effect>
       </Text>
-      <HBox alignment="TOP_CENTER" layoutX="441.0" layoutY="1.0" prefHeight="32.0" prefWidth="814.0">
+      <HBox alignment="TOP_CENTER" layoutX="441.0" layoutY="1.0" prefHeight="32.0" prefWidth="887.0">
          <children>
-            <Text fx:id="userInfo" strokeType="OUTSIDE" strokeWidth="0.0" text="%user_info" textAlignment="RIGHT" wrappingWidth="239.65011739730835">
+            <Text fx:id="userInfo" strokeType="OUTSIDE" strokeWidth="0.0" text="%user_info" textAlignment="RIGHT" wrappingWidth="360.450137257576">
                <font>
                   <Font name="Exo 2 Regular" size="20.0" />
                </font>
             </Text>
-            <Text fx:id="nickname" strokeType="OUTSIDE" strokeWidth="0.0" text="nickname" wrappingWidth="200.0200350880623">
+            <Text fx:id="nickname" strokeType="OUTSIDE" strokeWidth="0.0" text="nickname" wrappingWidth="330.4200442433357">
                <font>
                   <Font name="Exo 2 Regular" size="20.0" />
                </font>
@@ -119,7 +119,7 @@
          </children>
       </HBox>
       <Pane fx:id="visualPane" layoutX="238.0" layoutY="171.0" prefHeight="503.0" prefWidth="1030.0" styleClass="vis_pane" stylesheets="@../styles/visualization_pane.css" />
-      <TextArea fx:id="terminal" editable="false" layoutX="421.0" layoutY="33.0" prefHeight="84.0" prefWidth="836.0" promptText="TERMINAL" styleClass="orange_text_field" stylesheets="@../styles/text_field.css">
+      <TextArea fx:id="terminal" editable="false" layoutX="421.0" layoutY="33.0" prefHeight="84.0" prefWidth="907.0" promptText="TERMINAL" styleClass="orange_text_field" stylesheets="@../styles/text_field.css">
          <font>
             <Font name="Exo 2 Regular" size="15.0" />
          </font></TextArea>

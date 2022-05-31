@@ -1,5 +1,6 @@
 package kib.lab8.client.gui.controllers;
 
+import javafx.application.Platform;
 import javafx.beans.property.SimpleFloatProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleLongProperty;
@@ -9,9 +10,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableRow;
-import javafx.scene.control.TableView;
+import javafx.scene.Node;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import kib.lab8.client.gui.GUIConfig;
@@ -24,6 +24,7 @@ import java.util.List;
 
 public class TableViewController extends DataVisualizerController {
 
+    private static final int ROWS_PER_PAGE = 16;
     @FXML
     private TableView<HumanBeing> humanTable;
 
@@ -62,6 +63,52 @@ public class TableViewController extends DataVisualizerController {
 
     @FXML
     private TableColumn<HumanBeing, String> carSpeed;
+
+    @FXML
+    private TableColumn<HumanBeing, String> author;
+
+    @FXML
+    private TextField idFilter;
+
+    @FXML
+    private TextField nameFilter;
+
+    @FXML
+    private TextField xFilter;
+
+    @FXML
+    private TextField yFilter;
+
+    @FXML
+    private TextField creationDateFilter;
+
+    @FXML
+    private TextField realHeroFilter;
+
+    @FXML
+    private TextField popularityFilter;
+
+    @FXML
+    private TextField impactSpeedFilter;
+
+    @FXML
+    private TextField weaponFilter;
+
+    @FXML
+    private TextField moodFilter;
+
+    @FXML
+    private TextField carCoolnessFilter;
+
+    @FXML
+    private TextField carSpeedFilter;
+
+    @FXML
+    private TextField authorFilter;
+
+    @FXML
+    private Pagination pagination;
+
     private final ObservableList<HumanBeing> observableHumanBeingList = FXCollections.observableArrayList();
     private HumanBeing chosenHuman;
 
@@ -95,6 +142,8 @@ public class TableViewController extends DataVisualizerController {
         carSpeed.setCellValueFactory(humanBeing -> new SimpleObjectProperty<>(humanBeing.getValue().getCar() != null
                 ? String.valueOf(humanBeing.getValue().getCar().getCarSpeed())
                 : "-"));
+        author.setCellValueFactory(new PropertyValueFactory<>("author"));
+
     }
 
     public HumanBeing getChosenHuman() {
@@ -108,8 +157,28 @@ public class TableViewController extends DataVisualizerController {
 
     @Override
     public void updateInfo(List<HumanBeing> humanBeingList) {
+        //TODO сделать реакцию обновлений на сортировку и фильтр
         observableHumanBeingList.clear();
         observableHumanBeingList.addAll(humanBeingList);
-        humanTable.setItems(observableHumanBeingList);
+        updatePagination();
     }
+
+    private void updatePagination() {
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                pagination.setPageCount(observableHumanBeingList.size() / ROWS_PER_PAGE + 1);
+                pagination.setPageFactory(this::createPage);
+            }
+
+            private Node createPage(int pageIndex) {
+                int from = pageIndex * ROWS_PER_PAGE;
+                int to = Math.min(from + ROWS_PER_PAGE, observableHumanBeingList.size());
+                humanTable.setItems(FXCollections.observableArrayList(observableHumanBeingList.subList(from, to)));
+                return humanTable;
+            }
+        });
+
+    }
+
 }
