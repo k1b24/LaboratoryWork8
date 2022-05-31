@@ -2,24 +2,20 @@ package kib.lab8.client.gui.controllers;
 
 import javafx.application.Platform;
 import javafx.beans.property.SimpleFloatProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
 import kib.lab8.client.gui.GUIConfig;
 import kib.lab8.client.gui.abstractions.DataVisualizerController;
 import kib.lab8.client.utils.ChildUIType;
 import kib.lab8.common.entities.HumanBeing;
 
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class TableViewController extends DataVisualizerController {

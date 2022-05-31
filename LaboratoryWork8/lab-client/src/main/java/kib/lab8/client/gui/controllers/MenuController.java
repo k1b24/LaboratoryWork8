@@ -249,4 +249,6 @@ public class MenuController extends AbstractController {
     public DataVisualizerController getCurrentVisualizerController() {
         return currentVisualizerController;
     }
+
+
 }

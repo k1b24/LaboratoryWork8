@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0"  styleClass="openable_profile_pane" stylesheets="@../styles/pane.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kib.lab8.client.gui.controllers.HumanProfileController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="openable_profile_pane" stylesheets="@../styles/pane.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kib.lab8.client.gui.controllers.HumanProfileController">
    <children>
       <Pane prefHeight="77.0" prefWidth="500.0" style="-fx-background-color: #4BBB56;">
          <children>
@@ -120,67 +120,67 @@
       </VBox>
       <VBox fx:id="valuesVBox" layoutX="360.0" layoutY="85.0" prefHeight="392.0" prefWidth="126.0" spacing="9.0" visible="false">
          <children>
-            <Text fx:id="nameValue" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="RIGHT">
+            <Text fx:id="nameValue" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="125.65901184082031">
                <font>
                   <Font name="Exo 2 Regular" size="17.0" />
                </font>
             </Text>
-            <Text fx:id="creationDateValue" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="RIGHT">
+            <Text fx:id="creationDateValue" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="125.65895080566406">
                <font>
                   <Font name="Exo 2 Regular" size="17.0" />
                </font>
             </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="RIGHT" fx:id="xValue">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="125.65901184082031" fx:id="xValue">
                <font>
                   <Font name="Exo 2 Regular" size="17.0" />
                </font>
             </Text>
-            <Text fx:id="yValue" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="RIGHT">
+            <Text fx:id="yValue" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="125.65895080566406">
                <font>
                   <Font name="Exo 2 Regular" size="17.0" />
                </font>
             </Text>
-            <Text fx:id="realHeroValue" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="RIGHT">
+            <Text fx:id="realHeroValue" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="126.45899963378906">
                <font>
                   <Font name="Exo 2 Regular" size="17.0" />
                </font>
             </Text>
-            <Text fx:id="popularityValue" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="RIGHT">
+            <Text fx:id="popularityValue" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="126.45899963378906">
                <font>
                   <Font name="Exo 2 Regular" size="17.0" />
                </font>
             </Text>
-            <Text fx:id="impactSpeedValue" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="RIGHT">
+            <Text fx:id="impactSpeedValue" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="126.45899963378906">
                <font>
                   <Font name="Exo 2 Regular" size="17.0" />
                </font>
             </Text>
-            <Text fx:id="weaponValue" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="RIGHT">
+            <Text fx:id="weaponValue" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="126.45899963378906">
                <font>
                   <Font name="Exo 2 Regular" size="17.0" />
                </font>
             </Text>
-            <Text fx:id="moodValue" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="RIGHT">
+            <Text fx:id="moodValue" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="126.45899963378906">
                <font>
                   <Font name="Exo 2 Regular" size="17.0" />
                </font>
             </Text>
-            <Text fx:id="carValue" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="RIGHT">
+            <Text fx:id="carValue" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="126.45899963378906">
                <font>
                   <Font name="Exo 2 Regular" size="17.0" />
                </font>
             </Text>
-            <Text fx:id="carCoolnessValue" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="RIGHT">
+            <Text fx:id="carCoolnessValue" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="126.45899963378906">
                <font>
                   <Font name="Exo 2 Regular" size="17.0" />
                </font>
             </Text>
-            <Text fx:id="carSpeedValue" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="RIGHT">
+            <Text fx:id="carSpeedValue" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="126.45899963378906">
                <font>
                   <Font name="Exo 2 Regular" size="17.0" />
                </font>
             </Text>
-            <Text fx:id="authorValue" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="RIGHT">
+            <Text fx:id="authorValue" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="126.45899963378906">
                <font>
                   <Font name="Exo 2 Regular" size="17.0" />
                </font>
@@ -198,7 +198,7 @@
                   <Font name="Exo 2 Regular" size="17.0" />
                </font>
             </Text>
-            <TextField fx:id="xField" prefHeight="27.0" prefWidth="126.0" styleClass="green_bordered_text_field" stylesheets="@../styles/text_field.css" />
+            <TextField prefHeight="27.0" prefWidth="126.0" styleClass="green_bordered_text_field" stylesheets="@../styles/text_field.css" fx:id="xField" />
             <TextField fx:id="yField" styleClass="green_bordered_text_field" stylesheets="@../styles/text_field.css" />
             <CheckBox fx:id="realHeroCheckBox" mnemonicParsing="false" stylesheets="@../styles/checkbox.css">
                <font>

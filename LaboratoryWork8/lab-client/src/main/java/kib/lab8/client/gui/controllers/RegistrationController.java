@@ -13,6 +13,7 @@ public class RegistrationController extends AbstractController {
 
     @FXML
     private Button registerButton;
+
     @FXML
     private Button authorizationButton;
 

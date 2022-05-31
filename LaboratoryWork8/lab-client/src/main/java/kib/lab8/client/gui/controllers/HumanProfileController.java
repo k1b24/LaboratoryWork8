@@ -1,5 +1,6 @@
 package kib.lab8.client.gui.controllers;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
@@ -148,7 +149,7 @@ public class HumanProfileController extends ChildWindowController {
     }
 
     private void setTextFieldValues() {
-        nameValue.setText(currentHuman.getName());
+        nameValue.setText(String.valueOf(new SimpleStringProperty(currentHuman.getName())));
         creationDateValue.setText(String.valueOf(currentHuman.getCreationDate()));
         xValue.setText(String.valueOf(currentHuman.getCoordinates().getX()));
         yValue.setText(String.valueOf(currentHuman.getCoordinates().getY()));

@@ -1,3 +1,62 @@
+.pagination_bar .pagination-control{
+    -fx-pref-height: 50;
+    -fx-min-height: 50;
+    -fx-alignment: CENTER;
+}
+
+
 .pagination_bar .pagination-control .number-button{
-    -fx-background-color:  #78CC80;
+    -fx-background-color:  white;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-border-color: #186C20;
+    -fx-font-family: "Exo 2";
+    -fx-font-size: 20px;
+    -fx-alignment: CENTER;
+    -fx-pref-width: 30;
+    -fx-pref-height: 35;
+    -fx-min-height: 35;
+    -fx-padding: 5px;
+}
+
+.pagination_bar .pagination-control .left-arrow-button{
+    -fx-background-color:  white;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-border-color: #186C20;
+    -fx-font-family: "Exo 2";
+    -fx-font-size: 20px;
+    -fx-alignment: CENTER;
+    -fx-pref-width: 30;
+    -fx-pref-height: 30;
+    -fx-min-height: 30;
+
+}
+
+.pagination_bar .pagination-control .right-arrow-button{
+    -fx-background-color:  white;
+    -fx-padding: 2px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-border-color: #186C20;
+    -fx-font-family: "Exo 2";
+    -fx-font-size: 20px;
+    -fx-alignment: CENTER;
+    -fx-pref-width: 30;
+    -fx-pref-height: 30;
+    -fx-min-height: 30;
+}
+
+.pagination_bar .pagination-control .page-information{
+    -fx-text-fill: #e6e6e6;
+}
+
+.pagination_bar .pagination-control .number-button:selected{
+    -fx-background-color: #78CC80;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-border-color: #186C20;
+    -fx-text-fill: black;
+    -fx-pref-height: 40;
+    -fx-min-height: 40;
 }
