@@ -1,4 +1,4 @@
-package kib.lab8.client.gui;
+package kib.lab8.client.gui.localization;
 
 import java.util.Locale;
 import java.util.MissingResourceException;

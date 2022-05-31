@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Blend?>
 <?import javafx.scene.image.Image?>
@@ -26,6 +27,7 @@
                         <Image url="@../icons/img.png" />
                     </image>
                 </ImageView>
+            <ChoiceBox fx:id="languagesChoiceBox" layoutX="237.0" layoutY="14.0" prefHeight="27.0" prefWidth="53.0" stylesheets="@../styles/choisebox.css" />
             </children>
         </AnchorPane>
         <TextField fx:id="hostField" alignment="CENTER" layoutX="46.0" layoutY="166.0" prefHeight="40.0" prefWidth="210.0" promptText="%host" styleClass="green_bordered_text_field" stylesheets="@../styles/text_field.css">

@@ -6,10 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -27,43 +24,43 @@ public class HumanProfileController extends ChildWindowController {
     @FXML
     private ImageView imageView;
     @FXML
-    private Text nameValue;
+    private Label nameValue;
 
     @FXML
-    private Text creationDateValue;
+    private Label creationDateValue;
 
     @FXML
-    private Text xValue;
+    private Label xValue;
 
     @FXML
-    private Text yValue;
+    private Label yValue;
 
     @FXML
-    private Text realHeroValue;
+    private Label realHeroValue;
 
     @FXML
-    private Text popularityValue;
+    private Label popularityValue;
 
     @FXML
-    private Text impactSpeedValue;
+    private Label impactSpeedValue;
 
     @FXML
-    private Text weaponValue;
+    private Label weaponValue;
 
     @FXML
-    private Text moodValue;
+    private Label moodValue;
 
     @FXML
-    private Text carValue;
+    private Label carValue;
 
     @FXML
-    private Text carCoolnessValue;
+    private Label carCoolnessValue;
 
     @FXML
-    private Text carSpeedValue;
+    private Label carSpeedValue;
 
     @FXML
-    private Text authorValue;
+    private Label authorValue;
 
     @FXML
     private Button updateButton;
@@ -149,7 +146,7 @@ public class HumanProfileController extends ChildWindowController {
     }
 
     private void setTextFieldValues() {
-        nameValue.setText(String.valueOf(new SimpleStringProperty(currentHuman.getName())));
+        nameValue.setText(currentHuman.getName());
         creationDateValue.setText(String.valueOf(currentHuman.getCreationDate()));
         xValue.setText(String.valueOf(currentHuman.getCoordinates().getX()));
         yValue.setText(String.valueOf(currentHuman.getCoordinates().getY()));

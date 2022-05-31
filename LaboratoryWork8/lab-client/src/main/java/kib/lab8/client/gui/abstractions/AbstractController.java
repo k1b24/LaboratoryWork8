@@ -7,7 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import kib.lab8.client.gui.GUIConfig;
-import kib.lab8.client.gui.Localization;
+import kib.lab8.client.gui.localization.Localization;
 import kib.lab8.client.utils.UserException;
 
 import java.io.IOException;

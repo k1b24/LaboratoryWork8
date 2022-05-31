@@ -1,8 +1,9 @@
 .choice-box {
-    -fx-background-color: #d5d3d3;
+    -fx-background-color: #78CC80;
     -fx-border-radius: 8;
     -fx-background-radius: 8;
     -fx-border-color:  #186C20;
+    -fx-font-family: "Exo 2";
 }
 
 .choice-box .context-menu {
@@ -16,7 +17,7 @@
 .choice-box .menu-item:focused { -fx-background-color: #78CC80; }
 
 .choice-box .menu-item > .label {
-    -fx-text-fill: white;
+    -fx-text-fill: black;
     -fx-font-family: "Exo 2";
 }
 

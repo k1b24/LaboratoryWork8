@@ -4,12 +4,11 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import kib.lab8.client.gui.abstractions.AbstractController;
+import kib.lab8.client.gui.localization.Localization;
 
 import java.io.IOException;
-import java.io.InputStream;
 
 import static kib.lab8.client.gui.GUIConfig.*;
 

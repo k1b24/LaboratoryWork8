@@ -12,7 +12,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import kib.lab8.client.gui.GUIConfig;
-import kib.lab8.client.gui.Localization;
+import kib.lab8.client.gui.localization.Localization;
 import kib.lab8.client.gui.abstractions.AbstractController;
 import kib.lab8.client.gui.abstractions.ChildWindowController;
 import kib.lab8.client.utils.ChildUIType;

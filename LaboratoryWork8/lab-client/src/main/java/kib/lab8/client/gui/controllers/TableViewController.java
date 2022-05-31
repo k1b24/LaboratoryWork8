@@ -139,7 +139,23 @@ public class TableViewController extends DataVisualizerController {
                 ? String.valueOf(humanBeing.getValue().getCar().getCarSpeed())
                 : "-"));
         author.setCellValueFactory(new PropertyValueFactory<>("author"));
+        setToolTip(name);
+        setToolTip(weapon);
+        setToolTip(author);
+    }
 
+    public void setToolTip(TableColumn<HumanBeing, String> tableColumn) {
+        tableColumn.setCellFactory
+                (column -> new TableCell<HumanBeing, String>() {
+                    @Override
+                    protected void updateItem(String item, boolean empty) {
+                        super.updateItem(item, empty);
+                        setText(item);
+                        if (item != null && item.length() >= 10) {
+                            setTooltip(new Tooltip(item));
+                        }
+                    }
+                });
     }
 
     public HumanBeing getChosenHuman() {
