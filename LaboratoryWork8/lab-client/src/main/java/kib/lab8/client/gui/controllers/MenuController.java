@@ -15,6 +15,7 @@ import kib.lab8.client.gui.GUIConfig;
 import kib.lab8.client.gui.Localization;
 import kib.lab8.client.gui.abstractions.AbstractController;
 import kib.lab8.client.gui.abstractions.ChildWindowController;
+import kib.lab8.client.utils.ChildUIType;
 import kib.lab8.client.utils.ConnectionHandlerClient;
 import kib.lab8.client.utils.ExecutableCommand;
 import kib.lab8.client.utils.MenuModel;
@@ -84,9 +85,9 @@ public class MenuController extends AbstractController {
     @FXML
     private void initialize() {
         nickname.setText(model.getUserLogin());
-        loadUI(GUIConfig.VISUAL_PANE_PATH, visualPane, false, true);
-        tableButton.setDisable(false);
-        visualizeButton.setDisable(true);
+        loadUI(GUIConfig.TABLEVIEW_PATH, visualPane, ChildUIType.VISUALISATION);
+        tableButton.setDisable(true);
+        visualizeButton.setDisable(false);
     }
 
     public MenuController(ConnectionHandlerClient connectionHandler, String username, String password) {
@@ -100,7 +101,7 @@ public class MenuController extends AbstractController {
     @FXML
     private void addButtonClicked() {
         //TODO реализовать открытие окна с добавлением
-        loadUI(GUIConfig.ADD_MENU_PATH, null, true, false);
+        loadUI(GUIConfig.ADD_MENU_PATH, null, ChildUIType.SIMPLE_CHILD_WINDOW);
 
     }
 
@@ -123,7 +124,7 @@ public class MenuController extends AbstractController {
 
     @FXML
     private void updateButtonClicked() {
-        loadUI(GUIConfig.UPDATE_WINDOW_PATH, null, true, false);
+        loadUI(GUIConfig.UPDATE_WINDOW_PATH, null, ChildUIType.SIMPLE_CHILD_WINDOW);
     }
 
     @FXML
@@ -139,7 +140,7 @@ public class MenuController extends AbstractController {
     @FXML
     private void removeButtonClicked() {
         //TODO пока сделать открытие окна по кнопке, в дальнейшем придумать как удалять их прям из таблицы или из координат
-        loadUI(GUIConfig.REMOVE_WINDOW_PATH, null, true, false);
+        loadUI(GUIConfig.REMOVE_WINDOW_PATH, null, ChildUIType.SIMPLE_CHILD_WINDOW);
     }
 
     @FXML
@@ -166,7 +167,7 @@ public class MenuController extends AbstractController {
             buttonsPane.setVisible(false);
             menuPane.setVisible(true);
         }
-        loadUI(GUIConfig.SETTINGS_PANE_PATH, menuPane, false, false);
+        loadUI(GUIConfig.SETTINGS_PANE_PATH, menuPane, ChildUIType.ON_MAIN_MENU);
     }
 
     @FXML
@@ -176,31 +177,32 @@ public class MenuController extends AbstractController {
 
     @FXML
     private void visualizeButtonClicked() {
-        loadUI(GUIConfig.VISUAL_PANE_PATH, visualPane, false, true);
+        loadUI(GUIConfig.VISUAL_PANE_PATH, visualPane, ChildUIType.VISUALISATION);
         tableButton.setDisable(false);
         visualizeButton.setDisable(true);
     }
 
     @FXML
     private void tableButtonClicked() {
-        loadUI(GUIConfig.TABLEVIEW_PATH, visualPane, false, true);
+        loadUI(GUIConfig.TABLEVIEW_PATH, visualPane, ChildUIType.VISUALISATION);
         visualizeButton.setDisable(false);
         tableButton.setDisable(true);
     }
 
 
-    protected void loadUI(String uiPath, Pane targetPane, boolean inNewWindow, boolean visualization) {
+    protected void loadUI(String uiPath, Pane targetPane, ChildUIType uiType) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(uiPath));
             Localization localization = new Localization();
             loader.setResources(localization.getResourceBundle());
-            Parent parent = loader.load();
-            if (visualization) {
+            if (uiType.equals(ChildUIType.VISUALISATION)) {
+                Parent parent = loader.load();
                 currentVisualizerController = loader.getController();
                 currentVisualizerController.updateInfo(model.getCollection());
                 currentVisualizerController.setParentController(this);
-            }
-            if (inNewWindow) {
+                targetPane.getChildren().add(parent);
+            } else if (uiType.equals(ChildUIType.SIMPLE_CHILD_WINDOW)) {
+                Parent parent = loader.load();
                 ChildWindowController controller = loader.getController();
                 controller.setMenuModel(model);
                 Stage stage = new Stage();
@@ -209,7 +211,19 @@ public class MenuController extends AbstractController {
                 stage.setResizable(false);
                 stage.setScene(new Scene(parent));
                 stage.show();
-            } else {
+            } else if (uiType.equals(ChildUIType.HUMAN_PROFILE_CHILD_WINDOW)) {
+                loader.setControllerFactory(controllerClass -> new HumanProfileController(getSelectedHumanBeingInVisualisationWindow(), model.getUserLogin()));
+                Parent parent = loader.load();
+                ChildWindowController controller = loader.getController();
+                controller.setMenuModel(model);
+                Stage stage = new Stage();
+                stage.getIcons().add(GUIConfig.getCornerImage());
+                stage.setTitle(GUIConfig.TITLE);
+                stage.setResizable(false);
+                stage.setScene(new Scene(parent));
+                stage.show();
+            } else if (uiType.equals(ChildUIType.ON_MAIN_MENU)) {
+                Parent parent = loader.load();
                 targetPane.getChildren().add(parent);
             }
         } catch (IOException e) {
@@ -230,5 +244,9 @@ public class MenuController extends AbstractController {
 
     public HumanBeing getSelectedHumanBeingInVisualisationWindow() {
         return currentVisualizerController.getChosenHuman();
+    }
+
+    public DataVisualizerController getCurrentVisualizerController() {
+        return currentVisualizerController;
     }
 }

@@ -20,4 +20,6 @@ public abstract class DataVisualizerController {
     }
 
     public abstract HumanBeing getChosenHuman();
+
+    public abstract void setChosenHuman(HumanBeing human);
 }

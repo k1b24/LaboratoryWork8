@@ -39,13 +39,13 @@ public class AddCommandModel {
     }
 
     private void validateHuman(HumanBeing human) throws UserException {
-        if (!(human.getName().length() >= 2 && human.getName().length() <= 50)) {
+        if (!(human.getName().length() > 2 && human.getName().length() < 50)) {
             throw new UserException("Длина имени человека должна быть больше 2 и меньше 50");
         }
-        if (!(human.getCoordinates().getX() >= -759)) {
+        if (!(human.getCoordinates().getX() > -759)) {
             throw new UserException("Координата X должна быть больше -759");
         }
-        if (!(human.getImpactSpeed() <= 712)) {
+        if (!(human.getImpactSpeed() < 712)) {
             throw new UserException("Скорость удара должна быть меньше 712");
         }
     }
