@@ -7,6 +7,7 @@
 
 #### Используемые технологии ####
 - JavaFX
+- Maven
 - Hibernate Validator
 - PostgreSQL
 - CSS-styling
