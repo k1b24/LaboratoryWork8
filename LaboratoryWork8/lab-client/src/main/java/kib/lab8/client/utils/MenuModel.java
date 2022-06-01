@@ -1,11 +1,16 @@
 package kib.lab8.client.utils;
 
+import javafx.application.Platform;
+import javafx.concurrent.ScheduledService;
+import javafx.concurrent.Task;
+import javafx.util.Duration;
 import kib.lab8.client.gui.controllers.MenuController;
 import kib.lab8.common.entities.HumanBeing;
 import kib.lab8.common.util.client_server_communication.requests.CommandRequest;
 import kib.lab8.common.util.client_server_communication.responses.CommandResponse;
 
 import java.io.IOException;
+import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -18,7 +23,7 @@ import java.util.concurrent.Executors;
 public class MenuModel {
 
     private static final int THREADS = Runtime.getRuntime().availableProcessors();
-    private final static int UPDATE_TIME = 60000;
+    private final static int UPDATE_TIME = 5000;
     private final ConnectionHandlerClient connectionHandler;
     private final String userLogin;
     private final String userPassword;
@@ -26,8 +31,28 @@ public class MenuModel {
     private final List<HumanBeing> humanCollection = new CopyOnWriteArrayList<>();
     private final MenuController controller;
     private final ExecutorService executorService = Executors.newFixedThreadPool(THREADS);
+    private final ScheduledService<Void> scheduledService = new ScheduledService<Void>() {
 
-
+        @Override
+        protected Task<Void> createTask() {
+            Task<Void> task = new Task<Void>() {
+                @Override
+                protected Void call() {
+                    try {
+                        updateCollection();
+                    } catch (UserException e) {
+                        if (e.isFatal()) {
+                            prepareForExit();
+                            e.showAlert();
+                            controller.closeApplication();
+                        }
+                    }
+                    return null;
+                }
+            };
+            return task;
+        }
+    };
 
 
     public MenuModel(ConnectionHandlerClient connectionHandler, String userLogin, String userPassword, MenuController controller) {
@@ -35,15 +60,13 @@ public class MenuModel {
         this.userLogin = userLogin;
         this.userPassword = userPassword;
         this.controller = controller;
-        timer.scheduleAtFixedRate(new TimerTask() {
-            @Override
-            public void run() {
-                updateCollection();
-            }
-        }, 0, UPDATE_TIME);
+        scheduledService.setPeriod(Duration.millis(5000));
+        scheduledService.start();
     }
 
     public void prepareForExit() {
+        scheduledService.cancel();
+        executorService.shutdown();
         connectionHandler.closeConnection();
     }
 
@@ -51,23 +74,31 @@ public class MenuModel {
         return userLogin;
     }
 
-    public void executeCommand(ExecutableCommand command, Object... args) throws UserException {
-        executorService.submit(() -> {
-            String message;
-            try {
-                message = command.action(connectionHandler, userLogin, userPassword, args).getMessage();
-            } catch (UserException e) {
-                throw new RuntimeException(e);
+    public void executeCommand(ExecutableCommand command, Object... args) {
+        Task<String> task = new Task<String>() {
+            @Override
+            protected String call() throws Exception {
+                return command.action(connectionHandler, userLogin, userPassword, args).getMessage();
             }
-            controller.getTerminal().appendText(message + "\n");
+        };
+        task.setOnFailed(event -> {
+            UserException exception = (UserException) task.getException();
+            if (exception.isFatal()) {
+                exception.showAlert();
+                executorService.shutdown();
+                timer.cancel();
+                controller.closeApplication();
+            }
         });
+        task.setOnSucceeded(event -> controller.getTerminal().appendText(task.getValue() + "\n"));
+        executorService.execute(task);
     }
 
     public List<HumanBeing> getCollection() {
         return humanCollection;
     }
 
-    public void updateCollection() {
+    public void updateCollection() throws UserException {
         CommandRequest request = new CommandRequest("show");
         request.setUserLogin(userLogin);
         request.setUserPassword(userPassword);
@@ -91,9 +122,13 @@ public class MenuModel {
             }
             humanCollection.removeIf(human -> !recievedIDs.contains(human.getId()));
             controller.notifyDataChanged(humanCollection);
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-            controller.closeApplication();
+        } catch (SocketTimeoutException e) {
+            throw new UserException("От сервера не был получен ответ, закрываюсь...", true);
+        } catch (IOException e) {
+            throw new UserException("Произошла ошибка при коммуникации с сервером, "
+                    + "повторите попытку");
+        } catch (ClassNotFoundException e) {
+            throw new UserException("Произошла ошибка при получении ответа с сервера. Пожалуйста, повторите попытку");
         }
     }
 
@@ -108,4 +143,5 @@ public class MenuModel {
         }
         return chosenHuman;
     }
+
 }

@@ -1,6 +1,8 @@
 package kib.lab8.client.gui.controllers;
 
 import javafx.application.Platform;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -21,6 +23,7 @@ import kib.lab8.client.utils.ExecutableCommand;
 import kib.lab8.client.utils.MenuModel;
 import kib.lab8.client.utils.UserException;
 import kib.lab8.client.gui.abstractions.DataVisualizerController;
+import kib.lab8.common.abstractions.ResponseInterface;
 import kib.lab8.common.entities.HumanBeing;
 
 import java.io.IOException;
@@ -82,6 +85,8 @@ public class MenuController extends AbstractController {
     private Text nickname;
     private final MenuModel model;
     private DataVisualizerController currentVisualizerController;
+    private ObjectProperty<ResponseInterface> recievedResponseProperty;
+
 
     @FXML
     private void initialize() {
@@ -89,7 +94,10 @@ public class MenuController extends AbstractController {
         nickname.setText(model.getUserLogin());
         tableButton.setDisable(false);
         visualizeButton.setDisable(false);
-        System.out.println();
+//        recievedResponseProperty = new SimpleObjectProperty<>(null);
+//        recievedResponseProperty.addListener((observable, response, newResponse) -> {
+//
+//        });
     }
 
     public MenuController(ConnectionHandlerClient connectionHandler, String username, String password) {
@@ -110,11 +118,17 @@ public class MenuController extends AbstractController {
     @FXML
     private void clearButtonClicked() {
         ExecutableCommand clearCommand = ExecutableCommand.CLEAR_COMMAND;
+        model.executeCommand(clearCommand);
         try {
-            model.executeCommand(clearCommand);
             model.updateCollection();
         } catch (UserException e) {
-            e.showAlert();
+            if (e.isFatal()) {
+                model.prepareForExit();
+                e.showAlert();
+                closeApplication();
+            } else {
+                e.showAlert();
+            }
         }
     }
 
@@ -132,11 +146,8 @@ public class MenuController extends AbstractController {
     @FXML
     private void historyButtonClicked() {
         ExecutableCommand command = ExecutableCommand.HISTORY_COMMAND;
-        try {
-            model.executeCommand(command);
-        } catch (UserException e) {
-            e.showAlert();
-        }
+
+        model.executeCommand(command);
     }
 
     @FXML
@@ -148,11 +159,7 @@ public class MenuController extends AbstractController {
     @FXML
     private void infoButtonClicked() {
         ExecutableCommand command = ExecutableCommand.INFO_COMMAND;
-        try {
-            model.executeCommand(command);
-        } catch (UserException e) {
-            e.showAlert();
-        }
+        model.executeCommand(command);
     }
 
     @FXML

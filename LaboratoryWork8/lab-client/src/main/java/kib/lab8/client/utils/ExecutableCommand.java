@@ -6,6 +6,7 @@ import kib.lab8.common.util.client_server_communication.requests.CommandRequest;
 import kib.lab8.common.util.client_server_communication.responses.CommandResponse;
 
 import java.io.IOException;
+import java.net.SocketTimeoutException;
 
 public enum ExecutableCommand {
 
@@ -58,6 +59,9 @@ public enum ExecutableCommand {
         try {
             CommandResponse response = (CommandResponse) connectionHandler.sendRequest(request);
             return response.getMessage();
+        } catch (SocketTimeoutException e) {
+            System.out.println("da");
+            throw new UserException("От сервера не был получен ответ, закрываюсь...", true);
         } catch (IOException e) {
             throw new UserException("Произошла ошибка при коммуникации с сервером, "
                     + "повторите попытку");

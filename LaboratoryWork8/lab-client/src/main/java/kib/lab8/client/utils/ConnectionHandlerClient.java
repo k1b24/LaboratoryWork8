@@ -1,5 +1,6 @@
 package kib.lab8.client.utils;
 
+import javafx.application.Platform;
 import kib.lab8.common.abstractions.RequestInterface;
 import kib.lab8.common.abstractions.ResponseInterface;
 import kib.lab8.common.util.client_server_communication.Serializer;
@@ -18,7 +19,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class ConnectionHandlerClient {
 
-    private static final int RESPONSE_TIMER = 6000;
+    private static final int RESPONSE_TIMER = 5000;
     private int serverPort;
     private final DatagramSocket datagramSocket;
     private final InetAddress serverAddress;

@@ -19,6 +19,8 @@ import kib.lab8.client.utils.UserException;
 public class AuthorizationController extends AbstractController {
 
     @FXML
+    private Button authorizationButton;
+    @FXML
     private TextField loginField;
 
     @FXML
@@ -54,6 +56,7 @@ public class AuthorizationController extends AbstractController {
 
     @FXML
     private void authorize() {
+        authorizationButton.setDisable(true);
         try {
             boolean success = model.authorize(loginField.getText(), passwordField.getText());
             if (success) {
@@ -61,12 +64,13 @@ public class AuthorizationController extends AbstractController {
                         new MenuController(model.getConnectionHandler(), model.getUserLogin(), model.getUserPassword()), getCurrentLocale());
             } else {
                 System.out.println("net takogo uzera");
+                authorizationButton.setDisable(false);
                 //покажи текст об ошибке авторизации
             }
         } catch (UserException e) {
+            authorizationButton.setDisable(false);
             loginField.clear();
             passwordField.clear();
-            e.showAlert();
         }
     }
 

@@ -8,6 +8,7 @@ public class ConnectionModel {
 
     private ConnectionHandlerClient connectionHandler;
 
+
     public void initializeConnectionHandler(String address, String port) throws UserException {
         try {
             connectionHandler = new ConnectionHandlerClient(address);

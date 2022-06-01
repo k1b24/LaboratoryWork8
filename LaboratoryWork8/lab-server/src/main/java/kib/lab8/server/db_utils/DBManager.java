@@ -67,7 +67,6 @@ public class DBManager {
             statement.executeUpdate();
             return true;
         } catch (SQLException e) {
-            e.printStackTrace();
             Config.getTextSender().printMessage(new ErrorMessage("Произошла ошибка при работе с базой данных при добавлении нового пользователя"));
             return false;
         } catch (NoSuchAlgorithmException e) {
