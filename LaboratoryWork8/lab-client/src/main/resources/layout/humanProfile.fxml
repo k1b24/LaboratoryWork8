@@ -17,7 +17,7 @@
    <children>
       <Pane prefHeight="77.0" prefWidth="500.0" style="-fx-background-color: #4BBB56;">
          <children>
-            <Text layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HUMAN PROFILE" textAlignment="CENTER" wrappingWidth="500.0000000000001">
+            <Text layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%HUMAN_PROFILE" textAlignment="CENTER" wrappingWidth="500.0000000000001">
                <font>
                   <Font name="Exo 2 Regular" size="32.0" />
                </font>
@@ -47,76 +47,76 @@
             <Insets top="20.0" />
          </padding>
       </VBox>
-      <VBox fx:id="fieldsVBox" alignment="TOP_RIGHT" layoutX="222.0" layoutY="85.0" prefHeight="392.0" prefWidth="126.0" spacing="9.0">
+      <VBox fx:id="fieldsVBox" alignment="TOP_RIGHT" layoutX="222.0" layoutY="85.0" maxWidth="126.0" prefHeight="392.0" prefWidth="126.0" spacing="7.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%Name" textAlignment="RIGHT">
+            <Label alignment="CENTER_RIGHT" prefHeight="22.0" prefWidth="142.0" text="%Name" textAlignment="RIGHT">
                <font>
                   <Font name="Exo 2 Regular" size="17.0" />
                </font>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%Creation_date" textAlignment="RIGHT">
+            </Label>
+            <Label alignment="CENTER_RIGHT" prefHeight="22.0" prefWidth="143.0" text="%Creation_date" textAlignment="RIGHT">
                <font>
                   <Font name="Exo 2 Regular" size="17.0" />
                </font>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="X:" textAlignment="RIGHT">
+            </Label>
+            <Label alignment="CENTER_RIGHT" prefHeight="22.0" prefWidth="158.0" text="X:" textAlignment="RIGHT">
                <font>
                   <Font name="Exo 2 Regular" size="17.0" />
                </font>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Y:" textAlignment="RIGHT">
+            </Label>
+            <Label alignment="CENTER_RIGHT" prefHeight="22.0" prefWidth="172.0" text="Y:" textAlignment="RIGHT">
                <font>
                   <Font name="Exo 2 Regular" size="17.0" />
                </font>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%Real_hero" textAlignment="RIGHT">
+            </Label>
+            <Label alignment="CENTER_RIGHT" prefHeight="22.0" prefWidth="178.0" text="%Real_hero" textAlignment="RIGHT">
                <font>
                   <Font name="Exo 2 Regular" size="17.0" />
                </font>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%Popularity" textAlignment="RIGHT">
+            </Label>
+            <Label alignment="CENTER_RIGHT" prefHeight="22.0" prefWidth="169.0" text="%Popularity" textAlignment="RIGHT">
                <font>
                   <Font name="Exo 2 Regular" size="17.0" />
                </font>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%Impact_speed" textAlignment="RIGHT">
+            </Label>
+            <Label alignment="CENTER_RIGHT" text="%Impact_speed" textAlignment="RIGHT">
                <font>
                   <Font name="Exo 2 Regular" size="17.0" />
                </font>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%Weapon" textAlignment="RIGHT">
+            </Label>
+            <Label alignment="CENTER_RIGHT" prefHeight="22.0" prefWidth="214.0" text="%Weapon" textAlignment="RIGHT">
                <font>
                   <Font name="Exo 2 Regular" size="17.0" />
                </font>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%Mood" textAlignment="RIGHT">
+            </Label>
+            <Label alignment="CENTER_RIGHT" prefHeight="22.0" prefWidth="190.0" text="%Mood" textAlignment="RIGHT">
                <font>
                   <Font name="Exo 2 Regular" size="17.0" />
                </font>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%Car" textAlignment="RIGHT">
+            </Label>
+            <Label alignment="CENTER_RIGHT" prefHeight="22.0" prefWidth="157.0" text="%Car" textAlignment="RIGHT">
                <font>
                   <Font name="Exo 2 Regular" size="17.0" />
                </font>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%Car_coolness" textAlignment="RIGHT">
+            </Label>
+            <Label alignment="CENTER_RIGHT" prefHeight="22.0" prefWidth="141.0" text="%Car_coolness" textAlignment="RIGHT">
                <font>
                   <Font name="Exo 2 Regular" size="17.0" />
                </font>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%Car_speed" textAlignment="RIGHT">
+            </Label>
+            <Label alignment="CENTER_RIGHT" prefHeight="22.0" prefWidth="157.0" text="%Car_speed" textAlignment="RIGHT">
                <font>
                   <Font name="Exo 2 Regular" size="17.0" />
                </font>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%Author" textAlignment="RIGHT">
+            </Label>
+            <Label alignment="CENTER_RIGHT" prefHeight="22.0" prefWidth="157.0" text="%Author" textAlignment="RIGHT">
                <font>
                   <Font name="Exo 2 Regular" size="17.0" />
                </font>
-            </Text>
+            </Label>
          </children>
          <padding>
-            <Insets right="5.0" top="8.0" />
+            <Insets right="5.0" top="6.0" />
          </padding>
       </VBox>
       <VBox fx:id="valuesVBox" layoutX="360.0" layoutY="85.0" maxWidth="126.0" prefHeight="392.0" prefWidth="126.0" spacing="7.0">
