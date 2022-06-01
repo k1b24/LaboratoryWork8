@@ -14,6 +14,11 @@ public class Info extends AbstractCommand {
 
     @Override
     public Object execute(CommandRequest request) {
+        try {
+            Thread.sleep(7000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         return new CommandResponse(new SuccessMessage(super.getDataManager().getCollectionManager().getInfoAboutCollection()));
     }
 }

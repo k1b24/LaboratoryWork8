@@ -1,6 +1,7 @@
 package kib.lab8.client.gui.controllers;
 
 import javafx.application.Platform;
+import javafx.beans.Observable;
 import javafx.beans.property.SimpleFloatProperty;
 import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -104,7 +105,6 @@ public class TableViewController extends DataVisualizerController {
 
     @FXML
     private Pagination pagination;
-
     private final ObservableList<HumanBeing> observableHumanBeingList = FXCollections.observableArrayList();
     private HumanBeing chosenHuman;
 
@@ -142,6 +142,7 @@ public class TableViewController extends DataVisualizerController {
         setToolTip(name);
         setToolTip(weapon);
         setToolTip(author);
+        humanTable.getSortOrder().add(id);
     }
 
     public void setToolTip(TableColumn<HumanBeing, String> tableColumn) {
@@ -169,7 +170,6 @@ public class TableViewController extends DataVisualizerController {
 
     @Override
     public void updateInfo(List<HumanBeing> humanBeingList) {
-        //TODO сделать реакцию обновлений на сортировку и фильтр
         observableHumanBeingList.clear();
         observableHumanBeingList.addAll(humanBeingList);
         updatePagination();
@@ -177,20 +177,24 @@ public class TableViewController extends DataVisualizerController {
 
     private void updatePagination() {
         Platform.runLater(new Runnable() {
+            int currentPage;
             @Override
             public void run() {
+                currentPage = pagination.getCurrentPageIndex();
                 pagination.setPageCount(observableHumanBeingList.size() / ROWS_PER_PAGE + 1);
                 pagination.setPageFactory(this::createPage);
+                pagination.setCurrentPageIndex(currentPage);
             }
 
             private Node createPage(int pageIndex) {
                 int from = pageIndex * ROWS_PER_PAGE;
                 int to = Math.min(from + ROWS_PER_PAGE, observableHumanBeingList.size());
+                ObservableList<TableColumn<HumanBeing, ?>> sortOrder = FXCollections.observableArrayList(humanTable.getSortOrder());
                 humanTable.setItems(FXCollections.observableArrayList(observableHumanBeingList.subList(from, to)));
+                humanTable.getSortOrder().addAll(sortOrder);
+                humanTable.sort();
                 return humanTable;
             }
         });
-
     }
-
 }

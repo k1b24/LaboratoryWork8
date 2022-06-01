@@ -46,7 +46,7 @@ public class AuthorizationController extends AbstractController {
             boolean success = model.authorize(loginField.getText(), passwordField.getText());
             if (success) {
                 changeScene(GUIConfig.MAIN_WINDOW_PATH, controllerClass ->
-                        new MenuController(model.getConnectionHandler(), model.getUserLogin(), model.getUserPassword()));
+                        new MenuController(model.getConnectionHandler(), model.getUserLogin(), model.getUserPassword()), getCurrentLocale());
             } else {
                 System.out.println("net takogo uzera");
                 //покажи текст об ошибке авторизации
@@ -61,7 +61,7 @@ public class AuthorizationController extends AbstractController {
     @FXML
     private void register() {
         try {
-            changeScene(GUIConfig.REGISTRATION_PATH, controllerClass -> new RegistrationController(model.getConnectionHandler()));
+            changeScene(GUIConfig.REGISTRATION_PATH, controllerClass -> new RegistrationController(model.getConnectionHandler()), getCurrentLocale());
         } catch (UserException e) {
             e.showAlert();
         }
