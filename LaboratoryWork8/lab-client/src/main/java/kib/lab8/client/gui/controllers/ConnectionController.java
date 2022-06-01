@@ -41,7 +41,6 @@ public class ConnectionController extends AbstractController {
     @FXML
     private void initialize() {
         languagesChoiceBox.setItems(languages);
-//        languagesChoiceBox.setValue(LanguagesEnum.ENGLISH);
         languagesChoiceBox.setOnAction(event -> {
             LanguagesEnum chosenLanguage = languagesChoiceBox.getValue();
             try {
