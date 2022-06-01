@@ -6,10 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -105,10 +102,10 @@ public class AddCommandController extends ChildWindowController {
     private Button clearFieldsButton;
 
     @FXML
-    private Text carCoolnessText;
+    private Label carCoolnessText;
 
     @FXML
-    private Text carSpeedText;
+    private Label carSpeedText;
 
     @FXML
     private CheckBox carCheckBox;

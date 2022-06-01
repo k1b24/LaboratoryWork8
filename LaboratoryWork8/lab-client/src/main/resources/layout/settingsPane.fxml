@@ -1,16 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane fx:id="settingsPane" prefHeight="400.0" prefWidth="600.0" styleClass="left_menu_pane" stylesheets="@../styles/pane.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kib.lab8.client.gui.controllers.SettingsController">
+<AnchorPane fx:id="settingsPane" maxHeight="400.0" maxWidth="600.0" prefHeight="400.0" prefWidth="600.0" styleClass="left_menu_pane" stylesheets="@../styles/pane.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kib.lab8.client.gui.controllers.SettingsController">
    <children>
       <Text layoutX="46.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SETTINGS">
          <font>
             <Font name="Exo 2 Regular" size="28.0" />
          </font>
       </Text>
+      <VBox layoutX="6.0" layoutY="52.0" maxHeight="354.0" maxWidth="94.0" prefHeight="354.0" prefWidth="94.0">
+         <children>
+            <Label fx:id="languagesLabel" maxHeight="27.0" maxWidth="105.0" prefHeight="27.0" prefWidth="105.0" text="Language">
+               <font>
+                  <Font name="Exo 2 Regular" size="19.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <VBox layoutX="109.0" layoutY="52.0" prefHeight="354.0" prefWidth="94.0">
+         <children>
+            <ChoiceBox fx:id="languagesChoiceBox" prefHeight="27.0" prefWidth="53.0" stylesheets="@../styles/choisebox.css" />
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

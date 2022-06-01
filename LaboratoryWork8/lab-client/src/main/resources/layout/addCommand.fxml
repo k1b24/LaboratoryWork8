@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
@@ -27,9 +28,9 @@
             <Font name="Exo 2 Regular" size="18.0" />
          </font>
       </Button>
-      <Pane fx:id="fillingPane" layoutX="10.0" layoutY="101.0" prefHeight="441.0" prefWidth="332.0">
+      <Pane fx:id="fillingPane" layoutX="10.0" layoutY="101.0" maxHeight="441.0" maxWidth="332.0" prefHeight="441.0" prefWidth="332.0">
          <children>
-            <VBox layoutX="172.0" layoutY="32.0" prefHeight="396.0" prefWidth="154.0" spacing="13.0">
+            <VBox layoutX="172.0" layoutY="32.0" prefHeight="401.0" prefWidth="154.0" spacing="13.0">
                <children>
                   <TextField fx:id="name" styleClass="green_bordered_text_field" stylesheets="@../styles/text_field.css" />
                   <TextField styleClass="green_bordered_text_field" stylesheets="@../styles/text_field.css" fx:id="x" />
@@ -46,7 +47,7 @@
                   </CheckBox>
                   <TextField fx:id="impactSpeed" styleClass="green_bordered_text_field" stylesheets="@../styles/text_field.css" />
                   <ChoiceBox fx:id="weapon" prefHeight="30.0" prefWidth="154.0" stylesheets="@../styles/choisebox.css" />
-                  <ChoiceBox fx:id="mood" prefHeight="31.0" prefWidth="154.0" styleClass="green_bordered_text_field" stylesheets="@../styles/choisebox.css" />
+                  <ChoiceBox fx:id="mood" prefHeight="28.0" prefWidth="154.0" styleClass="green_bordered_text_field" stylesheets="@../styles/choisebox.css" />
                   <CheckBox fx:id="carCoolness" mnemonicParsing="false" stylesheets="@../styles/checkbox.css">
                      <font>
                         <Font name="Exo 2 Regular" size="19.0" />
@@ -61,61 +62,61 @@
                   <Insets top="1.0" />
                </padding>
             </VBox>
-            <VBox alignment="TOP_RIGHT" layoutY="32.0" prefHeight="396.0" prefWidth="164.0" spacing="18.0">
+            <VBox alignment="TOP_RIGHT" layoutY="30.0" maxHeight="401.0" maxWidth="164.0" prefHeight="401.0" prefWidth="164.0" spacing="18.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%NAME" textAlignment="RIGHT" wrappingWidth="156.48599529266357">
+                  <Label alignment="CENTER_RIGHT" prefHeight="1.0" prefWidth="162.0" text="%NAME" textAlignment="RIGHT">
                      <font>
                         <Font name="Exo 2 Regular" size="18.0" />
                      </font>
-                  </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="X" textAlignment="RIGHT" wrappingWidth="158.88601994514465">
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" prefHeight="10.0" prefWidth="162.0" text="X" textAlignment="RIGHT">
                      <font>
                         <Font name="Exo 2 Regular" size="18.0" />
                      </font>
-                  </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Y" textAlignment="RIGHT" wrappingWidth="158.8859589099884">
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" prefHeight="0.0" prefWidth="162.0" text="Y" textAlignment="RIGHT">
                      <font>
                         <Font name="Exo 2 Regular" size="18.0" />
                      </font>
-                  </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%REAL_HERO" textAlignment="RIGHT" wrappingWidth="159.6860077381134">
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" prefHeight="14.0" prefWidth="162.0" text="%REAL_HERO" textAlignment="RIGHT">
                      <font>
                         <Font name="Exo 2 Regular" size="18.0" />
                      </font>
-                  </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%POPULARITY" textAlignment="RIGHT" wrappingWidth="160.4860029220581">
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" prefHeight="0.0" prefWidth="162.0" text="%POPULARITY" textAlignment="RIGHT">
                      <font>
                         <Font name="Exo 2 Regular" size="18.0" />
                      </font>
-                  </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%IMPACT_SPEED" textAlignment="RIGHT" wrappingWidth="160.48599553108215">
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" prefHeight="9.0" prefWidth="162.0" text="%IMPACT_SPEED" textAlignment="RIGHT">
                      <font>
                         <Font name="Exo 2 Regular" size="18.0" />
                      </font>
-                  </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%WEAPON" textAlignment="RIGHT" wrappingWidth="161.28604435920715">
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" prefHeight="0.0" prefWidth="162.0" text="%WEAPON" textAlignment="RIGHT">
                      <font>
                         <Font name="Exo 2 Regular" size="18.0" />
                      </font>
-                  </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%MOOD" textAlignment="RIGHT" wrappingWidth="160.48599553108215">
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" prefHeight="0.0" prefWidth="162.0" text="%MOOD" textAlignment="RIGHT">
                      <font>
                         <Font name="Exo 2 Regular" size="18.0" />
                      </font>
-                  </Text>
-                  <Text fx:id="carCoolnessText" strokeType="OUTSIDE" strokeWidth="0.0" text="%CAR_COOLNESS" textAlignment="RIGHT" wrappingWidth="159.68601512908936">
+                  </Label>
+                  <Label fx:id="carCoolnessText" alignment="CENTER_RIGHT" prefHeight="26.0" prefWidth="162.0" text="%CAR_COOLNESS" textAlignment="RIGHT">
                      <font>
                         <Font name="Exo 2 Regular" size="18.0" />
                      </font>
-                  </Text>
-                  <Text fx:id="carSpeedText" strokeType="OUTSIDE" strokeWidth="0.0" text="%CAR_SPEED" textAlignment="RIGHT" wrappingWidth="160.4860029220581">
+                  </Label>
+                  <Label fx:id="carSpeedText" alignment="CENTER_RIGHT" prefHeight="9.0" prefWidth="162.0" text="%CAR_SPEED" textAlignment="RIGHT">
                      <font>
                         <Font name="Exo 2 Regular" size="18.0" />
                      </font>
-                  </Text>
+                  </Label>
                </children>
                <padding>
-                  <Insets right="2.0" top="3.0" />
+                  <Insets right="2.0" top="5.0" />
                </padding>
             </VBox>
             <CheckBox fx:id="carCheckBox" layoutX="14.0" layoutY="5.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="154.0" selected="true" stylesheets="@../styles/checkbox.css" text="%CAR">

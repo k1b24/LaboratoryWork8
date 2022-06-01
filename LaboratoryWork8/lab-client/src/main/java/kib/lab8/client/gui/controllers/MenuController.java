@@ -85,6 +85,7 @@ public class MenuController extends AbstractController {
 
     @FXML
     private void initialize() {
+
         nickname.setText(model.getUserLogin());
         tableButton.setDisable(false);
         visualizeButton.setDisable(false);
