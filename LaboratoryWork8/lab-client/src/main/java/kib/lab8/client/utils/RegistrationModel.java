@@ -1,5 +1,8 @@
 package kib.lab8.client.utils;
 
+import javafx.application.Platform;
+import javafx.beans.property.ObjectProperty;
+import kib.lab8.common.abstractions.ResponseInterface;
 import kib.lab8.common.util.client_server_communication.requests.SignUpRequest;
 import kib.lab8.common.util.client_server_communication.responses.AuthenticationResponse;
 
@@ -27,9 +30,11 @@ public class RegistrationModel {
                 throw new UserException(authenticationResponse.getMessage().getMessage());
             }
         } catch (IOException e) {
+            Platform.setImplicitExit(false);
             throw new UserException("Произошла ошибка при коммуникации с сервером, "
                     + "повторите попытку");
         } catch (ClassNotFoundException e) {
+            Platform.setImplicitExit(false);
             throw new UserException("Произошла ошибка при получении ответа с сервера. Пожалуйста, повторите попытку");
         }
     }

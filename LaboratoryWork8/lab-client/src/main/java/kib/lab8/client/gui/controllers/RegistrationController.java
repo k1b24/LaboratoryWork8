@@ -1,5 +1,7 @@
 package kib.lab8.client.gui.controllers;
 
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -8,6 +10,7 @@ import kib.lab8.client.gui.abstractions.AbstractController;
 import kib.lab8.client.utils.ConnectionHandlerClient;
 import kib.lab8.client.utils.RegistrationModel;
 import kib.lab8.client.utils.UserException;
+import kib.lab8.common.abstractions.ResponseInterface;
 
 public class RegistrationController extends AbstractController {
 
@@ -27,17 +30,20 @@ public class RegistrationController extends AbstractController {
     private TextField secondPasswordField;
     private final RegistrationModel model;
 
+
     public RegistrationController(ConnectionHandlerClient connectionHandler) {
         model = new RegistrationModel(connectionHandler);
     }
 
     @FXML
     private void register() {
+        registerButton.setDisable(true);
         if (passwordField.getText().equals(secondPasswordField.getText())) {
             try {
                 model.sendSignUpRequest(loginField.getText(), passwordField.getText());
                 changeScene(GUIConfig.AUTHORIZATION_PATH, controllerClass -> new AuthorizationController(model.getConnectionHandler()), getCurrentLocale());
             } catch (UserException e) {
+                registerButton.setDisable(false);
                 e.showAlert();
                 loginField.clear();
                 passwordField.clear();
