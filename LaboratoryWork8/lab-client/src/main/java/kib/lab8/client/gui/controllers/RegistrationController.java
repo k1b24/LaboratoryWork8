@@ -36,7 +36,7 @@ public class RegistrationController extends AbstractController {
         if (passwordField.getText().equals(secondPasswordField.getText())) {
             try {
                 model.sendSignUpRequest(loginField.getText(), passwordField.getText());
-                changeScene(GUIConfig.AUTHORIZATION_PATH, controllerClass -> new AuthorizationController(model.getConnectionHandler()));
+                changeScene(GUIConfig.AUTHORIZATION_PATH, controllerClass -> new AuthorizationController(model.getConnectionHandler()), getCurrentLocale());
             } catch (UserException e) {
                 e.showAlert();
                 loginField.clear();
@@ -48,7 +48,7 @@ public class RegistrationController extends AbstractController {
 
     public void authorization() {
         try {
-            changeScene(GUIConfig.AUTHORIZATION_PATH, controllerClass -> new AuthorizationController(model.getConnectionHandler()));
+            changeScene(GUIConfig.AUTHORIZATION_PATH, controllerClass -> new AuthorizationController(model.getConnectionHandler()), getCurrentLocale());
         } catch (UserException e) {
             e.showAlert();
         }

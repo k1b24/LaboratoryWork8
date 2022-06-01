@@ -12,17 +12,20 @@ import java.util.Objects;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.stream.Collectors;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class MenuModel {
 
-    private final static int UPDATE_TIME = 5000;
+    private static final int THREADS = Runtime.getRuntime().availableProcessors();
+    private final static int UPDATE_TIME = 60000;
     private final ConnectionHandlerClient connectionHandler;
     private final String userLogin;
     private final String userPassword;
     private final Timer timer = new Timer(true);
     private final List<HumanBeing> humanCollection = new CopyOnWriteArrayList<>();
     private final MenuController controller;
+    private final ExecutorService executorService = Executors.newFixedThreadPool(THREADS);
 
 
 
@@ -49,8 +52,15 @@ public class MenuModel {
     }
 
     public void executeCommand(ExecutableCommand command, Object... args) throws UserException {
-        String message = command.action(connectionHandler, userLogin, userPassword, args).getMessage();
-        controller.getTerminal().appendText(message + "\n");
+        executorService.submit(() -> {
+            String message;
+            try {
+                message = command.action(connectionHandler, userLogin, userPassword, args).getMessage();
+            } catch (UserException e) {
+                throw new RuntimeException(e);
+            }
+            controller.getTerminal().appendText(message + "\n");
+        });
     }
 
     public List<HumanBeing> getCollection() {

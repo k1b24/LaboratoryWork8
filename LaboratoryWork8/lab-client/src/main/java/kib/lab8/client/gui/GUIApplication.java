@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import kib.lab8.client.gui.abstractions.AbstractController;
+import kib.lab8.client.gui.localization.LanguagesEnum;
 import kib.lab8.client.gui.localization.Localization;
 
 import java.io.IOException;
@@ -23,13 +24,13 @@ public class GUIApplication extends Application {
     public void start(Stage primaryStage) throws IOException {
         FXMLLoader mainWindowLoader = new FXMLLoader();
         mainWindowLoader.setLocation(getClass().getResource(CONNECTION_PATH));
-        Localization localization = new Localization();
+        Localization localization = new Localization(LanguagesEnum.ENGLISH);
         mainWindowLoader.setResources(localization.getResourceBundle());
         Parent root = mainWindowLoader.load();
         AbstractController controller = mainWindowLoader.getController();
         controller.setStage(primaryStage);
-
-
+        controller.setResourceBundle(localization.getResourceBundle());
+        controller.setCurrentLocale(LanguagesEnum.ENGLISH);
         primaryStage.getIcons().add(getCornerImage());
 
         primaryStage.setTitle("Be human");

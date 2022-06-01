@@ -25,6 +25,7 @@ import kib.lab8.common.entities.HumanBeing;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.ResourceBundle;
 
 
 public class MenuController extends AbstractController {
@@ -85,9 +86,9 @@ public class MenuController extends AbstractController {
     @FXML
     private void initialize() {
         nickname.setText(model.getUserLogin());
-        loadUI(GUIConfig.TABLEVIEW_PATH, visualPane, ChildUIType.VISUALISATION);
-        tableButton.setDisable(true);
+        tableButton.setDisable(false);
         visualizeButton.setDisable(false);
+        System.out.println();
     }
 
     public MenuController(ConnectionHandlerClient connectionHandler, String username, String password) {
@@ -193,7 +194,7 @@ public class MenuController extends AbstractController {
     protected void loadUI(String uiPath, Pane targetPane, ChildUIType uiType) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(uiPath));
-            Localization localization = new Localization();
+            Localization localization = new Localization(getCurrentLocale());
             loader.setResources(localization.getResourceBundle());
             if (uiType.equals(ChildUIType.VISUALISATION)) {
                 Parent parent = loader.load();

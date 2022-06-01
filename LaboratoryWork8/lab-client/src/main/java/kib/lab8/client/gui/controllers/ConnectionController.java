@@ -41,7 +41,15 @@ public class ConnectionController extends AbstractController {
     @FXML
     private void initialize() {
         languagesChoiceBox.setItems(languages);
-        languagesChoiceBox.setValue(LanguagesEnum.ENGLISH);
+//        languagesChoiceBox.setValue(LanguagesEnum.ENGLISH);
+        languagesChoiceBox.setOnAction(event -> {
+            LanguagesEnum chosenLanguage = languagesChoiceBox.getValue();
+            try {
+                changeScene(GUIConfig.CONNECTION_PATH, controllerClass -> new ConnectionController(), chosenLanguage);
+            } catch (UserException e) {
+                e.showAlert();
+            }
+        });
         portField.setOnKeyPressed(keyEvent -> {
             if (keyEvent.getCode() == KeyCode.ENTER) {
                 connect();
@@ -57,7 +65,7 @@ public class ConnectionController extends AbstractController {
     private void connect() {
         try {
             model.initializeConnectionHandler(hostField.getText(), portField.getText());
-            changeScene(GUIConfig.AUTHORIZATION_PATH, controllerClass -> new AuthorizationController(model.getConnectionHandler()));
+            changeScene(GUIConfig.AUTHORIZATION_PATH, controllerClass -> new AuthorizationController(model.getConnectionHandler()), getCurrentLocale());
         } catch (UserException e) {
             e.showAlert();
             hostField.clear();
