@@ -22,7 +22,12 @@ public class VisualizationController extends DataVisualizerController {
     }
 
     @Override
-    public void updateInfo(List<HumanBeing> humanBeingList) {
+    public void updateInfo(List<HumanBeing> elementsToRemove, List<HumanBeing> elementsToAdd, List<HumanBeing> elementsToUpdate) {
+
+    }
+
+    @Override
+    public void setInfo(List<HumanBeing> elementsToSet) {
 
     }
 

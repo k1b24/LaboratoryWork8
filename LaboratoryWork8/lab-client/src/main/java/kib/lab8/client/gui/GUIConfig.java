@@ -28,8 +28,7 @@ public class GUIConfig {
 
     public static Image getRandomHumanImage() {
         Random random = new Random();
-        //InputStream imageStream = GUIConfig.class.getResourceAsStream("/human_images/9.jpg");
-        InputStream imageStream = GUIConfig.class.getResourceAsStream("/human_images/" + String.valueOf(random.nextInt(9) + 1 ) + ".jpg");
+        InputStream imageStream = GUIConfig.class.getResourceAsStream("/human_images/" + (random.nextInt(8) + 1) + ".jpg");
         return new Image(imageStream);
     }
 }

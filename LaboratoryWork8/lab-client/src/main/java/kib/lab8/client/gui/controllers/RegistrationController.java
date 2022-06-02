@@ -1,7 +1,6 @@
 package kib.lab8.client.gui.controllers;
 
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -10,7 +9,7 @@ import kib.lab8.client.gui.abstractions.AbstractController;
 import kib.lab8.client.utils.ConnectionHandlerClient;
 import kib.lab8.client.utils.RegistrationModel;
 import kib.lab8.client.utils.UserException;
-import kib.lab8.common.abstractions.ResponseInterface;
+
 
 public class RegistrationController extends AbstractController {
 
