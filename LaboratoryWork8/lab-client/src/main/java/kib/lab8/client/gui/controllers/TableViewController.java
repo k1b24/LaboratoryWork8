@@ -147,7 +147,7 @@ public class TableViewController extends DataVisualizerController {
         setToolTip(weapon);
         setToolTip(author);
         humanTable.getSortOrder().add(id);
-        setUpFiltration();
+        setUpFiltration(observableHumanBeingList);
     }
 
     public void setToolTip(TableColumn<HumanBeing, String> tableColumn) {
@@ -180,7 +180,7 @@ public class TableViewController extends DataVisualizerController {
         List<Long> updatedIds = elementsToUpdate.stream().map(HumanBeing::getId).collect(Collectors.toList());
         observableHumanBeingList.removeIf(human -> updatedIds.contains(human.getId()));
         observableHumanBeingList.addAll(elementsToUpdate);
-//        updatePagination();
+        updatePagination();
     }
 
     @Override
@@ -189,31 +189,33 @@ public class TableViewController extends DataVisualizerController {
         observableHumanBeingList.addAll(elementsToSet);
     }
 
-//    private void updatePagination() {
-//        Platform.runLater(new Runnable() {
-//            int currentPage;
-//            @Override
-//            public void run() {
-//                currentPage = pagination.getCurrentPageIndex();
-//                pagination.setPageCount(observableHumanBeingList.size() / ROWS_PER_PAGE + 1);
-//                pagination.setPageFactory(this::createPage);
-//                pagination.setCurrentPageIndex(currentPage);
-//            }
-//
-//            private Node createPage(int pageIndex) {
-//                int from = pageIndex * ROWS_PER_PAGE;
-//                int to = Math.min(from + ROWS_PER_PAGE, observableHumanBeingList.size());
-//                ObservableList<TableColumn<HumanBeing, ?>> sortOrder = FXCollections.observableArrayList(humanTable.getSortOrder());
-//                humanTable.setItems(FXCollections.observableArrayList(observableHumanBeingList.subList(from, to)));
-//                humanTable.getSortOrder().addAll(sortOrder);
-//                humanTable.sort();
-//                return humanTable;
-//            }
-//        });
-//    }
+    private void updatePagination() {
+        Platform.runLater(new Runnable() {
+            int currentPage;
+            @Override
+            public void run() {
+                currentPage = pagination.getCurrentPageIndex();
+                pagination.setPageCount(observableHumanBeingList.size() / ROWS_PER_PAGE + 1);
+                pagination.setPageFactory(this::createPage);
+                pagination.setCurrentPageIndex(currentPage);
+            }
 
-    private void setUpFiltration() {
-        FilteredList<HumanBeing> filteredList = new FilteredList<>(observableHumanBeingList, t -> true);
+            private Node createPage(int pageIndex) {
+                int from = pageIndex * ROWS_PER_PAGE;
+                int to = Math.min(from + ROWS_PER_PAGE, observableHumanBeingList.size());
+                ObservableList<TableColumn<HumanBeing, ?>> sortOrder = FXCollections.observableArrayList(humanTable.getSortOrder());
+                ObservableList<HumanBeing> pageHumansList = FXCollections.observableArrayList(observableHumanBeingList.subList(from, to));
+                humanTable.setItems(pageHumansList);
+                setUpFiltration(pageHumansList);
+                humanTable.getSortOrder().addAll(sortOrder);
+                humanTable.sort();
+                return humanTable;
+            }
+        });
+    }
+
+    private void setUpFiltration(ObservableList<HumanBeing> humanBeingObservableList) {
+        FilteredList<HumanBeing> filteredList = new FilteredList<>(humanBeingObservableList, t -> true);
         idFilter.textProperty().addListener((observable, oldValue, newValue) ->
                 filteredList.setPredicate(humanBeing -> String.valueOf(humanBeing.getId()).startsWith(newValue)));
         nameFilter.textProperty().addListener((observable, oldValue, newValue) ->
