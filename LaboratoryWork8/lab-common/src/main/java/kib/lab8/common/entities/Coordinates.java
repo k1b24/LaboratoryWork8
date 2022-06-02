@@ -47,4 +47,12 @@ public class Coordinates implements Serializable {
     public int hashCode() {
         return (int) (x + y);
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null || !obj.getClass().equals(this.getClass())) {
+            return false;
+        }
+        return obj.hashCode() == this.hashCode();
+    }
 }

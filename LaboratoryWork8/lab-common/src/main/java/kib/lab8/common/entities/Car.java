@@ -49,4 +49,12 @@ public class Car implements Serializable {
     public int hashCode() {
         return carSpeed + (carCoolness ? 1 : 0);
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null || !obj.getClass().equals(this.getClass())) {
+            return false;
+        }
+        return obj.hashCode() == this.hashCode();
+    }
 }

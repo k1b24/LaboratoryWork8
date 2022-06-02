@@ -60,7 +60,6 @@ public enum ExecutableCommand {
             CommandResponse response = (CommandResponse) connectionHandler.sendRequest(request);
             return response.getMessage();
         } catch (SocketTimeoutException e) {
-            System.out.println("da");
             throw new UserException("От сервера не был получен ответ, закрываюсь...", true);
         } catch (IOException e) {
             throw new UserException("Произошла ошибка при коммуникации с сервером, "

@@ -1,13 +1,15 @@
 package kib.lab8.client.gui.controllers;
 
 import javafx.application.Platform;
-import javafx.beans.Observable;
 import javafx.beans.property.SimpleFloatProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
@@ -17,7 +19,9 @@ import kib.lab8.client.gui.abstractions.DataVisualizerController;
 import kib.lab8.client.utils.ChildUIType;
 import kib.lab8.common.entities.HumanBeing;
 
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class TableViewController extends DataVisualizerController {
 
@@ -123,7 +127,7 @@ public class TableViewController extends DataVisualizerController {
         creationDate.setCellValueFactory(new PropertyValueFactory<>("creationDate"));
         realHero.setCellValueFactory(new PropertyValueFactory<>("realHero"));
         popularity.setCellValueFactory(new PropertyValueFactory<>("hasToothpick"));
-        impactSpeed.setCellValueFactory(humanBeing -> new SimpleObjectProperty<>(humanBeing.getValue().getImpactSpeed()));
+        impactSpeed.setCellValueFactory(humanBeing -> new SimpleIntegerProperty(humanBeing.getValue().getImpactSpeed()).asObject());
         weapon.setCellValueFactory(humanBeing -> new SimpleStringProperty(humanBeing.getValue().getWeaponType() != null
                 ? humanBeing.getValue().getWeaponType().toString()
                 : "-"));
@@ -143,6 +147,7 @@ public class TableViewController extends DataVisualizerController {
         setToolTip(weapon);
         setToolTip(author);
         humanTable.getSortOrder().add(id);
+        setUpFiltration();
     }
 
     public void setToolTip(TableColumn<HumanBeing, String> tableColumn) {
@@ -169,32 +174,74 @@ public class TableViewController extends DataVisualizerController {
     }
 
     @Override
-    public void updateInfo(List<HumanBeing> humanBeingList) {
-        observableHumanBeingList.clear();
-        observableHumanBeingList.addAll(humanBeingList);
-        updatePagination();
+    public void updateInfo(List<HumanBeing> elementsToRemove, List<HumanBeing> elementsToAdd, List<HumanBeing> elementsToUpdate) {
+        observableHumanBeingList.removeAll(elementsToRemove);
+        observableHumanBeingList.addAll(elementsToAdd);
+        List<Long> updatedIds = elementsToUpdate.stream().map(HumanBeing::getId).collect(Collectors.toList());
+        observableHumanBeingList.removeIf(human -> updatedIds.contains(human.getId()));
+        observableHumanBeingList.addAll(elementsToUpdate);
+//        updatePagination();
     }
 
-    private void updatePagination() {
-        Platform.runLater(new Runnable() {
-            int currentPage;
-            @Override
-            public void run() {
-                currentPage = pagination.getCurrentPageIndex();
-                pagination.setPageCount(observableHumanBeingList.size() / ROWS_PER_PAGE + 1);
-                pagination.setPageFactory(this::createPage);
-                pagination.setCurrentPageIndex(currentPage);
-            }
+    @Override
+    public void setInfo(List<HumanBeing> elementsToSet) {
+        observableHumanBeingList.clear();
+        observableHumanBeingList.addAll(elementsToSet);
+    }
 
-            private Node createPage(int pageIndex) {
-                int from = pageIndex * ROWS_PER_PAGE;
-                int to = Math.min(from + ROWS_PER_PAGE, observableHumanBeingList.size());
-                ObservableList<TableColumn<HumanBeing, ?>> sortOrder = FXCollections.observableArrayList(humanTable.getSortOrder());
-                humanTable.setItems(FXCollections.observableArrayList(observableHumanBeingList.subList(from, to)));
-                humanTable.getSortOrder().addAll(sortOrder);
-                humanTable.sort();
-                return humanTable;
-            }
-        });
+//    private void updatePagination() {
+//        Platform.runLater(new Runnable() {
+//            int currentPage;
+//            @Override
+//            public void run() {
+//                currentPage = pagination.getCurrentPageIndex();
+//                pagination.setPageCount(observableHumanBeingList.size() / ROWS_PER_PAGE + 1);
+//                pagination.setPageFactory(this::createPage);
+//                pagination.setCurrentPageIndex(currentPage);
+//            }
+//
+//            private Node createPage(int pageIndex) {
+//                int from = pageIndex * ROWS_PER_PAGE;
+//                int to = Math.min(from + ROWS_PER_PAGE, observableHumanBeingList.size());
+//                ObservableList<TableColumn<HumanBeing, ?>> sortOrder = FXCollections.observableArrayList(humanTable.getSortOrder());
+//                humanTable.setItems(FXCollections.observableArrayList(observableHumanBeingList.subList(from, to)));
+//                humanTable.getSortOrder().addAll(sortOrder);
+//                humanTable.sort();
+//                return humanTable;
+//            }
+//        });
+//    }
+
+    private void setUpFiltration() {
+        FilteredList<HumanBeing> filteredList = new FilteredList<>(observableHumanBeingList, t -> true);
+        idFilter.textProperty().addListener((observable, oldValue, newValue) ->
+                filteredList.setPredicate(humanBeing -> String.valueOf(humanBeing.getId()).startsWith(newValue)));
+        nameFilter.textProperty().addListener((observable, oldValue, newValue) ->
+                filteredList.setPredicate(humanBeing -> humanBeing.getName().toLowerCase().contains(newValue.toLowerCase())));
+        xFilter.textProperty().addListener((observable, oldValue, newValue) ->
+                filteredList.setPredicate(humanBeing -> String.valueOf(humanBeing.getCoordinates().getX()).startsWith(newValue)));
+        yFilter.textProperty().addListener((observable, oldValue, newValue) ->
+                filteredList.setPredicate(humanBeing -> String.valueOf(humanBeing.getCoordinates().getY()).startsWith(newValue)));
+        creationDateFilter.textProperty().addListener((observable, oldValue, newValue) ->
+                filteredList.setPredicate(humanBeing -> String.valueOf(humanBeing.getCreationDate()).startsWith(newValue)));
+        realHeroFilter.textProperty().addListener((observable, oldValue, newValue) ->
+                filteredList.setPredicate(humanBeing -> String.valueOf(humanBeing.isRealHero()).startsWith(newValue)));
+        popularityFilter.textProperty().addListener((observable, oldValue, newValue) ->
+                filteredList.setPredicate(humanBeing -> String.valueOf(humanBeing.isHasToothpick()).startsWith(newValue)));
+        impactSpeedFilter.textProperty().addListener((observable, oldValue, newValue) ->
+                filteredList.setPredicate(humanBeing -> String.valueOf(humanBeing.getImpactSpeed()).toLowerCase().startsWith(newValue.toLowerCase())));
+        weaponFilter.textProperty().addListener((observable, oldValue, newValue) ->
+                filteredList.setPredicate(humanBeing -> String.valueOf(humanBeing.getWeaponType()).toLowerCase().startsWith(newValue.toLowerCase())));
+        moodFilter.textProperty().addListener((observable, oldValue, newValue) ->
+                filteredList.setPredicate(humanBeing -> String.valueOf(humanBeing.getMood()).startsWith(newValue)));
+        carCoolnessFilter.textProperty().addListener((observable, oldValue, newValue) ->
+                filteredList.setPredicate(humanBeing -> (humanBeing.getCar() == null ? "-" : String.valueOf(humanBeing.getCar().getCarCoolness())).startsWith(newValue)));
+        carSpeedFilter.textProperty().addListener((observable, oldValue, newValue) ->
+                filteredList.setPredicate(humanBeing -> (humanBeing.getCar() == null ? "-" : String.valueOf(humanBeing.getCar().getCarSpeed())).startsWith(newValue)));
+        authorFilter.textProperty().addListener((observable, oldValue, newValue) ->
+                filteredList.setPredicate(humanBeing -> (humanBeing.getAuthor().toLowerCase()).startsWith(newValue.toLowerCase())));
+        SortedList<HumanBeing> sortedList = new SortedList<>(filteredList);
+        sortedList.comparatorProperty().bind(humanTable.comparatorProperty());
+        humanTable.setItems(sortedList);
     }
 }

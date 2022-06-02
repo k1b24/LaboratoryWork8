@@ -1,8 +1,6 @@
 package kib.lab8.client.gui.controllers;
 
 import javafx.application.Platform;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -23,12 +21,10 @@ import kib.lab8.client.utils.ExecutableCommand;
 import kib.lab8.client.utils.MenuModel;
 import kib.lab8.client.utils.UserException;
 import kib.lab8.client.gui.abstractions.DataVisualizerController;
-import kib.lab8.common.abstractions.ResponseInterface;
 import kib.lab8.common.entities.HumanBeing;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.ResourceBundle;
 
 
 public class MenuController extends AbstractController {
@@ -85,19 +81,13 @@ public class MenuController extends AbstractController {
     private Text nickname;
     private final MenuModel model;
     private DataVisualizerController currentVisualizerController;
-    private ObjectProperty<ResponseInterface> recievedResponseProperty;
 
 
     @FXML
     private void initialize() {
-
         nickname.setText(model.getUserLogin());
         tableButton.setDisable(false);
         visualizeButton.setDisable(false);
-//        recievedResponseProperty = new SimpleObjectProperty<>(null);
-//        recievedResponseProperty.addListener((observable, response, newResponse) -> {
-//
-//        });
     }
 
     public MenuController(ConnectionHandlerClient connectionHandler, String username, String password) {
@@ -110,9 +100,7 @@ public class MenuController extends AbstractController {
 
     @FXML
     private void addButtonClicked() {
-        //TODO реализовать открытие окна с добавлением
         loadUI(GUIConfig.ADD_MENU_PATH, null, ChildUIType.SIMPLE_CHILD_WINDOW);
-
     }
 
     @FXML
@@ -152,7 +140,6 @@ public class MenuController extends AbstractController {
 
     @FXML
     private void removeButtonClicked() {
-        //TODO пока сделать открытие окна по кнопке, в дальнейшем придумать как удалять их прям из таблицы или из координат
         loadUI(GUIConfig.REMOVE_WINDOW_PATH, null, ChildUIType.SIMPLE_CHILD_WINDOW);
     }
 
@@ -207,7 +194,18 @@ public class MenuController extends AbstractController {
             if (uiType.equals(ChildUIType.VISUALISATION)) {
                 Parent parent = loader.load();
                 currentVisualizerController = loader.getController();
-                currentVisualizerController.updateInfo(model.getCollection());
+                try {
+                    model.updateCollection();
+                } catch (UserException e) {
+                    if (e.isFatal()) {
+                        e.showAlert();
+                        model.prepareForExit();
+                        closeApplication();
+                    } else {
+                        e.showAlert();
+                    }
+                }
+                currentVisualizerController.setInfo(model.getCollection());
                 currentVisualizerController.setParentController(this);
                 targetPane.getChildren().add(parent);
             } else if (uiType.equals(ChildUIType.SIMPLE_CHILD_WINDOW)) {
@@ -245,9 +243,9 @@ public class MenuController extends AbstractController {
         Platform.exit();
     }
 
-    public void notifyDataChanged(List<HumanBeing> humanBeingList) {
+    public void notifyDataChanged(List<HumanBeing> elementsToRemove, List<HumanBeing> elementsToAdd, List<HumanBeing> elementsToUpdate) {
         if (currentVisualizerController != null) {
-            currentVisualizerController.updateInfo(humanBeingList);
+            currentVisualizerController.updateInfo(elementsToRemove, elementsToAdd, elementsToUpdate);
         }
     }
 
@@ -258,6 +256,4 @@ public class MenuController extends AbstractController {
     public DataVisualizerController getCurrentVisualizerController() {
         return currentVisualizerController;
     }
-
-
 }

@@ -1,6 +1,5 @@
 package kib.lab8.client.gui.controllers;
 
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.Event;

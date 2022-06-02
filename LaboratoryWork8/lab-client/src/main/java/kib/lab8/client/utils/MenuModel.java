@@ -15,10 +15,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Timer;
-import java.util.TimerTask;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.stream.Collectors;
 
 public class MenuModel {
 
@@ -37,19 +37,21 @@ public class MenuModel {
         protected Task<Void> createTask() {
             Task<Void> task = new Task<Void>() {
                 @Override
-                protected Void call() {
-                    try {
-                        updateCollection();
-                    } catch (UserException e) {
-                        if (e.isFatal()) {
-                            prepareForExit();
-                            e.showAlert();
-                            controller.closeApplication();
-                        }
-                    }
+                protected Void call() throws UserException {
+                    updateCollection();
                     return null;
                 }
             };
+            task.setOnFailed(event -> {
+                UserException exception = (UserException) task.getException();
+                if (exception.isFatal()) {
+                    exception.showAlert();
+                    prepareForExit();
+                    controller.closeApplication();
+                } else {
+                    exception.showAlert();
+                }
+            });
             return task;
         }
     };
@@ -85,8 +87,7 @@ public class MenuModel {
             UserException exception = (UserException) task.getException();
             if (exception.isFatal()) {
                 exception.showAlert();
-                executorService.shutdown();
-                timer.cancel();
+                prepareForExit();
                 controller.closeApplication();
             }
         });
@@ -103,25 +104,13 @@ public class MenuModel {
         request.setUserLogin(userLogin);
         request.setUserPassword(userPassword);
         try {
-            CommandResponse response = (CommandResponse) connectionHandler.sendRequest(request);
-            List<Long> recievedIDs = new ArrayList<>();
-            for (HumanBeing recievedHuman : response.getPeople()) {
-                recievedIDs.add(recievedHuman.getId());
-                boolean updated = false;
-                for (int i = 0; i < humanCollection.size(); i++) {
-                    if (Objects.equals(recievedHuman.getId(), humanCollection.get(i).getId())) {
-                        if ((recievedHuman.hashCode() != humanCollection.get(i).hashCode())) {
-                            humanCollection.set(i, recievedHuman);
-                        }
-                        updated = true;
-                    }
-                }
-                if (!updated) {
-                    humanCollection.add(recievedHuman);
-                }
-            }
-            humanCollection.removeIf(human -> !recievedIDs.contains(human.getId()));
-            controller.notifyDataChanged(humanCollection);
+            List<HumanBeing> recievedPeople = ((CommandResponse) connectionHandler.sendRequest(request)).getPeople();
+            List<Long> currentIds = humanCollection.stream().map(HumanBeing::getId).collect(Collectors.toList());
+            controller.notifyDataChanged(getElementsToRemove(recievedPeople, currentIds),
+                    getElementsToAdd(recievedPeople, currentIds),
+                    getElementsToUpdate(recievedPeople));
+            humanCollection.clear();
+            humanCollection.addAll(recievedPeople);
         } catch (SocketTimeoutException e) {
             throw new UserException("От сервера не был получен ответ, закрываюсь...", true);
         } catch (IOException e) {
@@ -130,6 +119,40 @@ public class MenuModel {
         } catch (ClassNotFoundException e) {
             throw new UserException("Произошла ошибка при получении ответа с сервера. Пожалуйста, повторите попытку");
         }
+    }
+
+    private List<HumanBeing> getElementsToAdd(List<HumanBeing> recievedPeople, List<Long> currentIds) {
+        List<Long> recievedIds = recievedPeople.stream().map(HumanBeing::getId).collect(Collectors.toList());
+        List<HumanBeing> newElements = new ArrayList<>();
+        for (Long id : recievedIds) {
+            if (!currentIds.contains(id)) {
+                recievedPeople.stream().filter(humanBeing -> humanBeing.getId().equals(id)).findFirst().ifPresent(newElements::add);
+            }
+        }
+        return newElements;
+    }
+
+    private List<HumanBeing> getElementsToRemove(List<HumanBeing> recievedPeople, List<Long> currentIds) {
+        List<Long> recievedIds = recievedPeople.stream().map(HumanBeing::getId).collect(Collectors.toList());
+        List<HumanBeing> elementsToRemove = new ArrayList<>();
+        for (Long id : currentIds) {
+            if (!recievedIds.contains(id)) {
+                humanCollection.stream().filter(humanBeing -> humanBeing.getId().equals(id)).findFirst().ifPresent(elementsToRemove::add);
+            }
+        }
+        return elementsToRemove;
+    }
+
+    private List<HumanBeing> getElementsToUpdate(List<HumanBeing> recievedPeople) {
+        List<HumanBeing> elementsToUpdate = new ArrayList<>();
+        for (HumanBeing recievedHuman : recievedPeople) {
+            for (HumanBeing human : humanCollection) {
+                if (human.getId().equals(recievedHuman.getId()) && human.hashCode() != recievedHuman.hashCode()) {
+                    elementsToUpdate.add(recievedHuman);
+                }
+            }
+        }
+        return elementsToUpdate;
     }
 
     public MenuController getController() {

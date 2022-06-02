@@ -231,4 +231,12 @@ public class HumanBeing implements Comparable<HumanBeing>, Serializable {
                 + (mood == null ? 0 : mood.hashCode()) + coordinates.hashCode()
                 + (car == null ? 0 : car.hashCode()));
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null || !obj.getClass().equals(this.getClass())) {
+            return false;
+        }
+        return obj.hashCode() == this.hashCode();
+    }
 }

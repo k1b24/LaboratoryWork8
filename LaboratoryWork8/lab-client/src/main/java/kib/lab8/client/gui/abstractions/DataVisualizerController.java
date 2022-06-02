@@ -9,7 +9,9 @@ public abstract class DataVisualizerController {
 
     private MenuController parentController;
 
-    public abstract void updateInfo(List<HumanBeing> humanBeingList);
+    public abstract void updateInfo(List<HumanBeing> elementsToRemove, List<HumanBeing> elementsToAdd, List<HumanBeing> elementsToUpdate);
+
+    public abstract void setInfo(List<HumanBeing> elementsToSet);
 
     public MenuController getParentController() {
         return parentController;
