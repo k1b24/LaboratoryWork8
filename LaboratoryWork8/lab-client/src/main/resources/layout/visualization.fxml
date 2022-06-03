@@ -10,12 +10,12 @@
    <children>
       <Pane prefHeight="504.0" prefWidth="1030.0" styleClass="vis_pane" stylesheets="@../styles/visualization_pane.css">
          <children>
-            <Canvas fx:id="canvas" height="504.0" layoutY="-2.0" width="1100.0" />
             <ImageView fitHeight="504.0" fitWidth="1100.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../icons/clash-royale-map.jpg" />
                </image>
             </ImageView>
+            <Canvas fx:id="canvas" height="504.0" layoutY="-2.0" width="1100.0" />
          </children>
       </Pane>
    </children>
