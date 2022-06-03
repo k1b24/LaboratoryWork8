@@ -46,9 +46,15 @@ public class AuthorizationModel {
             }
         } catch (IOException e) {
             throw new UserException("Произошла ошибка при коммуникации с сервером, "
-                    + "повторите попытку");
+                    + "повторите попытку", true);
         } catch (ClassNotFoundException e) {
-            throw new UserException("Произошла ошибка при получении ответа с сервера. Пожалуйста, повторите попытку");
+            throw new UserException("Произошла ошибка при получении ответа с сервера. Пожалуйста, повторите попытку", true);
+        } catch (RequestResponseMismatchException e) {
+            throw new UserException("Сервер прислал лажу", true);
         }
+    }
+
+    public void prepareForExit() {
+        connectionHandler.closeConnection();
     }
 }

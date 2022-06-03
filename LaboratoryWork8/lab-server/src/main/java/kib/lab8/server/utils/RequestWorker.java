@@ -22,14 +22,21 @@ public class RequestWorker {
 
     public ResponseInterface getResponse(RequestInterface request) {
         Class<?> requestType = request.getType();
+        long requestId = request.getRequestId();
+        ResponseInterface response;
         if (CommandRequest.class.equals(requestType)) {
-            return workWithCommandRequest((CommandRequest) request);
+            response = workWithCommandRequest((CommandRequest) request);
         } else if (LoginRequest.class.equals(requestType)) {
-            return workWithLoginRequest((LoginRequest) request);
+            response = workWithLoginRequest((LoginRequest) request);
         } else if (SignUpRequest.class.equals(requestType)) {
-            return workWithSignUpRequest((SignUpRequest) request);
+            response = workWithSignUpRequest((SignUpRequest) request);
+        } else {
+            response = null;
         }
-        return null;
+        if (response != null) {
+            response.setResponseId(requestId);
+        }
+        return response;
     }
 
     private ResponseInterface workWithSignUpRequest(SignUpRequest request) {

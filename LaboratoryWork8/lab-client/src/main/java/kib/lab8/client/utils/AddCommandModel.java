@@ -42,8 +42,17 @@ public class AddCommandModel {
         if (!(human.getName().length() > 2 && human.getName().length() < 50)) {
             throw new UserException("Длина имени человека должна быть больше 2 и меньше 50");
         }
-        if (!(human.getCoordinates().getX() > -759)) {
-            throw new UserException("Координата X должна быть больше -759");
+        if (!(human.getCoordinates().getX() > -500)) {
+            throw new UserException("Координата X должна быть больше -500");
+        }
+        if (!(human.getCoordinates().getX() < 500)) {
+            throw new UserException("Координата по X должна быть меньше 500");
+        }
+        if (!(human.getCoordinates().getY() < 250)) {
+            throw new UserException("Координата по Y должна быть меньше 250");
+        }
+        if (!(human.getCoordinates().getY() > -250)) {
+            throw new UserException("Координата по Y должна быть больше 250");
         }
         if (!(human.getImpactSpeed() < 712)) {
             throw new UserException("Скорость удара должна быть меньше 712");

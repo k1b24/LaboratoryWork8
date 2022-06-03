@@ -1,6 +1,7 @@
 package kib.lab8.client.gui.controllers;
 
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -43,10 +44,11 @@ public class RegistrationController extends AbstractController {
                 changeScene(GUIConfig.AUTHORIZATION_PATH, controllerClass -> new AuthorizationController(model.getConnectionHandler()), getCurrentLocale());
             } catch (UserException e) {
                 registerButton.setDisable(false);
-                e.showAlert();
-                loginField.clear();
-                passwordField.clear();
-                secondPasswordField.clear();
+                if (e.isFatal()) {
+                    model.prepareForExit();
+                    e.showAlert();
+                    Platform.exit();
+                }
             }
         }
     }

@@ -7,6 +7,17 @@ public class SignUpRequest implements RequestInterface {
     private String login;
     private String password;
     private String clientInfo;
+    private long requestId;
+
+    @Override
+    public void setRequestId(long id) {
+        requestId = id;
+    }
+
+    @Override
+    public long getRequestId() {
+        return requestId;
+    }
 
     @Override
     public void setClientInfo(String clientInfoToSet) {

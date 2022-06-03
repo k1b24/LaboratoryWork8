@@ -8,6 +8,7 @@ import java.io.Serializable;
 
 public class CommandRequest implements Serializable, RequestInterface {
 
+    private long requestId;
     private final String commandNameToSend;
     private HumanBeing humanToSend = null;
     private Integer numberArgumentToSend = null;
@@ -62,6 +63,7 @@ public class CommandRequest implements Serializable, RequestInterface {
         return clientInfo;
     }
 
+
     @Override
     public void setUserLogin(String login) {
         this.userLogin = login;
@@ -85,6 +87,16 @@ public class CommandRequest implements Serializable, RequestInterface {
     @Override
     public Class<?> getType() {
         return this.getClass();
+    }
+
+    @Override
+    public void setRequestId(long id) {
+        requestId = id;
+    }
+
+    @Override
+    public long getRequestId() {
+        return requestId;
     }
 
     @Override

@@ -4,7 +4,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
+import kib.lab8.client.gui.GUIConfig;
 import kib.lab8.client.gui.localization.LanguagesEnum;
+import kib.lab8.client.utils.UserException;
 
 public class SettingsController {
 
@@ -16,5 +18,13 @@ public class SettingsController {
     @FXML
     private void initialize() {
         languagesChoiceBox.setItems(languages);
+        languagesChoiceBox.setOnAction(event -> {
+            LanguagesEnum chosenLanguage = languagesChoiceBox.getValue();
+//            try {
+////                .changeScene(GUIConfig.CONNECTION_PATH, controllerClass -> new ConnectionController(), chosenLanguage);
+//            } catch (UserException e) {
+//                e.showAlert();
+//            }
+        });
     }
 }

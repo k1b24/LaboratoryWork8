@@ -107,17 +107,7 @@ public class MenuController extends AbstractController {
     private void clearButtonClicked() {
         ExecutableCommand clearCommand = ExecutableCommand.CLEAR_COMMAND;
         model.executeCommand(clearCommand);
-        try {
-            model.updateCollection();
-        } catch (UserException e) {
-            if (e.isFatal()) {
-                model.prepareForExit();
-                e.showAlert();
-                closeApplication();
-            } else {
-                e.showAlert();
-            }
-        }
+        model.updateCollection();
     }
 
     @FXML
@@ -194,17 +184,7 @@ public class MenuController extends AbstractController {
             if (uiType.equals(ChildUIType.VISUALISATION)) {
                 Parent parent = loader.load();
                 currentVisualizerController = loader.getController();
-                try {
-                    model.updateCollection();
-                } catch (UserException e) {
-                    if (e.isFatal()) {
-                        e.showAlert();
-                        model.prepareForExit();
-                        closeApplication();
-                    } else {
-                        e.showAlert();
-                    }
-                }
+                model.updateCollection();
                 currentVisualizerController.setInfo(model.getCollection());
                 currentVisualizerController.setParentController(this);
                 targetPane.getChildren().add(parent);

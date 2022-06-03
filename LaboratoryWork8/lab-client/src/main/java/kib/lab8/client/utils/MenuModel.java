@@ -1,10 +1,10 @@
 package kib.lab8.client.utils;
 
-import javafx.application.Platform;
 import javafx.concurrent.ScheduledService;
 import javafx.concurrent.Task;
 import javafx.util.Duration;
 import kib.lab8.client.gui.controllers.MenuController;
+import kib.lab8.common.abstractions.ResponseInterface;
 import kib.lab8.common.entities.HumanBeing;
 import kib.lab8.common.util.client_server_communication.requests.CommandRequest;
 import kib.lab8.common.util.client_server_communication.responses.CommandResponse;
@@ -13,8 +13,6 @@ import java.io.IOException;
 import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import java.util.Timer;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -27,53 +25,31 @@ public class MenuModel {
     private final ConnectionHandlerClient connectionHandler;
     private final String userLogin;
     private final String userPassword;
-    private final Timer timer = new Timer(true);
     private final List<HumanBeing> humanCollection = new CopyOnWriteArrayList<>();
     private final MenuController controller;
     private final ExecutorService executorService = Executors.newFixedThreadPool(THREADS);
+
     private final ScheduledService<Void> scheduledService = new ScheduledService<Void>() {
 
         @Override
         protected Task<Void> createTask() {
-            Task<Void> task = new Task<Void>() {
+            return new Task<Void>() {
                 @Override
-                protected Void call() throws UserException {
+                protected Void call() {
                     updateCollection();
                     return null;
                 }
             };
-            task.setOnFailed(event -> {
-                UserException exception = (UserException) task.getException();
-                if (exception.isFatal()) {
-                    exception.showAlert();
-                    prepareForExit();
-                    controller.closeApplication();
-                } else {
-                    exception.showAlert();
-                }
-            });
-            return task;
         }
     };
-
 
     public MenuModel(ConnectionHandlerClient connectionHandler, String userLogin, String userPassword, MenuController controller) {
         this.connectionHandler = connectionHandler;
         this.userLogin = userLogin;
         this.userPassword = userPassword;
         this.controller = controller;
-        scheduledService.setPeriod(Duration.millis(5000));
+        scheduledService.setPeriod(Duration.millis(UPDATE_TIME));
         scheduledService.start();
-    }
-
-    public void prepareForExit() {
-        scheduledService.cancel();
-        executorService.shutdown();
-        connectionHandler.closeConnection();
-    }
-
-    public String getUserLogin() {
-        return userLogin;
     }
 
     public void executeCommand(ExecutableCommand command, Object... args) {
@@ -91,6 +67,11 @@ public class MenuModel {
                 controller.closeApplication();
             }
         });
+        task.setOnFailed(event -> {
+            if (task.getException().getClass().equals(SocketTimeoutException.class)) {
+                controller.getTerminal().appendText("От сервера не был получен ответ..." + "\n");
+            }
+        });
         task.setOnSucceeded(event -> controller.getTerminal().appendText(task.getValue() + "\n"));
         executorService.execute(task);
     }
@@ -99,26 +80,50 @@ public class MenuModel {
         return humanCollection;
     }
 
-    public void updateCollection() throws UserException {
-        CommandRequest request = new CommandRequest("show");
-        request.setUserLogin(userLogin);
-        request.setUserPassword(userPassword);
-        try {
-            List<HumanBeing> recievedPeople = ((CommandResponse) connectionHandler.sendRequest(request)).getPeople();
+    public void updateCollection() {
+        executorService.execute(createTaskForUpdate());
+    }
+
+    private Task<ResponseInterface> createTaskForUpdate() {
+        Task<ResponseInterface> taskForUpdate = new Task<ResponseInterface>() {
+            @Override
+            protected ResponseInterface call() throws UserException {
+                CommandRequest request = new CommandRequest("show");
+                request.setUserLogin(userLogin);
+                request.setUserPassword(userPassword);
+                try {
+                    return connectionHandler.sendRequest(request);
+                } catch (SocketTimeoutException e) {
+                    throw new UserException("От сервера не был получен ответ...");
+                } catch (IOException e) {
+                    throw new UserException("Произошла ошибка при коммуникации с сервером, " + "повторите попытку", true);
+                } catch (ClassNotFoundException e) {
+                    throw new UserException("Произошла ошибка при получении ответа с сервера. Пожалуйста, повторите попытку", true);
+                } catch (RequestResponseMismatchException e) {
+                    throw new UserException("Сервер прислал лажу", true);
+                }
+            }
+        };
+        taskForUpdate.setOnSucceeded(event -> {
+            List<HumanBeing> recievedPeople = ((CommandResponse) taskForUpdate.getValue()).getPeople();
             List<Long> currentIds = humanCollection.stream().map(HumanBeing::getId).collect(Collectors.toList());
             controller.notifyDataChanged(getElementsToRemove(recievedPeople, currentIds),
                     getElementsToAdd(recievedPeople, currentIds),
                     getElementsToUpdate(recievedPeople));
             humanCollection.clear();
             humanCollection.addAll(recievedPeople);
-        } catch (SocketTimeoutException e) {
-            throw new UserException("От сервера не был получен ответ, закрываюсь...", true);
-        } catch (IOException e) {
-            throw new UserException("Произошла ошибка при коммуникации с сервером, "
-                    + "повторите попытку");
-        } catch (ClassNotFoundException e) {
-            throw new UserException("Произошла ошибка при получении ответа с сервера. Пожалуйста, повторите попытку");
-        }
+        });
+        taskForUpdate.setOnFailed(event -> {
+            UserException e = ((UserException) taskForUpdate.getException());
+            if (e.isFatal()) {
+                prepareForExit();
+                e.showAlert();
+                controller.closeApplication();
+            } else {
+                controller.getTerminal().appendText(e.getMessage() + "\n");
+            }
+        });
+        return taskForUpdate;
     }
 
     private List<HumanBeing> getElementsToAdd(List<HumanBeing> recievedPeople, List<Long> currentIds) {
@@ -167,4 +172,13 @@ public class MenuModel {
         return chosenHuman;
     }
 
+    public void prepareForExit() {
+        scheduledService.cancel();
+        executorService.shutdown();
+        connectionHandler.closeConnection();
+    }
+
+    public String getUserLogin() {
+        return userLogin;
+    }
 }

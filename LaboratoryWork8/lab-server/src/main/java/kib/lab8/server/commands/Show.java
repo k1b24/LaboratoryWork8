@@ -20,6 +20,11 @@ public class Show extends AbstractCommand {
 
     @Override
     public Object execute(CommandRequest request) {
+//        try {
+//            Thread.sleep(3000);
+//        } catch (InterruptedException e) {
+//            throw new RuntimeException(e);
+//        }
         ArrayList<HumanBeing> people = super.getDataManager().getCollectionManager().getSortedArrayListFromQueue();
         return new CommandResponse(new SuccessMessage("Элементы коллекции: "),
                 (ArrayList<HumanBeing>) people.stream().sorted(Comparator.comparing(ObjectSizeAnalyzer::getSize).reversed()).collect(Collectors.toList()));

@@ -32,10 +32,15 @@ public class RegistrationModel {
         } catch (IOException e) {
             Platform.setImplicitExit(false);
             throw new UserException("Произошла ошибка при коммуникации с сервером, "
-                    + "повторите попытку");
+                    + "повторите попытку", true);
         } catch (ClassNotFoundException e) {
-            Platform.setImplicitExit(false);
-            throw new UserException("Произошла ошибка при получении ответа с сервера. Пожалуйста, повторите попытку");
+            throw new UserException("Произошла ошибка при получении ответа с сервера. Пожалуйста, повторите попытку", true);
+        } catch (RequestResponseMismatchException e) {
+            throw new UserException("Сервер прислал лажу", true);
         }
+    }
+
+    public void prepareForExit() {
+        connectionHandler.closeConnection();
     }
 }

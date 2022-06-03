@@ -4,6 +4,9 @@ import java.io.Serializable;
 
 public interface RequestInterface extends Serializable {
 
+
+    void setRequestId(long id);
+    long getRequestId();
     void setClientInfo(String clientInfo);
 
     String getClientInfo();
@@ -17,4 +20,5 @@ public interface RequestInterface extends Serializable {
     String getUserPassword();
 
     Class<?> getType();
+
 }
