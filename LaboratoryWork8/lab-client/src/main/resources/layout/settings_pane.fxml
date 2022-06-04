@@ -25,7 +25,7 @@
       </VBox>
       <VBox layoutX="109.0" layoutY="52.0" prefHeight="354.0" prefWidth="94.0">
          <children>
-            <ChoiceBox fx:id="languagesChoiceBox" prefHeight="27.0" prefWidth="53.0" stylesheets="@../styles/choisebox.css" />
+            <ChoiceBox fx:id="languagesChoiceBox" prefHeight="27.0" prefWidth="53.0" stylesheets="@../styles/choise-box.css" />
          </children>
       </VBox>
    </children>

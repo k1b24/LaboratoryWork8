@@ -40,27 +40,27 @@
             </Button>
             <Pane fx:id="buttonsPane" layoutX="19.0" layoutY="183.0" prefHeight="407.0" prefWidth="200.0" styleClass="left_menu_pane" stylesheets="@../styles/pane.css">
                <children>
-                  <Button fx:id="addButton" layoutX="5.0" layoutY="14.0" mnemonicParsing="false" onAction="#addButtonClicked" prefHeight="39.0" prefWidth="190.0" styleClass="light_green_button" stylesheets="@../styles/green_button.css" text="%ADD">
+                  <Button fx:id="addButton" layoutX="5.0" layoutY="14.0" mnemonicParsing="false" onAction="#addButtonClicked" prefHeight="39.0" prefWidth="190.0" styleClass="light_green_button" stylesheets="@../styles/green-button.css" text="%ADD">
                      <font>
                         <Font name="Exo 2 Regular" size="18.0" />
                      </font></Button>
-                  <Button fx:id="historyButton" layoutX="5.0" layoutY="68.0" mnemonicParsing="false" onAction="#historyButtonClicked" prefHeight="39.0" prefWidth="190.0" styleClass="light_green_button" stylesheets="@../styles/green_button.css" text="%HISTORY">
+                  <Button fx:id="historyButton" layoutX="5.0" layoutY="68.0" mnemonicParsing="false" onAction="#historyButtonClicked" prefHeight="39.0" prefWidth="190.0" styleClass="light_green_button" stylesheets="@../styles/green-button.css" text="%HISTORY">
                      <font>
                         <Font name="Exo 2 Regular" size="18.0" />
                      </font></Button>
-                  <Button fx:id="clearButton" layoutX="5.0" layoutY="122.0" mnemonicParsing="false" onAction="#clearButtonClicked" prefHeight="39.0" prefWidth="190.0" styleClass="light_green_button" stylesheets="@../styles/green_button.css" text="%CLEAR">
+                  <Button fx:id="clearButton" layoutX="5.0" layoutY="122.0" mnemonicParsing="false" onAction="#clearButtonClicked" prefHeight="39.0" prefWidth="190.0" styleClass="light_green_button" stylesheets="@../styles/green-button.css" text="%CLEAR">
                      <font>
                         <Font size="18.0" />
                      </font></Button>
-                  <Button fx:id="infoButton" layoutX="5.0" layoutY="177.0" mnemonicParsing="false" onAction="#infoButtonClicked" prefHeight="39.0" prefWidth="190.0" styleClass="light_green_button" stylesheets="@../styles/green_button.css" text="%INFO">
+                  <Button fx:id="infoButton" layoutX="5.0" layoutY="177.0" mnemonicParsing="false" onAction="#infoButtonClicked" prefHeight="39.0" prefWidth="190.0" styleClass="light_green_button" stylesheets="@../styles/green-button.css" text="%INFO">
                      <font>
                         <Font name="Exo 2 Regular" size="18.0" />
                      </font></Button>
-                  <Button fx:id="removeButton" layoutX="5.0" layoutY="234.0" mnemonicParsing="false" onAction="#removeButtonClicked" prefHeight="39.0" prefWidth="190.0" styleClass="light_green_button" stylesheets="@../styles/green_button.css" text="%REMOVE">
+                  <Button fx:id="removeButton" layoutX="5.0" layoutY="234.0" mnemonicParsing="false" onAction="#removeButtonClicked" prefHeight="39.0" prefWidth="190.0" styleClass="light_green_button" stylesheets="@../styles/green-button.css" text="%REMOVE">
                      <font>
                         <Font name="Exo 2 Regular" size="18.0" />
                      </font></Button>
-                  <Button fx:id="updateButton" layoutX="5.0" layoutY="288.0" mnemonicParsing="false" onAction="#updateButtonClicked" prefHeight="39.0" prefWidth="190.0" styleClass="light_green_button" stylesheets="@../styles/green_button.css" text="%OPEN_PROFILE">
+                  <Button fx:id="updateButton" layoutX="5.0" layoutY="288.0" mnemonicParsing="false" onAction="#updateButtonClicked" prefHeight="39.0" prefWidth="190.0" styleClass="light_green_button" stylesheets="@../styles/green-button.css" text="%OPEN_PROFILE">
                      <font>
                         <Font name="Exo 2 Regular" size="18.0" />
                      </font></Button>
@@ -105,19 +105,19 @@
             </Text>
          </children>
       </HBox>
-      <Pane fx:id="visualPane" layoutX="238.0" layoutY="171.0" prefHeight="503.0" prefWidth="1030.0" styleClass="vis_pane" stylesheets="@../styles/visualization_pane.css" />
-      <TextArea fx:id="terminal" editable="false" layoutX="421.0" layoutY="33.0" prefHeight="84.0" prefWidth="907.0" promptText="%TERMINAL" styleClass="orange_text_field" stylesheets="@../styles/text_field.css">
+      <Pane fx:id="visualPane" layoutX="238.0" layoutY="171.0" prefHeight="503.0" prefWidth="1030.0" styleClass="vis_pane" stylesheets="@../styles/visualization-pane.css" />
+      <TextArea fx:id="terminal" editable="false" layoutX="421.0" layoutY="33.0" prefHeight="84.0" prefWidth="907.0" promptText="%TERMINAL" styleClass="orange_text_field" stylesheets="@../styles/text-field.css">
          <font>
             <Font name="Exo 2 Regular" size="15.0" />
          </font></TextArea>
       <HBox fx:id="viewButtonsBox" alignment="CENTER" layoutX="350.0" layoutY="125.0" prefHeight="42.0" prefWidth="567.0" spacing="50.0">
          <children>
-            <Button fx:id="tableButton" lineSpacing="5.0" mnemonicParsing="false" onAction="#tableButtonClicked" prefHeight="39.0" prefWidth="190.0" styleClass="light_orange_button" stylesheets="@../styles/orange_button.css" text="%TABLE">
+            <Button fx:id="tableButton" lineSpacing="5.0" mnemonicParsing="false" onAction="#tableButtonClicked" prefHeight="39.0" prefWidth="190.0" styleClass="light_orange_button" stylesheets="@../styles/orange-button.css" text="%TABLE">
                <font>
                   <Font name="Exo 2 Regular" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="visualizeButton" lineSpacing="5.0" mnemonicParsing="false" onAction="#visualizeButtonClicked" prefHeight="39.0" prefWidth="190.0" styleClass="light_orange_button" stylesheets="@../styles/orange_button.css" text="%VISUALIZE" textAlignment="CENTER">
+            <Button fx:id="visualizeButton" lineSpacing="5.0" mnemonicParsing="false" onAction="#visualizeButtonClicked" prefHeight="39.0" prefWidth="190.0" styleClass="light_orange_button" stylesheets="@../styles/orange-button.css" text="%VISUALIZE" textAlignment="CENTER">
                <font>
                   <Font name="Exo 2 Regular" size="18.0" />
                </font>
