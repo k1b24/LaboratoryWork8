@@ -23,7 +23,7 @@
             </Text>
          </children>
       </Pane>
-      <Button fx:id="clearFieldsButton" layoutX="14.0" layoutY="547.0" mnemonicParsing="false" onAction="#clear" prefHeight="38.0" prefWidth="154.0" styleClass="light_green_button" stylesheets="@../styles/green_button.css" text="%CLEAR">
+      <Button fx:id="clearFieldsButton" layoutX="14.0" layoutY="547.0" mnemonicParsing="false" onAction="#clear" prefHeight="38.0" prefWidth="154.0" styleClass="light_green_button" stylesheets="@../styles/green-button.css" text="%CLEAR">
          <font>
             <Font name="Exo 2 Regular" size="18.0" />
          </font>
@@ -32,28 +32,28 @@
          <children>
             <VBox layoutX="172.0" layoutY="32.0" prefHeight="401.0" prefWidth="154.0" spacing="13.0">
                <children>
-                  <TextField fx:id="name" styleClass="green_bordered_text_field" stylesheets="@../styles/text_field.css" />
-                  <TextField styleClass="green_bordered_text_field" stylesheets="@../styles/text_field.css" fx:id="x" />
-                  <TextField fx:id="y" styleClass="green_bordered_text_field" stylesheets="@../styles/text_field.css" />
-                  <CheckBox fx:id="realHero" mnemonicParsing="false" stylesheets="@../styles/checkbox.css">
+                  <TextField fx:id="name" styleClass="green_bordered_text_field" stylesheets="@../styles/text-field.css" />
+                  <TextField styleClass="green_bordered_text_field" stylesheets="@../styles/text-field.css" fx:id="x" />
+                  <TextField fx:id="y" styleClass="green_bordered_text_field" stylesheets="@../styles/text-field.css" />
+                  <CheckBox fx:id="realHero" mnemonicParsing="false" stylesheets="@../styles/check-box.css">
                      <font>
                         <Font name="Exo 2 Regular" size="19.0" />
                      </font>
                   </CheckBox>
-                  <CheckBox fx:id="popularity" mnemonicParsing="false" stylesheets="@../styles/checkbox.css">
+                  <CheckBox fx:id="popularity" mnemonicParsing="false" stylesheets="@../styles/check-box.css">
                      <font>
                         <Font name="Exo 2 Regular" size="19.0" />
                      </font>
                   </CheckBox>
-                  <TextField fx:id="impactSpeed" styleClass="green_bordered_text_field" stylesheets="@../styles/text_field.css" />
-                  <ChoiceBox fx:id="weapon" prefHeight="30.0" prefWidth="154.0" stylesheets="@../styles/choisebox.css" />
-                  <ChoiceBox fx:id="mood" prefHeight="28.0" prefWidth="154.0" styleClass="green_bordered_text_field" stylesheets="@../styles/choisebox.css" />
-                  <CheckBox fx:id="carCoolness" mnemonicParsing="false" stylesheets="@../styles/checkbox.css">
+                  <TextField fx:id="impactSpeed" styleClass="green_bordered_text_field" stylesheets="@../styles/text-field.css" />
+                  <ChoiceBox fx:id="weapon" prefHeight="30.0" prefWidth="154.0" stylesheets="@../styles/choise-box.css" />
+                  <ChoiceBox fx:id="mood" prefHeight="28.0" prefWidth="154.0" styleClass="green_bordered_text_field" stylesheets="@../styles/choise-box.css" />
+                  <CheckBox fx:id="carCoolness" mnemonicParsing="false" stylesheets="@../styles/check-box.css">
                      <font>
                         <Font name="Exo 2 Regular" size="19.0" />
                      </font>
                   </CheckBox>
-                  <TextField fx:id="carSpeed" styleClass="green_bordered_text_field" stylesheets="@../styles/text_field.css" />
+                  <TextField fx:id="carSpeed" styleClass="green_bordered_text_field" stylesheets="@../styles/text-field.css" />
                </children>
                <opaqueInsets>
                   <Insets />
@@ -119,19 +119,19 @@
                   <Insets right="2.0" top="5.0" />
                </padding>
             </VBox>
-            <CheckBox fx:id="carCheckBox" layoutX="14.0" layoutY="5.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="154.0" selected="true" stylesheets="@../styles/checkbox.css" text="%CAR">
+            <CheckBox fx:id="carCheckBox" layoutX="14.0" layoutY="5.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="154.0" selected="true" stylesheets="@../styles/check-box.css" text="%CAR">
                <font>
                   <Font name="Exo 2 Regular" size="13.0" />
                </font>
             </CheckBox>
-            <CheckBox fx:id="addIfMinCheckBox" layoutX="172.0" layoutY="5.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="154.0" stylesheets="@../styles/checkbox.css" text="%ADD_IF_MIN">
+            <CheckBox fx:id="addIfMinCheckBox" layoutX="172.0" layoutY="5.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="154.0" stylesheets="@../styles/check-box.css" text="%ADD_IF_MIN">
                <font>
                   <Font name="Exo 2 Regular" size="13.0" />
                </font>
             </CheckBox>
          </children>
       </Pane>
-      <Button fx:id="applyButton" disable="true" layoutX="181.0" layoutY="547.0" mnemonicParsing="false" onAction="#apply" prefHeight="38.0" prefWidth="154.0" styleClass="light_green_button" stylesheets="@../styles/green_button.css" text="%APPLY">
+      <Button fx:id="applyButton" disable="true" layoutX="181.0" layoutY="547.0" mnemonicParsing="false" onAction="#apply" prefHeight="38.0" prefWidth="154.0" styleClass="light_green_button" stylesheets="@../styles/green-button.css" text="%APPLY">
          <font>
             <Font name="Exo 2 Regular" size="18.0" />
          </font>
