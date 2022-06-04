@@ -11,6 +11,7 @@ public class CommandResponse implements Serializable, ResponseInterface {
 
     private final AbstractMessage message;
     private final ArrayList<HumanBeing> people;
+    private long responseId;
 
     public CommandResponse(AbstractMessage message) {
         this.message = message;
@@ -30,6 +31,16 @@ public class CommandResponse implements Serializable, ResponseInterface {
     @Override
     public Class<?> getType() {
         return this.getClass();
+    }
+
+    @Override
+    public void setResponseId(long id) {
+        responseId = id;
+    }
+
+    @Override
+    public long getResponseId() {
+        return responseId;
     }
 
     public ArrayList<HumanBeing> getPeople() {

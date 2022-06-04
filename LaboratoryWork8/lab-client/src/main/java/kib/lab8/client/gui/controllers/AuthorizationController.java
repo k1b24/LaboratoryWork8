@@ -1,5 +1,6 @@
 package kib.lab8.client.gui.controllers;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -68,9 +69,11 @@ public class AuthorizationController extends AbstractController {
                 //покажи текст об ошибке авторизации
             }
         } catch (UserException e) {
-            authorizationButton.setDisable(false);
-            loginField.clear();
-            passwordField.clear();
+            if (e.isFatal()) {
+                model.prepareForExit();
+                e.showAlert();
+                Platform.exit();
+            }
         }
     }
 

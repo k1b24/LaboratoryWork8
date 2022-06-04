@@ -7,6 +7,7 @@ public class AuthenticationResponse implements ResponseInterface {
 
     private final AbstractMessage message;
     private final boolean responseSuccess;
+    private long responseId;
 
     public AuthenticationResponse(AbstractMessage message, boolean responseSuccess) {
         this.message = message;
@@ -25,5 +26,15 @@ public class AuthenticationResponse implements ResponseInterface {
     @Override
     public Class<?> getType() {
         return this.getClass();
+    }
+
+    @Override
+    public void setResponseId(long id) {
+        responseId = id;
+    }
+
+    @Override
+    public long getResponseId() {
+        return responseId;
     }
 }

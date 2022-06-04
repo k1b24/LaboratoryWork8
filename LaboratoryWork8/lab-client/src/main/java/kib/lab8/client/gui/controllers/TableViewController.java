@@ -1,17 +1,14 @@
 package kib.lab8.client.gui.controllers;
 
-import javafx.application.Platform;
 import javafx.beans.property.SimpleFloatProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
-import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import kib.lab8.client.gui.GUIConfig;
@@ -19,8 +16,10 @@ import kib.lab8.client.gui.abstractions.DataVisualizerController;
 import kib.lab8.client.utils.ChildUIType;
 import kib.lab8.common.entities.HumanBeing;
 
-import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class TableViewController extends DataVisualizerController {
@@ -108,9 +107,208 @@ public class TableViewController extends DataVisualizerController {
     private TextField authorFilter;
 
     @FXML
-    private Pagination pagination;
+    private Pagination pagination = new Pagination();
     private final ObservableList<HumanBeing> observableHumanBeingList = FXCollections.observableArrayList();
     private HumanBeing chosenHuman;
+    private final List<HumanBeing> fullCollection = new ArrayList<>();
+    private final List<HumanBeing> collectionToShow = new ArrayList<>();
+    private int currentPage = 0;
+    private Predicate<HumanBeing> currentFiltrationPredicate = null;
+    private final ChangeListener<String> idFieldChangeListener = (observableValue, oldValue, newValue) -> {
+        if (newValue.equals("")) {
+            currentFiltrationPredicate = null;
+            collectionToShow.clear();
+            collectionToShow.addAll(fullCollection);
+        } else {
+            collectionToShow.clear();
+            Predicate<HumanBeing> filtrationPredicate = humanBeing -> String.valueOf(humanBeing.getId()).startsWith(newValue.toLowerCase());
+            collectionToShow.addAll(fullCollection.stream().filter(filtrationPredicate).collect(Collectors.toList()));
+            currentFiltrationPredicate = filtrationPredicate;
+        }
+        currentPage = 0;
+        pagination.setPageCount((int) Math.ceil(collectionToShow.size() / (double) ROWS_PER_PAGE));
+        updateTable();
+    };
+    private final ChangeListener<String> nameFieldChangeListener = (observableValue, oldValue, newValue) -> {
+        if (newValue.equals("")) {
+            currentFiltrationPredicate = null;
+            collectionToShow.clear();
+            collectionToShow.addAll(fullCollection);
+        } else {
+            collectionToShow.clear();
+            Predicate<HumanBeing> filtrationPredicate = humanBeing -> humanBeing.getName().toLowerCase().contains(newValue.toLowerCase());
+            collectionToShow.addAll(fullCollection.stream().filter(filtrationPredicate).collect(Collectors.toList()));
+            currentFiltrationPredicate = filtrationPredicate;
+        }
+        currentPage = 0;
+        pagination.setPageCount((int) Math.ceil(collectionToShow.size() / (double) ROWS_PER_PAGE));
+        updateTable();
+    };
+    private final ChangeListener<String> xFieldChangeListener = (observableValue, oldValue, newValue) -> {
+        if (newValue.equals("")) {
+            currentFiltrationPredicate = null;
+            collectionToShow.clear();
+            collectionToShow.addAll(fullCollection);
+        } else {
+            collectionToShow.clear();
+            Predicate<HumanBeing> filtrationPredicate = humanBeing -> String.valueOf(humanBeing.getCoordinates().getX()).startsWith(newValue.toLowerCase());
+            collectionToShow.addAll(fullCollection.stream().filter(filtrationPredicate).collect(Collectors.toList()));
+            currentFiltrationPredicate = filtrationPredicate;
+        }
+        currentPage = 0;
+        pagination.setPageCount((int) Math.ceil(collectionToShow.size() / (double) ROWS_PER_PAGE));
+        updateTable();
+    };
+    private final ChangeListener<String> yFieldChangeListener = (observableValue, oldValue, newValue) -> {
+        if (newValue.equals("")) {
+            currentFiltrationPredicate = null;
+            collectionToShow.clear();
+            collectionToShow.addAll(fullCollection);
+        } else {
+            collectionToShow.clear();
+            Predicate<HumanBeing> filtrationPredicate = humanBeing -> String.valueOf(humanBeing.getCoordinates().getY()).startsWith(newValue.toLowerCase());
+            collectionToShow.addAll(fullCollection.stream().filter(filtrationPredicate).collect(Collectors.toList()));
+            currentFiltrationPredicate = filtrationPredicate;
+        }
+        currentPage = 0;
+        pagination.setPageCount((int) Math.ceil(collectionToShow.size() / (double) ROWS_PER_PAGE));
+        updateTable();
+    };
+    private final ChangeListener<String> creationDateFieldChangeListener = (observableValue, oldValue, newValue) -> {
+        if (newValue.equals("")) {
+            currentFiltrationPredicate = null;
+            collectionToShow.clear();
+            collectionToShow.addAll(fullCollection);
+        } else {
+            collectionToShow.clear();
+            Predicate<HumanBeing> filtrationPredicate = humanBeing -> String.valueOf(humanBeing.getCreationDate()).startsWith(newValue.toLowerCase());
+            collectionToShow.addAll(fullCollection.stream().filter(filtrationPredicate).collect(Collectors.toList()));
+            currentFiltrationPredicate = filtrationPredicate;
+        }
+        currentPage = 0;
+        pagination.setPageCount((int) Math.ceil(collectionToShow.size() / (double) ROWS_PER_PAGE));
+        updateTable();
+    };
+    private final ChangeListener<String> realHeroFieldChangeListener = (observableValue, oldValue, newValue) -> {
+        if (newValue.equals("")) {
+            currentFiltrationPredicate = null;
+            collectionToShow.clear();
+            collectionToShow.addAll(fullCollection);
+        } else {
+            collectionToShow.clear();
+            Predicate<HumanBeing> filtrationPredicate = humanBeing -> String.valueOf(humanBeing.isRealHero()).toLowerCase().startsWith(newValue.toLowerCase());
+            collectionToShow.addAll(fullCollection.stream().filter(filtrationPredicate).collect(Collectors.toList()));
+            currentFiltrationPredicate = filtrationPredicate;
+        }
+        currentPage = 0;
+        pagination.setPageCount((int) Math.ceil(collectionToShow.size() / (double) ROWS_PER_PAGE));
+        updateTable();
+    };
+    private final ChangeListener<String> popularityFieldChangeListener = (observableValue, oldValue, newValue) -> {
+        if (newValue.equals("")) {
+            currentFiltrationPredicate = null;
+            collectionToShow.clear();
+            collectionToShow.addAll(fullCollection);
+        } else {
+            collectionToShow.clear();
+            Predicate<HumanBeing> filtrationPredicate = humanBeing -> String.valueOf(humanBeing.isHasToothpick()).toLowerCase().startsWith(newValue.toLowerCase());
+            collectionToShow.addAll(fullCollection.stream().filter(filtrationPredicate).collect(Collectors.toList()));
+            currentFiltrationPredicate = filtrationPredicate;
+        }
+        currentPage = 0;
+        pagination.setPageCount((int) Math.ceil(collectionToShow.size() / (double) ROWS_PER_PAGE));
+        updateTable();
+    };
+    private final ChangeListener<String> impactSpeedFieldChangeListener = (observableValue, oldValue, newValue) -> {
+        if (newValue.equals("")) {
+            currentFiltrationPredicate = null;
+            collectionToShow.clear();
+            collectionToShow.addAll(fullCollection);
+        } else {
+            collectionToShow.clear();
+            Predicate<HumanBeing> filtrationPredicate = humanBeing -> (humanBeing.getImpactSpeed() == null ? "-" : String.valueOf(humanBeing.getImpactSpeed())).startsWith(newValue.toLowerCase());
+            collectionToShow.addAll(fullCollection.stream().filter(filtrationPredicate).collect(Collectors.toList()));
+            currentFiltrationPredicate = filtrationPredicate;
+        }
+        currentPage = 0;
+        pagination.setPageCount((int) Math.ceil(collectionToShow.size() / (double) ROWS_PER_PAGE));
+        updateTable();
+    };
+    private final ChangeListener<String> weaponFieldChangeListener = (observableValue, oldValue, newValue) -> {
+        if (newValue.equals("")) {
+            currentFiltrationPredicate = null;
+            collectionToShow.clear();
+            collectionToShow.addAll(fullCollection);
+        } else {
+            collectionToShow.clear();
+            Predicate<HumanBeing> filtrationPredicate = humanBeing -> (humanBeing.getWeaponType() == null ? "-" : humanBeing.getWeaponType().toString().toLowerCase()).startsWith(newValue.toLowerCase());
+            collectionToShow.addAll(fullCollection.stream().filter(filtrationPredicate).collect(Collectors.toList()));
+            currentFiltrationPredicate = filtrationPredicate;
+        }
+        currentPage = 0;
+        pagination.setPageCount((int) Math.ceil(collectionToShow.size() / (double) ROWS_PER_PAGE));
+        updateTable();
+    };
+    private final ChangeListener<String> moodFieldChangeListener = (observableValue, oldValue, newValue) -> {
+        if (newValue.equals("")) {
+            currentFiltrationPredicate = null;
+            collectionToShow.clear();
+            collectionToShow.addAll(fullCollection);
+        } else {
+            collectionToShow.clear();
+            Predicate<HumanBeing> filtrationPredicate = humanBeing -> (humanBeing.getMood() == null ? "-" : humanBeing.getMood().toString().toLowerCase()).startsWith(newValue.toLowerCase());
+            collectionToShow.addAll(fullCollection.stream().filter(filtrationPredicate).collect(Collectors.toList()));
+            currentFiltrationPredicate = filtrationPredicate;
+        }
+        currentPage = 0;
+        pagination.setPageCount((int) Math.ceil(collectionToShow.size() / (double) ROWS_PER_PAGE));
+        updateTable();
+    };
+    private final ChangeListener<String> carCoolnessFieldChangeListener = (observableValue, oldValue, newValue) -> {
+        if (newValue.equals("")) {
+            currentFiltrationPredicate = null;
+            collectionToShow.clear();
+            collectionToShow.addAll(fullCollection);
+        } else {
+            collectionToShow.clear();
+            Predicate<HumanBeing> filtrationPredicate = humanBeing -> ((humanBeing.getCar() == null ? "-" : String.valueOf(humanBeing.getCar().getCarCoolness()).toLowerCase()).startsWith(newValue.toLowerCase()));
+            collectionToShow.addAll(fullCollection.stream().filter(filtrationPredicate).collect(Collectors.toList()));
+            currentFiltrationPredicate = filtrationPredicate;
+        }
+        currentPage = 0;
+        pagination.setPageCount((int) Math.ceil(collectionToShow.size() / (double) ROWS_PER_PAGE));
+        updateTable();
+    };
+    private final ChangeListener<String> carSpeedFieldChangeListener = (observableValue, oldValue, newValue) -> {
+        if (newValue.equals("")) {
+            currentFiltrationPredicate = null;
+            collectionToShow.clear();
+            collectionToShow.addAll(fullCollection);
+        } else {
+            collectionToShow.clear();
+            Predicate<HumanBeing> filtrationPredicate = humanBeing -> ((humanBeing.getCar() == null ? "-" : String.valueOf(humanBeing.getCar().getCarSpeed())).startsWith(newValue.toLowerCase()));
+            collectionToShow.addAll(fullCollection.stream().filter(filtrationPredicate).collect(Collectors.toList()));
+            currentFiltrationPredicate = filtrationPredicate;
+        }
+        currentPage = 0;
+        pagination.setPageCount((int) Math.ceil(collectionToShow.size() / (double) ROWS_PER_PAGE));
+        updateTable();
+    };
+    private final ChangeListener<String> authorFieldChangeListener = (observableValue, oldValue, newValue) -> {
+        if (newValue.equals("")) {
+            currentFiltrationPredicate = null;
+            collectionToShow.clear();
+            collectionToShow.addAll(fullCollection);
+        } else {
+            collectionToShow.clear();
+            Predicate<HumanBeing> filtrationPredicate = humanBeing -> humanBeing.getAuthor().toLowerCase().startsWith(newValue.toLowerCase());
+            collectionToShow.addAll(fullCollection.stream().filter(filtrationPredicate).collect(Collectors.toList()));
+            currentFiltrationPredicate = filtrationPredicate;
+        }
+        currentPage = 0;
+        pagination.setPageCount((int) Math.ceil(collectionToShow.size() / (double) ROWS_PER_PAGE));
+        updateTable();
+    };
 
     @FXML
     private void initialize() {
@@ -146,8 +344,80 @@ public class TableViewController extends DataVisualizerController {
         setToolTip(name);
         setToolTip(weapon);
         setToolTip(author);
-        humanTable.getSortOrder().add(id);
-        setUpFiltration(observableHumanBeingList);
+        humanTable.setItems(observableHumanBeingList);
+        pagination.currentPageIndexProperty().addListener((observable, oldValue, newValue) -> {
+            currentPage = newValue.intValue();
+            updateTable();
+        });
+        setUpFiltrationListeners();
+    }
+
+    private void updateTable() {
+        int from = currentPage * ROWS_PER_PAGE;
+        int to = from + ROWS_PER_PAGE;
+        List<HumanBeing> subList = new ArrayList<>();
+        for (int i = 0; i < collectionToShow.size(); i++) {
+            if (i >= from && i < to) {
+                subList.add(collectionToShow.get(i));
+            }
+        }
+        observableHumanBeingList.clear();
+        observableHumanBeingList.addAll(subList);
+    }
+
+    @Override
+    public void updateInfo(List<HumanBeing> elementsToRemove, List<HumanBeing> elementsToAdd, List<HumanBeing> elementsToUpdate) {
+        fullCollection.removeAll(elementsToRemove);
+        fullCollection.addAll(elementsToAdd);
+        List<Long> updatedIds = elementsToUpdate.stream().map(HumanBeing::getId).collect(Collectors.toList());
+        fullCollection.removeIf(human -> updatedIds.contains(human.getId()));
+        fullCollection.addAll(elementsToUpdate);
+        fullCollection.sort(Comparator.comparing(HumanBeing::getId));
+        collectionToShow.clear();
+        if (currentFiltrationPredicate != null) {
+            collectionToShow.addAll(fullCollection.stream().filter(currentFiltrationPredicate).collect(Collectors.toList()));
+        } else {
+            collectionToShow.addAll(fullCollection);
+        }
+        pagination.setPageCount((int) Math.ceil(collectionToShow.size() / (double) ROWS_PER_PAGE));
+        updateTable();
+    }
+
+    @Override
+    public void setInfo(List<HumanBeing> elementsToSet) {
+        fullCollection.clear();
+        fullCollection.addAll(elementsToSet);
+        fullCollection.sort(Comparator.comparing(HumanBeing::getId));
+        pagination.setPageCount((int) Math.ceil(fullCollection.size() / (double) ROWS_PER_PAGE));
+        collectionToShow.addAll(fullCollection);
+        updateTable();
+    }
+
+
+    @Override
+    public HumanBeing getChosenHuman() {
+        return chosenHuman;
+    }
+
+    @Override
+    public void setChosenHuman(HumanBeing human) {
+        this.chosenHuman = human;
+    }
+
+    private void setUpFiltrationListeners() {
+        idFilter.textProperty().addListener(idFieldChangeListener);
+        nameFilter.textProperty().addListener(nameFieldChangeListener);
+        xFilter.textProperty().addListener(xFieldChangeListener);
+        yFilter.textProperty().addListener(yFieldChangeListener);
+        creationDateFilter.textProperty().addListener(creationDateFieldChangeListener);
+        realHeroFilter.textProperty().addListener(realHeroFieldChangeListener);
+        popularityFilter.textProperty().addListener(popularityFieldChangeListener);
+        impactSpeedFilter.textProperty().addListener(impactSpeedFieldChangeListener);
+        weaponFilter.textProperty().addListener(weaponFieldChangeListener);
+        moodFilter.textProperty().addListener(moodFieldChangeListener);
+        carCoolnessFilter.textProperty().addListener(carCoolnessFieldChangeListener);
+        carSpeedFilter.textProperty().addListener(carSpeedFieldChangeListener);
+        authorFilter.textProperty().addListener(authorFieldChangeListener);
     }
 
     public void setToolTip(TableColumn<HumanBeing, String> tableColumn) {
@@ -162,88 +432,5 @@ public class TableViewController extends DataVisualizerController {
                         }
                     }
                 });
-    }
-
-    public HumanBeing getChosenHuman() {
-        return chosenHuman;
-    }
-
-    @Override
-    public void setChosenHuman(HumanBeing human) {
-        this.chosenHuman = human;
-    }
-
-    @Override
-    public void updateInfo(List<HumanBeing> elementsToRemove, List<HumanBeing> elementsToAdd, List<HumanBeing> elementsToUpdate) {
-        observableHumanBeingList.removeAll(elementsToRemove);
-        observableHumanBeingList.addAll(elementsToAdd);
-        List<Long> updatedIds = elementsToUpdate.stream().map(HumanBeing::getId).collect(Collectors.toList());
-        observableHumanBeingList.removeIf(human -> updatedIds.contains(human.getId()));
-        observableHumanBeingList.addAll(elementsToUpdate);
-        updatePagination();
-    }
-
-    @Override
-    public void setInfo(List<HumanBeing> elementsToSet) {
-        observableHumanBeingList.clear();
-        observableHumanBeingList.addAll(elementsToSet);
-    }
-
-    private void updatePagination() {
-        Platform.runLater(new Runnable() {
-            int currentPage;
-            @Override
-            public void run() {
-                currentPage = pagination.getCurrentPageIndex();
-                pagination.setPageCount(observableHumanBeingList.size() / ROWS_PER_PAGE + 1);
-                pagination.setPageFactory(this::createPage);
-                pagination.setCurrentPageIndex(currentPage);
-            }
-
-            private Node createPage(int pageIndex) {
-                int from = pageIndex * ROWS_PER_PAGE;
-                int to = Math.min(from + ROWS_PER_PAGE, observableHumanBeingList.size());
-                ObservableList<TableColumn<HumanBeing, ?>> sortOrder = FXCollections.observableArrayList(humanTable.getSortOrder());
-                ObservableList<HumanBeing> pageHumansList = FXCollections.observableArrayList(observableHumanBeingList.subList(from, to));
-                humanTable.setItems(pageHumansList);
-                setUpFiltration(pageHumansList);
-                humanTable.getSortOrder().addAll(sortOrder);
-                humanTable.sort();
-                return humanTable;
-            }
-        });
-    }
-
-    private void setUpFiltration(ObservableList<HumanBeing> humanBeingObservableList) {
-        FilteredList<HumanBeing> filteredList = new FilteredList<>(humanBeingObservableList, t -> true);
-        idFilter.textProperty().addListener((observable, oldValue, newValue) ->
-                filteredList.setPredicate(humanBeing -> String.valueOf(humanBeing.getId()).startsWith(newValue)));
-        nameFilter.textProperty().addListener((observable, oldValue, newValue) ->
-                filteredList.setPredicate(humanBeing -> humanBeing.getName().toLowerCase().contains(newValue.toLowerCase())));
-        xFilter.textProperty().addListener((observable, oldValue, newValue) ->
-                filteredList.setPredicate(humanBeing -> String.valueOf(humanBeing.getCoordinates().getX()).startsWith(newValue)));
-        yFilter.textProperty().addListener((observable, oldValue, newValue) ->
-                filteredList.setPredicate(humanBeing -> String.valueOf(humanBeing.getCoordinates().getY()).startsWith(newValue)));
-        creationDateFilter.textProperty().addListener((observable, oldValue, newValue) ->
-                filteredList.setPredicate(humanBeing -> String.valueOf(humanBeing.getCreationDate()).startsWith(newValue)));
-        realHeroFilter.textProperty().addListener((observable, oldValue, newValue) ->
-                filteredList.setPredicate(humanBeing -> String.valueOf(humanBeing.isRealHero()).startsWith(newValue)));
-        popularityFilter.textProperty().addListener((observable, oldValue, newValue) ->
-                filteredList.setPredicate(humanBeing -> String.valueOf(humanBeing.isHasToothpick()).startsWith(newValue)));
-        impactSpeedFilter.textProperty().addListener((observable, oldValue, newValue) ->
-                filteredList.setPredicate(humanBeing -> String.valueOf(humanBeing.getImpactSpeed()).toLowerCase().startsWith(newValue.toLowerCase())));
-        weaponFilter.textProperty().addListener((observable, oldValue, newValue) ->
-                filteredList.setPredicate(humanBeing -> String.valueOf(humanBeing.getWeaponType()).toLowerCase().startsWith(newValue.toLowerCase())));
-        moodFilter.textProperty().addListener((observable, oldValue, newValue) ->
-                filteredList.setPredicate(humanBeing -> String.valueOf(humanBeing.getMood()).startsWith(newValue)));
-        carCoolnessFilter.textProperty().addListener((observable, oldValue, newValue) ->
-                filteredList.setPredicate(humanBeing -> (humanBeing.getCar() == null ? "-" : String.valueOf(humanBeing.getCar().getCarCoolness())).startsWith(newValue)));
-        carSpeedFilter.textProperty().addListener((observable, oldValue, newValue) ->
-                filteredList.setPredicate(humanBeing -> (humanBeing.getCar() == null ? "-" : String.valueOf(humanBeing.getCar().getCarSpeed())).startsWith(newValue)));
-        authorFilter.textProperty().addListener((observable, oldValue, newValue) ->
-                filteredList.setPredicate(humanBeing -> (humanBeing.getAuthor().toLowerCase()).startsWith(newValue.toLowerCase())));
-        SortedList<HumanBeing> sortedList = new SortedList<>(filteredList);
-        sortedList.comparatorProperty().bind(humanTable.comparatorProperty());
-        humanTable.setItems(sortedList);
     }
 }

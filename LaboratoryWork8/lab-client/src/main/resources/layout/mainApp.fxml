@@ -61,19 +61,15 @@
                      <font>
                         <Font size="18.0" />
                      </font></Button>
-                  <Button fx:id="executeScriptButton" layoutX="5.0" layoutY="178.0" mnemonicParsing="false" onAction="#executeScriptButtonClicked" prefHeight="39.0" prefWidth="190.0" styleClass="light_green_button" stylesheets="@../styles/green_button.css" text="%EXECUTE_SCRIPT">
+                  <Button fx:id="infoButton" layoutX="5.0" layoutY="177.0" mnemonicParsing="false" onAction="#infoButtonClicked" prefHeight="39.0" prefWidth="190.0" styleClass="light_green_button" stylesheets="@../styles/green_button.css" text="%INFO">
                      <font>
                         <Font name="Exo 2 Regular" size="18.0" />
                      </font></Button>
-                  <Button fx:id="infoButton" layoutX="5.0" layoutY="234.0" mnemonicParsing="false" onAction="#infoButtonClicked" prefHeight="39.0" prefWidth="190.0" styleClass="light_green_button" stylesheets="@../styles/green_button.css" text="%INFO">
+                  <Button fx:id="removeButton" layoutX="5.0" layoutY="234.0" mnemonicParsing="false" onAction="#removeButtonClicked" prefHeight="39.0" prefWidth="190.0" styleClass="light_green_button" stylesheets="@../styles/green_button.css" text="%REMOVE">
                      <font>
                         <Font name="Exo 2 Regular" size="18.0" />
                      </font></Button>
-                  <Button fx:id="removeButton" layoutX="5.0" layoutY="291.0" mnemonicParsing="false" onAction="#removeButtonClicked" prefHeight="39.0" prefWidth="190.0" styleClass="light_green_button" stylesheets="@../styles/green_button.css" text="%REMOVE">
-                     <font>
-                        <Font name="Exo 2 Regular" size="18.0" />
-                     </font></Button>
-                  <Button fx:id="updateButton" layoutX="5.0" layoutY="345.0" mnemonicParsing="false" onAction="#updateButtonClicked" prefHeight="39.0" prefWidth="190.0" styleClass="light_green_button" stylesheets="@../styles/green_button.css" text="%OPEN_PROFILE">
+                  <Button fx:id="updateButton" layoutX="5.0" layoutY="288.0" mnemonicParsing="false" onAction="#updateButtonClicked" prefHeight="39.0" prefWidth="190.0" styleClass="light_green_button" stylesheets="@../styles/green_button.css" text="%OPEN_PROFILE">
                      <font>
                         <Font name="Exo 2 Regular" size="18.0" />
                      </font></Button>

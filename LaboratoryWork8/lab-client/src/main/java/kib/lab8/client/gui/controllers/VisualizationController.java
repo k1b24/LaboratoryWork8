@@ -1,43 +1,50 @@
 package kib.lab8.client.gui.controllers;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import javafx.animation.ScaleTransition;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
+import javafx.util.Duration;
+import kib.lab8.client.gui.GUIConfig;
 import kib.lab8.client.gui.abstractions.DataVisualizerController;
+import kib.lab8.client.utils.ChildUIType;
 import kib.lab8.common.entities.HumanBeing;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+
 public class VisualizationController extends DataVisualizerController {
 
     @FXML
     private AnchorPane visualizationPane;
-
-    private final ObservableList<HumanBeing> observableHumanBeingList = FXCollections.observableArrayList();
     private HumanBeing chosenHuman;
-    private final List<Canvas> humans = new ArrayList<>();
+    private final Map<HumanBeing, Canvas> people = new HashMap<>();
     private static final Map<String, Color> colors = new HashMap<>();
 
-    @FXML
-    private void initialize() {
-
-
-    }
-
-    private void drawHuman(HumanBeing human) {
+    private Canvas generateCanvas(HumanBeing human) {
         checkAuthorColor(human);
         Canvas humanCanvas = new Canvas(50, 50);
-        humanCanvas.setLayoutX(550 + (float) (human.getCoordinates().getX()) / 3);
-        humanCanvas.setLayoutY(250 - (human.getCoordinates().getY()) / 3);
+        humanCanvas.setOnMouseEntered(event -> {
+            humanCanvas.setScaleX(1.13);
+            humanCanvas.setScaleY(1.13);
+        });
+        humanCanvas.setOnMouseExited(event -> {
+            humanCanvas.setScaleX(1);
+            humanCanvas.setScaleY(1);
+        });
+        humanCanvas.setOnMousePressed(mouseEvent -> {
+            if (mouseEvent.isPrimaryButtonDown() && mouseEvent.getClickCount() == 2) {
+                chosenHuman = human;
+                getParentController().loadUI(GUIConfig.PROFILE_WINDOW_PATH, null, ChildUIType.HUMAN_PROFILE_CHILD_WINDOW);
+            }
+        });
+        humanCanvas.setLayoutX(525 + human.getCoordinates().getX()*1.05);
+        humanCanvas.setLayoutY(225 - (human.getCoordinates().getY() * 0.9));
         if (human.getCar() == null) {
             drawHumanWithoutCar(human, humanCanvas);
         } else if (human.getCar().getCarCoolness()) {
@@ -45,7 +52,7 @@ public class VisualizationController extends DataVisualizerController {
         } else {
             drawHumanWithShitCar(human, humanCanvas);
         }
-
+        return humanCanvas;
     }
 
     private void drawHumanWithoutCar(HumanBeing human, Canvas humanCanvas) {
@@ -65,7 +72,6 @@ public class VisualizationController extends DataVisualizerController {
 
         //head
         graphicsContext.strokeOval(2, 2, 10, 10);
-        visualizationPane.getChildren().add(humanCanvas);
     }
 
     private void drawHumanWithShitCar(HumanBeing human, Canvas humanCanvas) {
@@ -85,23 +91,21 @@ public class VisualizationController extends DataVisualizerController {
         graphicsContext.strokeLine(36, 22, 29, 18);
 
 
-        graphicsContext.setFill(Color.BEIGE);
-        graphicsContext.setStroke(Color.BEIGE);
+        graphicsContext.setFill(Color.YELLOW);
+        graphicsContext.setStroke(Color.YELLOW);
         graphicsContext.fillOval(16, 8, 8,8);
         graphicsContext.strokeLine(20, 24, 25, 37);
         graphicsContext.strokeLine(20, 24, 22, 37);
         graphicsContext.strokeLine(20, 24, 20, 15);
         graphicsContext.strokeLine(25, 23, 20, 15);
-
-        visualizationPane.getChildren().add(humanCanvas);
     }
 
     private void drawHumanWithCoolCar(HumanBeing human, Canvas humanCanvas) {
         checkAuthorColor(human);
         GraphicsContext graphicsContext = humanCanvas.getGraphicsContext2D();
         graphicsContext.setLineWidth(2);
-        graphicsContext.setFill(Color.BEIGE);
-        graphicsContext.setStroke(Color.BEIGE);
+        graphicsContext.setFill(Color.YELLOW);
+        graphicsContext.setStroke(Color.YELLOW);
         graphicsContext.fillOval(16, 16, 8,8);
         graphicsContext.strokeLine(20, 32, 20, 23);
         graphicsContext.strokeLine(25, 31, 20, 23);
@@ -116,7 +120,6 @@ public class VisualizationController extends DataVisualizerController {
         graphicsContext.setFill(Color.BLACK);
         graphicsContext.fillOval(12, 37, 7, 7);
         graphicsContext.fillOval(23, 37, 7, 7);
-        visualizationPane.getChildren().add(humanCanvas);
     }
 
     private void checkAuthorColor(HumanBeing humanBeing) {
@@ -127,18 +130,36 @@ public class VisualizationController extends DataVisualizerController {
 
     @Override
     public void updateInfo(List<HumanBeing> elementsToRemove, List<HumanBeing> elementsToAdd, List<HumanBeing> elementsToUpdate) {
-        observableHumanBeingList.removeAll(elementsToRemove);
-        observableHumanBeingList.addAll(elementsToAdd);
-        List<Long> updatedIds = elementsToUpdate.stream().map(HumanBeing::getId).collect(Collectors.toList());
-        observableHumanBeingList.removeIf(human -> updatedIds.contains(human.getId()));
-        observableHumanBeingList.addAll(elementsToUpdate);
+        elementsToRemove.forEach(this::removeFromVisualization);
+        elementsToAdd.forEach(this::addToVisualization);
+        List<Long> idsToUpdate = elementsToUpdate.stream().map(HumanBeing::getId).collect(Collectors.toList());
+        people.keySet().removeIf(human -> idsToUpdate.contains(human.getId()));
+        elementsToUpdate.forEach(human -> people.put(human, generateCanvas(human)));
+
     }
 
     @Override
     public void setInfo(List<HumanBeing> elementsToSet) {
-        observableHumanBeingList.clear();
-        observableHumanBeingList.addAll(elementsToSet);
-        observableHumanBeingList.forEach(this::drawHuman);
+        elementsToSet.forEach(this::addToVisualization);
+    }
+
+    private void addToVisualization(HumanBeing human) {
+        Canvas canvas = generateCanvas(human);
+        ScaleTransition transition = new ScaleTransition();
+        transition.setNode(canvas);
+        transition.setDuration(Duration.millis(1000));
+        transition.setFromX(0);
+        transition.setFromY(0);
+        transition.setToX(1);
+        transition.setToY(1);
+        people.put(human, canvas);
+        transition.play();
+        visualizationPane.getChildren().add(canvas);
+    }
+
+    private void removeFromVisualization(HumanBeing human) {
+        visualizationPane.getChildren().remove(people.get(human));
+        people.remove(human);
     }
 
     @Override

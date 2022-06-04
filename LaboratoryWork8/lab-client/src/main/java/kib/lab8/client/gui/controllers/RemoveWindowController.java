@@ -27,17 +27,7 @@ public class RemoveWindowController extends ChildWindowController {
     private void remove(Event event) {
         ExecutableCommand command = ExecutableCommand.REMOVE_COMMAND;
         getParentModel().executeCommand(command, Integer.valueOf(idField.getText()));
-        try {
-            getParentModel().updateCollection();
-        } catch (UserException e) {
-            if (e.isFatal()) {
-                getParentModel().prepareForExit();
-                e.showAlert();
-                getParentModel().getController().closeApplication();
-            } else {
-                e.showAlert();
-            }
-        }
+        getParentModel().updateCollection();
         ((Stage) ((Node) event.getSource()).getScene().getWindow()).close();
     }
 }
