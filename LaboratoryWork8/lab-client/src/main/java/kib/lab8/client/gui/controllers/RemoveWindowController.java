@@ -13,9 +13,6 @@ import kib.lab8.client.utils.UserException;
 public class RemoveWindowController extends ChildWindowController {
 
     @FXML
-    private Button removeButton;
-
-    @FXML
     private TextField idField;
 
     @FXML

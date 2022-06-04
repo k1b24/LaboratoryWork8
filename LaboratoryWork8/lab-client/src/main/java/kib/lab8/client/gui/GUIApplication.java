@@ -33,7 +33,7 @@ public class GUIApplication extends Application {
         controller.setCurrentLocale(LanguagesEnum.ENGLISH);
         primaryStage.getIcons().add(getCornerImage());
 
-        primaryStage.setTitle("Be human");
+        primaryStage.setTitle(TITLE);
         primaryStage.setResizable(false);
         primaryStage.setScene(new Scene(root));
         primaryStage.show();

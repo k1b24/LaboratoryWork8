@@ -65,6 +65,7 @@ public class AuthorizationController extends AbstractController {
                         new MenuController(model.getConnectionHandler(), model.getUserLogin(), model.getUserPassword()), getCurrentLocale());
             } else {
                 System.out.println("net takogo uzera");
+                //TODO
                 authorizationButton.setDisable(false);
                 //покажи текст об ошибке авторизации
             }

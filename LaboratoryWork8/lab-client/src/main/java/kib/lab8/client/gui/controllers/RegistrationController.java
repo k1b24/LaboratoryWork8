@@ -2,6 +2,7 @@ package kib.lab8.client.gui.controllers;
 
 
 import javafx.application.Platform;
+import javafx.beans.binding.BooleanBinding;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -31,6 +32,11 @@ public class RegistrationController extends AbstractController {
     private final RegistrationModel model;
 
 
+    @FXML
+    private void initialize() {
+        bindProperties();
+    }
+
     public RegistrationController(ConnectionHandlerClient connectionHandler) {
         model = new RegistrationModel(connectionHandler);
     }
@@ -50,6 +56,8 @@ public class RegistrationController extends AbstractController {
                     Platform.exit();
                 }
             }
+        } else {
+            //TODO
         }
     }
 
@@ -59,5 +67,13 @@ public class RegistrationController extends AbstractController {
         } catch (UserException e) {
             e.showAlert();
         }
+    }
+
+    private void bindProperties() {
+        BooleanBinding booleanBind = loginField.textProperty().isEmpty()
+                .or(passwordField.textProperty().isEmpty())
+                .or(secondPasswordField.textProperty().isEmpty());
+
+        registerButton.disableProperty().bind(booleanBind);
     }
 }

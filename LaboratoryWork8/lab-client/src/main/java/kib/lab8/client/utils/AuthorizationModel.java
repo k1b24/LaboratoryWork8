@@ -48,7 +48,7 @@ public class AuthorizationModel {
             throw new UserException("Произошла ошибка при коммуникации с сервером, "
                     + "повторите попытку", true);
         } catch (ClassNotFoundException e) {
-            throw new UserException("Произошла ошибка при получении ответа с сервера. Пожалуйста, повторите попытку", true);
+            throw new UserException("Произошла ошибка при получении ответа с сервера, повторите попытку", true);
         } catch (RequestResponseMismatchException e) {
             throw new UserException("Сервер прислал лажу", true);
         }

@@ -20,11 +20,7 @@ public class SettingsController {
         languagesChoiceBox.setItems(languages);
         languagesChoiceBox.setOnAction(event -> {
             LanguagesEnum chosenLanguage = languagesChoiceBox.getValue();
-//            try {
-////                .changeScene(GUIConfig.CONNECTION_PATH, controllerClass -> new ConnectionController(), chosenLanguage);
-//            } catch (UserException e) {
-//                e.showAlert();
-//            }
+
         });
     }
 }

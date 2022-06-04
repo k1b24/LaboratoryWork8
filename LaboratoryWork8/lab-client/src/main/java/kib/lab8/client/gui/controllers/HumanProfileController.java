@@ -127,7 +127,6 @@ public class HumanProfileController extends ChildWindowController {
 
     @FXML
     private void initialize() {
-        //TODO енэйблить и дисэйблить кнопки в зависимости от того, кто открыл
         bindProperties();
         weaponChoiceBox.setItems(weaponTypes);
         moodChoiceBox.setItems(moods);

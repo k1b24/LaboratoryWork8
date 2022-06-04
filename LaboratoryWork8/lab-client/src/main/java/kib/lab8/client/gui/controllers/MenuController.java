@@ -45,33 +45,6 @@ public class MenuController extends AbstractController {
     private TextArea terminal;
 
     @FXML
-    private Button addButton;
-
-    @FXML
-    private Button historyButton;
-
-    @FXML
-    private Button clearButton;
-
-    @FXML
-    private Button executeScriptButton;
-
-    @FXML
-    private Button infoButton;
-
-    @FXML
-    private Button removeButton;
-
-    @FXML
-    private Button updateButton;
-
-    @FXML
-    private Button settingsButton;
-
-    @FXML
-    private Button FAQButton;
-
-    @FXML
     private Button tableButton;
 
     @FXML
@@ -108,12 +81,6 @@ public class MenuController extends AbstractController {
         ExecutableCommand clearCommand = ExecutableCommand.CLEAR_COMMAND;
         model.executeCommand(clearCommand);
         model.updateCollection();
-    }
-
-    @FXML
-    private void executeScriptButtonClicked() {
-        //TODO пробрасывать и выполнять или ваще нахуй убрать
-        System.out.println("dada");
     }
 
     @FXML
@@ -158,6 +125,7 @@ public class MenuController extends AbstractController {
 
     @FXML
     private void FAQButtonClicked() {
+        //TODO
         System.out.println("dada");
     }
 

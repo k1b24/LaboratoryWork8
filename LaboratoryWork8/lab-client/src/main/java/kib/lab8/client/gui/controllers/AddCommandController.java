@@ -48,50 +48,6 @@ public class AddCommandController extends ChildWindowController {
     @FXML
     private CheckBox carCoolness;
 
-    public TextField getName() {
-        return name;
-    }
-
-    public TextField getX() {
-        return x;
-    }
-
-    public TextField getY() {
-        return y;
-    }
-
-    public CheckBox getRealHero() {
-        return realHero;
-    }
-
-    public CheckBox getPopularity() {
-        return popularity;
-    }
-
-    public TextField getImpactSpeed() {
-        return impactSpeed;
-    }
-
-    public ChoiceBox<WeaponType> getWeapon() {
-        return weapon;
-    }
-
-    public ChoiceBox<Mood> getMood() {
-        return mood;
-    }
-
-    public CheckBox getCarCoolness() {
-        return carCoolness;
-    }
-
-    public TextField getCarSpeed() {
-        return carSpeed;
-    }
-
-    public CheckBox getCarCheckBox() {
-        return carCheckBox;
-    }
-
     @FXML
     private TextField carSpeed;
 
@@ -128,7 +84,17 @@ public class AddCommandController extends ChildWindowController {
 
     @FXML
     private void clear() {
-
+        name.setText("");
+        x.setText("");
+        y.setText("");
+        realHero.setSelected(false);
+        popularity.setSelected(false);
+        impactSpeed.setText("");
+        weapon.setValue(null);
+        mood.setValue(null);
+        carCheckBox.setSelected(true);
+        carCoolness.setSelected(false);
+        carSpeed.setText("");
     }
 
     @FXML
@@ -192,5 +158,49 @@ public class AddCommandController extends ChildWindowController {
                 keyEvent.consume();
             }
         });
+    }
+
+    public TextField getName() {
+        return name;
+    }
+
+    public TextField getX() {
+        return x;
+    }
+
+    public TextField getY() {
+        return y;
+    }
+
+    public CheckBox getRealHero() {
+        return realHero;
+    }
+
+    public CheckBox getPopularity() {
+        return popularity;
+    }
+
+    public TextField getImpactSpeed() {
+        return impactSpeed;
+    }
+
+    public ChoiceBox<WeaponType> getWeapon() {
+        return weapon;
+    }
+
+    public ChoiceBox<Mood> getMood() {
+        return mood;
+    }
+
+    public CheckBox getCarCoolness() {
+        return carCoolness;
+    }
+
+    public TextField getCarSpeed() {
+        return carSpeed;
+    }
+
+    public CheckBox getCarCheckBox() {
+        return carCheckBox;
     }
 }

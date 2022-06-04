@@ -5,6 +5,7 @@ import javafx.scene.control.Alert;
 public class UserException extends Exception {
 
     private final boolean fatal;
+
     public UserException(String message) {
         super(message);
         fatal = false;
