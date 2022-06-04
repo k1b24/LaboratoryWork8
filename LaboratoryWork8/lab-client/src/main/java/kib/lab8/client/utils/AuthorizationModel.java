@@ -1,18 +1,22 @@
 package kib.lab8.client.utils;
 
+import kib.lab8.client.gui.controllers.AuthorizationController;
 import kib.lab8.common.util.client_server_communication.requests.LoginRequest;
 import kib.lab8.common.util.client_server_communication.responses.AuthenticationResponse;
 
 import java.io.IOException;
+import java.net.SocketTimeoutException;
 
 public class AuthorizationModel {
 
     private ConnectionHandlerClient connectionHandler;
     private String userLogin;
     private String userPassword;
+    private final AuthorizationController controller;
 
-    public AuthorizationModel(ConnectionHandlerClient connectionHandler) {
+    public AuthorizationModel(ConnectionHandlerClient connectionHandler, AuthorizationController controller) {
         this.connectionHandler = connectionHandler;
+        this.controller = controller;
     }
 
     public void setConnectionHandler(ConnectionHandlerClient connectionHandler) {
@@ -44,13 +48,12 @@ public class AuthorizationModel {
             } else {
                 return false;
             }
+        } catch (SocketTimeoutException e) {
+            throw new UserException(controller.getResourceBundle().getString("no_response_error"));
         } catch (IOException e) {
-            throw new UserException("Произошла ошибка при коммуникации с сервером, "
-                    + "повторите попытку", true);
-        } catch (ClassNotFoundException e) {
-            throw new UserException("Произошла ошибка при получении ответа с сервера, повторите попытку", true);
-        } catch (RequestResponseMismatchException e) {
-            throw new UserException("Сервер прислал лажу", true);
+            throw new UserException(controller.getResourceBundle().getString("response_receiving_error"), true);
+        } catch (ClassNotFoundException | RequestResponseMismatchException e) {
+            throw new UserException(controller.getResourceBundle().getString("server_communication_error"), true);
         }
     }
 

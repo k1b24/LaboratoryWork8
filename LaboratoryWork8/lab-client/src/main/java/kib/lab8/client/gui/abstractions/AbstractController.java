@@ -57,7 +57,7 @@ public abstract class AbstractController {
             return controller;
         } catch (IOException e) {
             e.printStackTrace();
-            throw new UserException("Произошла ошибка при открытии нового окна, повторите попытку");
+            throw new UserException(getResourceBundle().getString("new_window_opening_error"));
         }
     }
 

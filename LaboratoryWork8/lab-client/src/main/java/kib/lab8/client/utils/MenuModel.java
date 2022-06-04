@@ -94,13 +94,11 @@ public class MenuModel {
                 try {
                     return connectionHandler.sendRequest(request);
                 } catch (SocketTimeoutException e) {
-                    throw new UserException("От сервера не был получен ответ...");
+                    throw new UserException(controller.getResourceBundle().getString("no_response_error"));
                 } catch (IOException e) {
-                    throw new UserException("Произошла ошибка при коммуникации с сервером, " + "повторите попытку", true);
-                } catch (ClassNotFoundException e) {
-                    throw new UserException("Произошла ошибка при получении ответа с сервера. Пожалуйста, повторите попытку", true);
-                } catch (RequestResponseMismatchException e) {
-                    throw new UserException("Сервер прислал лажу", true);
+                    throw new UserException(controller.getResourceBundle().getString("response_receiving_error"), true);
+                } catch (ClassNotFoundException | RequestResponseMismatchException e) {
+                    throw new UserException(controller.getResourceBundle().getString("server_communication_error"), true);
                 }
             }
         };
@@ -167,7 +165,7 @@ public class MenuModel {
     public HumanBeing getHumanById(int id) throws UserException {
         HumanBeing chosenHuman = humanCollection.stream().filter(human -> human.getId() == id).findFirst().orElse(null);
         if (chosenHuman == null) {
-            throw new UserException("Нет человека с таким ID");
+            throw new UserException(controller.getResourceBundle().getString("human_not_found_error"));
         }
         return chosenHuman;
     }
@@ -180,5 +178,13 @@ public class MenuModel {
 
     public String getUserLogin() {
         return userLogin;
+    }
+
+    public ConnectionHandlerClient getConnectionHandler() {
+        return connectionHandler;
+    }
+
+    public String getUserPassword() {
+        return userPassword;
     }
 }

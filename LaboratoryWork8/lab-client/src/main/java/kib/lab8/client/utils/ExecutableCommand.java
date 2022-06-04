@@ -49,6 +49,12 @@ public enum ExecutableCommand {
             CommandRequest request = new CommandRequest("remove_by_id", (int) args[0]);
             return executeCommand(connectionHandler, request, login, password);
         }
+    }, UPDATE_BY_ID_COMMAND {
+        @Override
+        public AbstractMessage action(ConnectionHandlerClient connectionHandler, String login, String password, Object... args) throws UserException, SocketTimeoutException {
+            CommandRequest request = new CommandRequest("update", Math.toIntExact((Long) args[0]), (HumanBeing) args[1]);
+            return executeCommand(connectionHandler, request, login, password);
+        }
     };
 
     public abstract AbstractMessage action(ConnectionHandlerClient connectionHandler, String login, String password, Object... args) throws UserException, SocketTimeoutException;

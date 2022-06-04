@@ -91,7 +91,6 @@ public class MenuController extends AbstractController {
     @FXML
     private void historyButtonClicked() {
         ExecutableCommand command = ExecutableCommand.HISTORY_COMMAND;
-
         model.executeCommand(command);
     }
 
@@ -123,11 +122,6 @@ public class MenuController extends AbstractController {
         loadUI(GUIConfig.SETTINGS_PANE_PATH, menuPane, ChildUIType.ON_MAIN_MENU);
     }
 
-    @FXML
-    private void FAQButtonClicked() {
-        //TODO
-        System.out.println("dada");
-    }
 
     @FXML
     private void visualizeButtonClicked() {
@@ -179,6 +173,8 @@ public class MenuController extends AbstractController {
                 stage.show();
             } else if (uiType.equals(ChildUIType.ON_MAIN_MENU)) {
                 Parent parent = loader.load();
+                ChildWindowController controller = loader.getController();
+                controller.setMenuModel(model);
                 targetPane.getChildren().add(parent);
             }
         } catch (IOException e) {

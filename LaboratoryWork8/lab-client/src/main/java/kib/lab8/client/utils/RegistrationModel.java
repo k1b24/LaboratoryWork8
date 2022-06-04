@@ -30,7 +30,6 @@ public class RegistrationModel {
                 throw new UserException(authenticationResponse.getMessage().getMessage());
             }
         } catch (IOException e) {
-            Platform.setImplicitExit(false);
             throw new UserException("Произошла ошибка при коммуникации с сервером, "
                     + "повторите попытку", true);
         } catch (ClassNotFoundException e) {

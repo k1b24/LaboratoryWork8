@@ -52,7 +52,7 @@ public class AuthorizationController extends AbstractController {
     }
 
     public AuthorizationController(ConnectionHandlerClient connectionHandler) {
-        model = new AuthorizationModel(connectionHandler);
+        model = new AuthorizationModel(connectionHandler, this);
     }
 
     @FXML
@@ -64,16 +64,17 @@ public class AuthorizationController extends AbstractController {
                 changeScene(GUIConfig.MAIN_WINDOW_PATH, controllerClass ->
                         new MenuController(model.getConnectionHandler(), model.getUserLogin(), model.getUserPassword()), getCurrentLocale());
             } else {
-                System.out.println("net takogo uzera");
                 //TODO
                 authorizationButton.setDisable(false);
-                //покажи текст об ошибке авторизации
+                throw new UserException(getResourceBundle().getString("no_such_user_error"));
             }
         } catch (UserException e) {
             if (e.isFatal()) {
                 model.prepareForExit();
                 e.showAlert();
                 Platform.exit();
+            } else {
+                e.showAlert();
             }
         }
     }

@@ -353,6 +353,10 @@ public class TableViewController extends DataVisualizerController {
     }
 
     private void updateTable() {
+        TableColumn<HumanBeing, ?> sort = null;
+        if (humanTable.getSortOrder().size() > 0) {
+            sort = humanTable.getSortOrder().get(0);
+        }
         int from = currentPage * ROWS_PER_PAGE;
         int to = from + ROWS_PER_PAGE;
         List<HumanBeing> subList = new ArrayList<>();
@@ -363,6 +367,9 @@ public class TableViewController extends DataVisualizerController {
         }
         observableHumanBeingList.clear();
         observableHumanBeingList.addAll(subList);
+        if (sort != null) {
+            humanTable.getSortOrder().add(sort);
+        }
     }
 
     @Override

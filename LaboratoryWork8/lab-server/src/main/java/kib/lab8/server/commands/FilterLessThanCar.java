@@ -15,7 +15,7 @@ public class FilterLessThanCar extends AbstractCommand {
 
     @Override
     public Object execute(CommandRequest request) {
-        int speedFilter = request.getNumberArgumentToSend();
+        int speedFilter = (int) request.getNumberArgumentToSend();
         return new CommandResponse(new SuccessMessage("Элементы коллекции, значение скорости которых меньше " + speedFilter + ":"),
                 super.getDataManager().getCollectionManager().filterByCarSpeed(speedFilter));
     }

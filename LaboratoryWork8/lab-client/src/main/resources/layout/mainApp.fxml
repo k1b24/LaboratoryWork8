@@ -29,15 +29,6 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="FAQButton" layoutX="153.0" layoutY="596.0" mnemonicParsing="false" onAction="#FAQButtonClicked" prefHeight="62.0" prefWidth="69.0" style="-fx-background-color: #4BBB56;">
-               <graphic>
-                  <ImageView fitHeight="56.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/faq.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
             <Button fx:id="settingsButton" layoutX="80.0" layoutY="596.0" mnemonicParsing="false" onAction="#settingsButtonClicked" prefHeight="56.0" prefWidth="62.0" style="-fx-background-color: #4BBB56;">
                <graphic>
                   <ImageView fitHeight="56.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">

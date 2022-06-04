@@ -53,7 +53,7 @@ public class ConnectionController extends AbstractController {
     }
 
     public ConnectionController() {
-        this.model = new ConnectionModel();
+        this.model = new ConnectionModel(this);
     }
 
     @FXML

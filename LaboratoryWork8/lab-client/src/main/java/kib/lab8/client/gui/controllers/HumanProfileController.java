@@ -12,6 +12,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import kib.lab8.client.gui.GUIConfig;
 import kib.lab8.client.utils.ExecutableCommand;
+import kib.lab8.client.utils.HumanProfileModel;
 import kib.lab8.client.utils.UserException;
 import kib.lab8.common.entities.enums.Mood;
 import kib.lab8.common.entities.enums.WeaponType;
@@ -117,12 +118,13 @@ public class HumanProfileController extends ChildWindowController {
 
     private final ObservableList<WeaponType> weaponTypes = FXCollections.observableArrayList(WeaponType.values());
     private final ObservableList<Mood> moods = FXCollections.observableArrayList(Mood.values());
-    private final HumanBeing currentHuman;
     private final String userLogin;
+    private boolean updateOpened = false;
+    private final HumanProfileModel model;
 
     public HumanProfileController(HumanBeing currentHuman, String userLogin) {
-        this.currentHuman = currentHuman;
         this.userLogin = userLogin;
+        model = new HumanProfileModel(this, currentHuman);
     }
 
     @FXML
@@ -132,7 +134,7 @@ public class HumanProfileController extends ChildWindowController {
         moodChoiceBox.setItems(moods);
         updateVBox.setVisible(false);
         valuesVBox.setVisible(true);
-        if (currentHuman.getAuthor().equals(userLogin)) {
+        if (model.getCurrentHuman().getAuthor().equals(userLogin)) {
             updateButton.setDisable(false);
             removeButton.setDisable(false);
         } else {
@@ -144,36 +146,49 @@ public class HumanProfileController extends ChildWindowController {
     }
 
     private void setTextFieldValues() {
-        nameValue.setText(currentHuman.getName());
-        creationDateValue.setText(String.valueOf(currentHuman.getCreationDate()));
-        xValue.setText(String.valueOf(currentHuman.getCoordinates().getX()));
-        yValue.setText(String.valueOf(currentHuman.getCoordinates().getY()));
-        realHeroValue.setText(String.valueOf(currentHuman.isRealHero()));
-        popularityValue.setText(String.valueOf(currentHuman.isHasToothpick()));
-        impactSpeedValue.setText(String.valueOf(currentHuman.getImpactSpeed()));
-        weaponValue.setText(String.valueOf(currentHuman.getWeaponType()));
-        moodValue.setText(String.valueOf(currentHuman.getMood()));
-        carValue.setText(currentHuman.getCar() == null ? "-" : "+");
-        if (currentHuman.getCar() != null) {
-            carCoolnessValue.setText(String.valueOf(currentHuman.getCar().getCarCoolness()));
-            carSpeedValue.setText(String.valueOf(currentHuman.getCar().getCarSpeed()));
+        nameValue.setText(model.getCurrentHuman().getName());
+        creationDateValue.setText(String.valueOf(model.getCurrentHuman().getCreationDate()));
+        xValue.setText(String.valueOf(model.getCurrentHuman().getCoordinates().getX()));
+        yValue.setText(String.valueOf(model.getCurrentHuman().getCoordinates().getY()));
+        realHeroValue.setText(String.valueOf(model.getCurrentHuman().isRealHero()));
+        popularityValue.setText(String.valueOf(model.getCurrentHuman().isHasToothpick()));
+        impactSpeedValue.setText(String.valueOf(model.getCurrentHuman().getImpactSpeed()));
+        weaponValue.setText(String.valueOf(model.getCurrentHuman().getWeaponType()));
+        moodValue.setText(String.valueOf(model.getCurrentHuman().getMood()));
+        carValue.setText(model.getCurrentHuman().getCar() == null ? "-" : "+");
+        if (model.getCurrentHuman().getCar() != null) {
+            carCoolnessValue.setText(String.valueOf(model.getCurrentHuman().getCar().getCarCoolness()));
+            carSpeedValue.setText(String.valueOf(model.getCurrentHuman().getCar().getCarSpeed()));
         } else {
             carCoolnessValue.setVisible(false);
             carSpeedValue.setVisible(false);
         }
-        authorValue.setText(currentHuman.getAuthor());
+        authorValue.setText(model.getCurrentHuman().getAuthor());
     }
 
     @FXML
-    private void update() {
-        updateVBox.setVisible(true);
-        valuesVBox.setVisible(false);
+    private void update(Event event) {
+        if (!updateOpened) {
+            updateVBox.setVisible(true);
+            valuesVBox.setVisible(false);
+            creationDateUpdate.setText(String.valueOf(model.getCurrentHuman().getCreationDate()));
+            authorUpdate.setText(model.getCurrentHuman().getAuthor());
+            updateOpened = true;
+        } else {
+            try {
+                model.updateHuman();
+                ((Stage) ((Node) event.getSource()).getScene().getWindow()).close();
+                getParentModel().updateCollection();
+            } catch (UserException e) {
+                e.showAlert();
+            }
+        }
     }
 
     @FXML
     private void remove(Event event) {
         ExecutableCommand command = ExecutableCommand.REMOVE_COMMAND;
-        getParentModel().executeCommand(command, (int) currentHuman.getId().longValue());
+        getParentModel().executeCommand(command, (int) model.getCurrentHuman().getId().longValue());
         getParentModel().updateCollection();
         ((Stage) ((Node) event.getSource()).getScene().getWindow()).close();
     }
@@ -194,5 +209,53 @@ public class HumanProfileController extends ChildWindowController {
                 carCoolnessCheckBox.setVisible(true);
             }
         });
+    }
+
+    public ImageView getImageView() {
+        return imageView;
+    }
+
+    public TextField getNameField() {
+        return nameField;
+    }
+
+    public TextField getxField() {
+        return xField;
+    }
+
+    public TextField getyField() {
+        return yField;
+    }
+
+    public CheckBox getRealHeroCheckBox() {
+        return realHeroCheckBox;
+    }
+
+    public CheckBox getPopularityCheckBox() {
+        return popularityCheckBox;
+    }
+
+    public TextField getImpactSpeedField() {
+        return impactSpeedField;
+    }
+
+    public ChoiceBox<WeaponType> getWeaponChoiceBox() {
+        return weaponChoiceBox;
+    }
+
+    public ChoiceBox<Mood> getMoodChoiceBox() {
+        return moodChoiceBox;
+    }
+
+    public CheckBox getCarCheckBox() {
+        return carCheckBox;
+    }
+
+    public CheckBox getCarCoolnessCheckBox() {
+        return carCoolnessCheckBox;
+    }
+
+    public TextField getCarSpeedField() {
+        return carSpeedField;
     }
 }

@@ -90,6 +90,7 @@ public class    DataManager {
     public long updateByIdAndUser(HumanBeing human, long id, String user) {
         long returnedId = dbManager.updateByIdAndUser(human, id, user);
         if (returnedId > 0) {
+            collectionManager.removeHumanByIdAndUserName(id, user);
             collectionManager.setHumanById(id, human);
         }
         return returnedId;

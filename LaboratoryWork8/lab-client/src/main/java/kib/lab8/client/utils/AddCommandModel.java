@@ -34,28 +34,28 @@ public class AddCommandModel {
             validateHuman(newHuman);
             return newHuman;
         } catch (NumberFormatException e) {
-            throw new UserException("Поля с числовыми значениями не могут быть пустыми");
+            throw new UserException(controller.getParentModel().getController().getResourceBundle().getString("empty_numeric_fields_error"));
         }
     }
 
     private void validateHuman(HumanBeing human) throws UserException {
         if (!(human.getName().length() > 2 && human.getName().length() < 50)) {
-            throw new UserException("Длина имени человека должна быть больше 2 и меньше 50");
+            throw new UserException(controller.getParentModel().getController().getResourceBundle().getString("name_length_error"));
         }
         if (!(human.getCoordinates().getX() > -500)) {
-            throw new UserException("Координата X должна быть больше -500");
+            throw new UserException(controller.getParentModel().getController().getResourceBundle().getString("x_lower_bound_error"));
         }
         if (!(human.getCoordinates().getX() < 500)) {
-            throw new UserException("Координата по X должна быть меньше 500");
+            throw new UserException(controller.getParentModel().getController().getResourceBundle().getString("x_upper_bound_error"));
         }
         if (!(human.getCoordinates().getY() < 250)) {
-            throw new UserException("Координата по Y должна быть меньше 250");
+            throw new UserException(controller.getParentModel().getController().getResourceBundle().getString("y_upper_bound_error"));
         }
         if (!(human.getCoordinates().getY() > -250)) {
-            throw new UserException("Координата по Y должна быть больше 250");
+            throw new UserException(controller.getParentModel().getController().getResourceBundle().getString("y_lower_bound_error"));
         }
         if (!(human.getImpactSpeed() < 712)) {
-            throw new UserException("Скорость удара должна быть меньше 712");
+            throw new UserException(controller.getParentModel().getController().getResourceBundle().getString("impact_speed_upper_bound_error"));
         }
     }
 }

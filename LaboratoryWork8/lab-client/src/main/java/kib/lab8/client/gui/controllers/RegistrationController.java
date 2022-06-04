@@ -43,21 +43,20 @@ public class RegistrationController extends AbstractController {
 
     @FXML
     private void register() {
+        registerButton.disableProperty().unbind();
         registerButton.setDisable(true);
         if (passwordField.getText().equals(secondPasswordField.getText())) {
             try {
                 model.sendSignUpRequest(loginField.getText(), passwordField.getText());
                 changeScene(GUIConfig.AUTHORIZATION_PATH, controllerClass -> new AuthorizationController(model.getConnectionHandler()), getCurrentLocale());
             } catch (UserException e) {
-                registerButton.setDisable(false);
+                bindProperties();
                 if (e.isFatal()) {
                     model.prepareForExit();
                     e.showAlert();
                     Platform.exit();
                 }
             }
-        } else {
-            //TODO
         }
     }
 
@@ -73,7 +72,6 @@ public class RegistrationController extends AbstractController {
         BooleanBinding booleanBind = loginField.textProperty().isEmpty()
                 .or(passwordField.textProperty().isEmpty())
                 .or(secondPasswordField.textProperty().isEmpty());
-
         registerButton.disableProperty().bind(booleanBind);
     }
 }

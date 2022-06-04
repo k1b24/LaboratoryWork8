@@ -129,13 +129,20 @@ public class VisualizationController extends DataVisualizerController {
     }
 
     @Override
-    public void updateInfo(List<HumanBeing> elementsToRemove, List<HumanBeing> elementsToAdd, List<HumanBeing> elementsToUpdate) {
+    public synchronized void updateInfo(List<HumanBeing> elementsToRemove, List<HumanBeing> elementsToAdd, List<HumanBeing> elementsToUpdate) {
         elementsToRemove.forEach(this::removeFromVisualization);
         elementsToAdd.forEach(this::addToVisualization);
         List<Long> idsToUpdate = elementsToUpdate.stream().map(HumanBeing::getId).collect(Collectors.toList());
-        people.keySet().removeIf(human -> idsToUpdate.contains(human.getId()));
-        elementsToUpdate.forEach(human -> people.put(human, generateCanvas(human)));
-
+        for (Long id : idsToUpdate) {
+            for (HumanBeing human : people.keySet()) {
+                if (human.getId().equals(id)) {
+                    removeFromVisualization(human);
+                }
+            }
+        }
+        for (HumanBeing human : elementsToUpdate) {
+            addToVisualization(human);
+        }
     }
 
     @Override
