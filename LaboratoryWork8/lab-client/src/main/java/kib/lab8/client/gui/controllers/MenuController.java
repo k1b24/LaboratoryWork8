@@ -18,8 +18,7 @@ import kib.lab8.client.gui.abstractions.ChildWindowController;
 import kib.lab8.client.utils.ChildUIType;
 import kib.lab8.client.utils.ConnectionHandlerClient;
 import kib.lab8.client.utils.ExecutableCommand;
-import kib.lab8.client.utils.MenuModel;
-import kib.lab8.client.utils.UserException;
+import kib.lab8.client.utils.Models.MenuModel;
 import kib.lab8.client.gui.abstractions.DataVisualizerController;
 import kib.lab8.common.entities.HumanBeing;
 

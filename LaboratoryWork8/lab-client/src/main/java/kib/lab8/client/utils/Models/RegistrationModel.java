@@ -1,8 +1,8 @@
-package kib.lab8.client.utils;
+package kib.lab8.client.utils.Models;
 
-import javafx.application.Platform;
-import javafx.beans.property.ObjectProperty;
-import kib.lab8.common.abstractions.ResponseInterface;
+import kib.lab8.client.utils.ConnectionHandlerClient;
+import kib.lab8.client.utils.Exceptions.RequestResponseMismatchException;
+import kib.lab8.client.utils.Exceptions.UserException;
 import kib.lab8.common.util.client_server_communication.requests.SignUpRequest;
 import kib.lab8.common.util.client_server_communication.responses.AuthenticationResponse;
 

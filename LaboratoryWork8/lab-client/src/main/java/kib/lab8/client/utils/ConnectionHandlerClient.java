@@ -1,5 +1,6 @@
 package kib.lab8.client.utils;
 
+import kib.lab8.client.utils.Exceptions.RequestResponseMismatchException;
 import kib.lab8.common.abstractions.RequestInterface;
 import kib.lab8.common.abstractions.ResponseInterface;
 import kib.lab8.common.util.client_server_communication.Serializer;

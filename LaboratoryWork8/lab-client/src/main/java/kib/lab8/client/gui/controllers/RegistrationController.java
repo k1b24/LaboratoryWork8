@@ -9,8 +9,8 @@ import javafx.scene.control.TextField;
 import kib.lab8.client.gui.GUIConfig;
 import kib.lab8.client.gui.abstractions.AbstractController;
 import kib.lab8.client.utils.ConnectionHandlerClient;
-import kib.lab8.client.utils.RegistrationModel;
-import kib.lab8.client.utils.UserException;
+import kib.lab8.client.utils.Models.RegistrationModel;
+import kib.lab8.client.utils.Exceptions.UserException;
 
 
 public class RegistrationController extends AbstractController {

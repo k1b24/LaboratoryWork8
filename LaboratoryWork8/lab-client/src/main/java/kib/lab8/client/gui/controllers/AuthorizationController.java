@@ -13,9 +13,9 @@ import javafx.scene.input.KeyCode;
 import kib.lab8.client.gui.GUIConfig;
 import kib.lab8.client.gui.abstractions.AbstractController;
 import kib.lab8.client.gui.localization.LanguagesEnum;
-import kib.lab8.client.utils.AuthorizationModel;
+import kib.lab8.client.utils.Models.AuthorizationModel;
 import kib.lab8.client.utils.ConnectionHandlerClient;
-import kib.lab8.client.utils.UserException;
+import kib.lab8.client.utils.Exceptions.UserException;
 
 public class AuthorizationController extends AbstractController {
 

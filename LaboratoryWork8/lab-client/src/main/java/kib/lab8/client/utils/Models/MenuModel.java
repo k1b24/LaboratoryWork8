@@ -1,9 +1,13 @@
-package kib.lab8.client.utils;
+package kib.lab8.client.utils.Models;
 
 import javafx.concurrent.ScheduledService;
 import javafx.concurrent.Task;
 import javafx.util.Duration;
 import kib.lab8.client.gui.controllers.MenuController;
+import kib.lab8.client.utils.ConnectionHandlerClient;
+import kib.lab8.client.utils.ExecutableCommand;
+import kib.lab8.client.utils.Exceptions.RequestResponseMismatchException;
+import kib.lab8.client.utils.Exceptions.UserException;
 import kib.lab8.common.abstractions.ResponseInterface;
 import kib.lab8.common.entities.HumanBeing;
 import kib.lab8.common.util.client_server_communication.requests.CommandRequest;

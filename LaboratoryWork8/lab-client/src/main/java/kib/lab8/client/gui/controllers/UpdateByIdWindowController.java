@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 import kib.lab8.client.gui.GUIConfig;
 import kib.lab8.client.gui.abstractions.ChildWindowController;
 import kib.lab8.client.utils.ChildUIType;
-import kib.lab8.client.utils.UserException;
+import kib.lab8.client.utils.Exceptions.UserException;
 import kib.lab8.common.entities.HumanBeing;
 
 public class UpdateByIdWindowController extends ChildWindowController {

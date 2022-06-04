@@ -1,4 +1,4 @@
-package kib.lab8.client.utils;
+package kib.lab8.client.utils.Exceptions;
 
 import javafx.scene.control.Alert;
 

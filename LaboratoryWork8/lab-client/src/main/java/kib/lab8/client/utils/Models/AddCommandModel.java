@@ -1,6 +1,7 @@
-package kib.lab8.client.utils;
+package kib.lab8.client.utils.Models;
 
 import kib.lab8.client.gui.controllers.AddCommandController;
+import kib.lab8.client.utils.Exceptions.UserException;
 import kib.lab8.common.entities.HumanBeing;
 
 import java.time.LocalDate;

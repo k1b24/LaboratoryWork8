@@ -3,12 +3,10 @@ package kib.lab8.client.gui.controllers;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import kib.lab8.client.gui.abstractions.ChildWindowController;
 import kib.lab8.client.utils.ExecutableCommand;
-import kib.lab8.client.utils.UserException;
 
 public class RemoveWindowController extends ChildWindowController {
 

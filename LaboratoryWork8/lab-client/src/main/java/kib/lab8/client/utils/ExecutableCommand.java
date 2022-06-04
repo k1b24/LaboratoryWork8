@@ -1,5 +1,7 @@
 package kib.lab8.client.utils;
 
+import kib.lab8.client.utils.Exceptions.RequestResponseMismatchException;
+import kib.lab8.client.utils.Exceptions.UserException;
 import kib.lab8.common.abstractions.AbstractMessage;
 import kib.lab8.common.entities.HumanBeing;
 import kib.lab8.common.util.client_server_communication.requests.CommandRequest;

@@ -1,1 +1,35 @@
-2022/06/04 11:14 INFO HV000001: Hibernate Validator 6.0.10.Final
+2022/06/04 18:20 INFO Вызван метод: launchApplication
+2022/06/04 18:20 INFO Обращение к менеджеру базы данных: initializeDB
+2022/06/04 18:20 INFO HV000001: Hibernate Validator 6.0.10.Final
+2022/06/04 18:20 INFO Обращение к менеджеру коллекции: fillWithArray / Аргументы: [[3. Valera, X: 222, Y: 22.0, CREATION DATE: 2022-04-27, REAL HERO: true, HAS TOOTHPICK: false, IMPACT SPEED: 22, WEAPON TYPE: AXE, MOOD: RAGE, CAR INFO: CAR COOLNESS: false CAR SPEED: 222, Author: k1b , 77. vitya, X: -400, Y: -220.0, CREATION DATE: 2022-06-04, REAL HERO: false, HAS TOOTHPICK: false, IMPACT SPEED: 123, WEAPON TYPE: null, MOOD: null, CAR INFO: CAR COOLNESS: false CAR SPEED: 0, Author: dexter, 78. alex, X: 32, Y: 222.0, CREATION DATE: 2022-06-04, REAL HERO: false, HAS TOOTHPICK: false, IMPACT SPEED: 22, WEAPON TYPE: HAMMER, MOOD: CALM, CAR INFO: CAR COOLNESS: true CAR SPEED: 22, Author: dexter, 80. vvvvv, X: 123, Y: 21.0, CREATION DATE: 2022-06-04, REAL HERO: false, HAS TOOTHPICK: false, IMPACT SPEED: 23, WEAPON TYPE: null, MOOD: null, CAR INFO: no car, Author: dexter, 81. Vladimir, X: 250, Y: 249.0, CREATION DATE: 2022-06-04, REAL HERO: true, HAS TOOTHPICK: false, IMPACT SPEED: 123, WEAPON TYPE: null, MOOD: null, CAR INFO: no car, Author: dexter, 82. Vova, X: 222, Y: -200.0, CREATION DATE: 2022-06-04, REAL HERO: false, HAS TOOTHPICK: false, IMPACT SPEED: 123, WEAPON TYPE: null, MOOD: null, CAR INFO: CAR COOLNESS: false CAR SPEED: 321, Author: dexter, 83. Vladislav, X: -400, Y: 200.0, CREATION DATE: 2022-06-04, REAL HERO: false, HAS TOOTHPICK: false, IMPACT SPEED: 12, WEAPON TYPE: null, MOOD: null, CAR INFO: CAR COOLNESS: false CAR SPEED: 44, Author: dexter, 84. Alexey, X: 222, Y: 222.0, CREATION DATE: 2022-06-04, REAL HERO: false, HAS TOOTHPICK: false, IMPACT SPEED: 32, WEAPON TYPE: null, MOOD: null, CAR INFO: CAR COOLNESS: true CAR SPEED: 120, Author: dexter, 86. Lupa, X: -100, Y: 0.0, CREATION DATE: 2022-06-04, REAL HERO: true, HAS TOOTHPICK: true, IMPACT SPEED: 400, WEAPON TYPE: HAMMER, MOOD: CALM, CAR INFO: CAR COOLNESS: true CAR SPEED: 600, Author: dexter, 87. Biba, X: 55, Y: 55.0, CREATION DATE: 2022-06-04, REAL HERO: true, HAS TOOTHPICK: false, IMPACT SPEED: -120, WEAPON TYPE: RIFLE, MOOD: CALM, CAR INFO: CAR COOLNESS: true CAR SPEED: 450, Author: dexter, 89. Misha, X: -100, Y: 50.0, CREATION DATE: 2022-06-04, REAL HERO: true, HAS TOOTHPICK: false, IMPACT SPEED: 450, WEAPON TYPE: AXE, MOOD: RAGE, CAR INFO: CAR COOLNESS: true CAR SPEED: 666, Author: dexter, 90. Denis, X: 0, Y: 200.0, CREATION DATE: 2022-06-04, REAL HERO: true, HAS TOOTHPICK: false, IMPACT SPEED: 100, WEAPON TYPE: MACHINE_GUN, MOOD: null, CAR INFO: no car, Author: dexter, 91. Ramazan, X: 0, Y: -200.0, CREATION DATE: 2022-06-04, REAL HERO: true, HAS TOOTHPICK: true, IMPACT SPEED: 1, WEAPON TYPE: HAMMER, MOOD: null, CAR INFO: CAR COOLNESS: true CAR SPEED: 123, Author: dexter, 92. Roman, X: -100, Y: -200.0, CREATION DATE: 2022-06-04, REAL HERO: true, HAS TOOTHPICK: false, IMPACT SPEED: 400, WEAPON TYPE: AXE, MOOD: null, CAR INFO: CAR COOLNESS: false CAR SPEED: 22, Author: dexter, 88. Boba, X: 373, Y: -240.0, CREATION DATE: 2022-06-04, REAL HERO: false, HAS TOOTHPICK: false, IMPACT SPEED: 55, WEAPON TYPE: null, MOOD: null, CAR INFO: CAR COOLNESS: false CAR SPEED: 0, Author: dexter, 85. Pupa, X: 0, Y: -50.0, CREATION DATE: 2022-06-04, REAL HERO: false, HAS TOOTHPICK: false, IMPACT SPEED: 700, WEAPON TYPE: null, MOOD: null, CAR INFO: CAR COOLNESS: false CAR SPEED: 0, Author: dexter, 93. Vadim, X: 50, Y: -50.0, CREATION DATE: 2022-06-04, REAL HERO: true, HAS TOOTHPICK: true, IMPACT SPEED: 111, WEAPON TYPE: HAMMER, MOOD: CALM, CAR INFO: CAR COOLNESS: true CAR SPEED: 123, Author: dexter, 94. Denis, X: 100, Y: 100.0, CREATION DATE: 2022-06-04, REAL HERO: true, HAS TOOTHPICK: false, IMPACT SPEED: 100, WEAPON TYPE: RIFLE, MOOD: CALM, CAR INFO: CAR COOLNESS: true CAR SPEED: 100, Author: kib, 95. Vitya, X: -300, Y: 0.0, CREATION DATE: 2022-06-04, REAL HERO: true, HAS TOOTHPICK: true, IMPACT SPEED: 45, WEAPON TYPE: null, MOOD: null, CAR INFO: CAR COOLNESS: false CAR SPEED: 55, Author: kib]]
+2022/06/04 18:20 INFO Коллекция успешно заполнена из файла
+2022/06/04 18:20 INFO Вызван метод: launchMainLoop
+2022/06/04 18:20 INFO Обращение к менеджеру базы данных: checkIfUserRegistered
+2022/06/04 18:20 INFO Обращение к менеджеру базы данных: checkIfUserRegistered
+2022/06/04 18:20 INFO Обращение к менеджеру коллекции: getSortedArrayListFromQueue / Аргументы: []
+2022/06/04 18:20 INFO Исполнена команда: show
+2022/06/04 18:20 INFO Обращение к менеджеру базы данных: checkIfUserRegistered
+2022/06/04 18:20 INFO Обращение к менеджеру коллекции: getSortedArrayListFromQueue / Аргументы: []
+2022/06/04 18:20 INFO Исполнена команда: show
+2022/06/04 18:20 INFO Обращение к менеджеру базы данных: checkIfUserRegistered
+2022/06/04 18:20 INFO Обращение к менеджеру коллекции: getSortedArrayListFromQueue / Аргументы: []
+2022/06/04 18:20 INFO Исполнена команда: show
+2022/06/04 18:20 INFO Обращение к менеджеру базы данных: checkIfUserRegistered
+2022/06/04 18:20 INFO Обращение к менеджеру коллекции: getSortedArrayListFromQueue / Аргументы: []
+2022/06/04 18:20 INFO Исполнена команда: show
+2022/06/04 18:20 INFO Обращение к менеджеру базы данных: checkIfUserRegistered
+2022/06/04 18:20 INFO Обращение к менеджеру коллекции: getSortedArrayListFromQueue / Аргументы: []
+2022/06/04 18:20 INFO Исполнена команда: show
+2022/06/04 18:20 INFO Обращение к менеджеру базы данных: checkIfUserRegistered
+2022/06/04 18:20 INFO Обращение к менеджеру коллекции: getSortedArrayListFromQueue / Аргументы: []
+2022/06/04 18:20 INFO Исполнена команда: show
+2022/06/04 18:20 INFO Обращение к менеджеру базы данных: checkIfUserRegistered
+2022/06/04 18:20 INFO Обращение к менеджеру коллекции: getSortedArrayListFromQueue / Аргументы: []
+2022/06/04 18:20 INFO Исполнена команда: show
+2022/06/04 18:21 INFO Обращение к менеджеру базы данных: checkIfUserRegistered
+2022/06/04 18:21 INFO Обращение к менеджеру коллекции: getSortedArrayListFromQueue / Аргументы: []
+2022/06/04 18:21 INFO Исполнена команда: show
+2022/06/04 18:21 INFO Обращение к менеджеру базы данных: checkIfUserRegistered
+2022/06/04 18:21 INFO Обращение к менеджеру базы данных: clearByUserName
+2022/06/04 18:21 INFO Обращение к менеджеру коллекции: clearCollectionByIDs / Аргументы: [[Ljava.lang.Long;@3b1c2b6e]
+2022/06/04 18:21 INFO Исполнена команда: clear

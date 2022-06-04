@@ -1,6 +1,6 @@
 package kib.lab8.client.gui.abstractions;
 
-import kib.lab8.client.utils.MenuModel;
+import kib.lab8.client.utils.Models.MenuModel;
 
 public abstract class ChildWindowController {
 

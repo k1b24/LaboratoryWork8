@@ -9,7 +9,7 @@ import javafx.util.Callback;
 import kib.lab8.client.gui.GUIConfig;
 import kib.lab8.client.gui.localization.LanguagesEnum;
 import kib.lab8.client.gui.localization.Localization;
-import kib.lab8.client.utils.UserException;
+import kib.lab8.client.utils.Exceptions.UserException;
 
 import java.io.IOException;
 import java.util.ResourceBundle;
