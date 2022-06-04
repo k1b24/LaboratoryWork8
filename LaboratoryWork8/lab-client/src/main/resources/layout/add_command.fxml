@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="457.0" styleClass="openable_add_pane" stylesheets="@../styles/pane.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kib.lab8.client.gui.controllers.AddCommandController">
+   <children>
+      <Pane prefHeight="64.0" prefWidth="351.0" style="-fx-background-color: #4BBB56;">
+         <children>
+            <Text layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%ADD_COMMAND" textAlignment="CENTER" wrappingWidth="350.39999999999986">
+               <font>
+                  <Font name="Exo 2 Regular" size="25.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Button fx:id="clearFieldsButton" layoutX="14.0" layoutY="547.0" mnemonicParsing="false" onAction="#clear" prefHeight="38.0" prefWidth="154.0" styleClass="light_green_button" stylesheets="@../styles/green-button.css" text="%CLEAR">
+         <font>
+            <Font name="Exo 2 Regular" size="18.0" />
+         </font>
+      </Button>
+      <Pane fx:id="fillingPane" layoutX="10.0" layoutY="101.0" maxHeight="441.0" maxWidth="332.0" prefHeight="441.0" prefWidth="332.0">
+         <children>
+            <VBox layoutX="172.0" layoutY="32.0" prefHeight="401.0" prefWidth="154.0" spacing="13.0">
+               <children>
+                  <TextField fx:id="name" styleClass="green_bordered_text_field" stylesheets="@../styles/text-field.css" />
+                  <TextField styleClass="green_bordered_text_field" stylesheets="@../styles/text-field.css" fx:id="x" />
+                  <TextField fx:id="y" styleClass="green_bordered_text_field" stylesheets="@../styles/text-field.css" />
+                  <CheckBox fx:id="realHero" mnemonicParsing="false" stylesheets="@../styles/check-box.css">
+                     <font>
+                        <Font name="Exo 2 Regular" size="19.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox fx:id="popularity" mnemonicParsing="false" stylesheets="@../styles/check-box.css">
+                     <font>
+                        <Font name="Exo 2 Regular" size="19.0" />
+                     </font>
+                  </CheckBox>
+                  <TextField fx:id="impactSpeed" styleClass="green_bordered_text_field" stylesheets="@../styles/text-field.css" />
+                  <ChoiceBox fx:id="weapon" prefHeight="30.0" prefWidth="154.0" stylesheets="@../styles/choise-box.css" />
+                  <ChoiceBox fx:id="mood" prefHeight="28.0" prefWidth="154.0" styleClass="green_bordered_text_field" stylesheets="@../styles/choise-box.css" />
+                  <CheckBox fx:id="carCoolness" mnemonicParsing="false" stylesheets="@../styles/check-box.css">
+                     <font>
+                        <Font name="Exo 2 Regular" size="19.0" />
+                     </font>
+                  </CheckBox>
+                  <TextField fx:id="carSpeed" styleClass="green_bordered_text_field" stylesheets="@../styles/text-field.css" />
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets top="1.0" />
+               </padding>
+            </VBox>
+            <VBox alignment="TOP_RIGHT" layoutY="30.0" maxHeight="401.0" maxWidth="164.0" prefHeight="401.0" prefWidth="164.0" spacing="18.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" prefHeight="1.0" prefWidth="162.0" text="%NAME" textAlignment="RIGHT">
+                     <font>
+                        <Font name="Exo 2 Regular" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" prefHeight="10.0" prefWidth="162.0" text="X" textAlignment="RIGHT">
+                     <font>
+                        <Font name="Exo 2 Regular" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" prefHeight="0.0" prefWidth="162.0" text="Y" textAlignment="RIGHT">
+                     <font>
+                        <Font name="Exo 2 Regular" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" prefHeight="14.0" prefWidth="162.0" text="%REAL_HERO" textAlignment="RIGHT">
+                     <font>
+                        <Font name="Exo 2 Regular" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" prefHeight="0.0" prefWidth="162.0" text="%POPULARITY" textAlignment="RIGHT">
+                     <font>
+                        <Font name="Exo 2 Regular" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" prefHeight="9.0" prefWidth="162.0" text="%IMPACT_SPEED" textAlignment="RIGHT">
+                     <font>
+                        <Font name="Exo 2 Regular" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" prefHeight="0.0" prefWidth="162.0" text="%WEAPON" textAlignment="RIGHT">
+                     <font>
+                        <Font name="Exo 2 Regular" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" prefHeight="0.0" prefWidth="162.0" text="%MOOD" textAlignment="RIGHT">
+                     <font>
+                        <Font name="Exo 2 Regular" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="carCoolnessText" alignment="CENTER_RIGHT" prefHeight="26.0" prefWidth="162.0" text="%CAR_COOLNESS" textAlignment="RIGHT">
+                     <font>
+                        <Font name="Exo 2 Regular" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="carSpeedText" alignment="CENTER_RIGHT" prefHeight="9.0" prefWidth="162.0" text="%CAR_SPEED" textAlignment="RIGHT">
+                     <font>
+                        <Font name="Exo 2 Regular" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets right="2.0" top="5.0" />
+               </padding>
+            </VBox>
+            <CheckBox fx:id="carCheckBox" layoutX="14.0" layoutY="5.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="154.0" selected="true" stylesheets="@../styles/check-box.css" text="%CAR">
+               <font>
+                  <Font name="Exo 2 Regular" size="13.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="addIfMinCheckBox" layoutX="172.0" layoutY="5.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="154.0" stylesheets="@../styles/check-box.css" text="%ADD_IF_MIN">
+               <font>
+                  <Font name="Exo 2 Regular" size="13.0" />
+               </font>
+            </CheckBox>
+         </children>
+      </Pane>
+      <Button fx:id="applyButton" disable="true" layoutX="181.0" layoutY="547.0" mnemonicParsing="false" onAction="#apply" prefHeight="38.0" prefWidth="154.0" styleClass="light_green_button" stylesheets="@../styles/green-button.css" text="%APPLY">
+         <font>
+            <Font name="Exo 2 Regular" size="18.0" />
+         </font>
+      </Button>
+      <Text fx:id="fillingText" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%fill_all_fields" textAlignment="CENTER" wrappingWidth="350.39999999999986">
+         <font>
+            <Font name="Exo 2 Regular" size="19.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

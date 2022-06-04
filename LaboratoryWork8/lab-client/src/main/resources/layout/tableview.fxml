@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane maxHeight="504.0" maxWidth="1074.0" prefHeight="504.0" prefWidth="1086.0" style="-fx-background-color: #e6e6e6;" styleClass="vis_pane" stylesheets="@../styles/visualization-pane.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kib.lab8.client.gui.controllers.TableViewController">
+   <children>
+      <Pagination fx:id="pagination" layoutX="-1.0" layoutY="30.0" maxPageIndicatorCount="5" prefHeight="477.0" prefWidth="1100.0" styleClass="pagination_bar" stylesheets="@../styles/pagination.css" />
+      <TableView fx:id="humanTable" layoutY="30.0" prefHeight="425.0" prefWidth="1100.0" styleClass="table" stylesheets="@../styles/table.css">
+        <columns>
+          <TableColumn fx:id="id" prefWidth="31.999970972537994" text="ID" />
+          <TableColumn fx:id="name" prefWidth="95.99999618530273" text="%NAME" />
+          <TableColumn prefWidth="35.999969482421875" text="X" fx:id="x" />
+          <TableColumn fx:id="y" prefWidth="45.5999755859375" text="Y" />
+          <TableColumn fx:id="creationDate" prefWidth="113.59999084472656" text="%CREATION_DATE" />
+          <TableColumn fx:id="realHero" prefWidth="78.4000244140625" text="%REAL_HERO" />
+          <TableColumn fx:id="popularity" minWidth="0.79998779296875" prefWidth="84.79998779296875" text="%POPULARITY" />
+          <TableColumn fx:id="impactSpeed" minWidth="5.60003662109375" prefWidth="122.4000244140625" text="%IMPACT_SPEED" />
+          <TableColumn fx:id="weapon" minWidth="0.0" prefWidth="73.5999755859375" text="%WEAPON" />
+          <TableColumn fx:id="mood" minWidth="0.0" prefWidth="101.60003662109375" text="%MOOD" />
+          <TableColumn fx:id="carCoolness" prefWidth="105.59991455078125" text="%CAR_COOLNESS" />
+          <TableColumn fx:id="carSpeed" prefWidth="102.4000244140625" text="%CAR_SPEED" />
+            <TableColumn fx:id="author" prefWidth="90.40020751953125" text="%AUTHOR" />
+        </columns>
+      </TableView>
+      <HBox fx:id="filters" prefHeight="30.0" prefWidth="1100.0" style="-fx-background-color: #e6e6e6;">
+         <children>
+            <TextField fx:id="idFilter" prefHeight="35.0" prefWidth="39.0" styleClass="green_bordered_text_field" stylesheets="@../styles/text-field.css" />
+            <TextField fx:id="nameFilter" prefHeight="30.0" prefWidth="86.0" styleClass="green_bordered_text_field" stylesheets="@../styles/text-field.css" />
+            <TextField prefHeight="30.0" prefWidth="42.0" styleClass="green_bordered_text_field" stylesheets="@../styles/text-field.css" fx:id="xFilter" />
+            <TextField fx:id="yFilter" prefHeight="36.0" prefWidth="38.0" styleClass="green_bordered_text_field" stylesheets="@../styles/text-field.css" />
+            <TextField fx:id="creationDateFilter" prefHeight="37.0" prefWidth="116.0" styleClass="green_bordered_text_field" stylesheets="@../styles/text-field.css" />
+            <TextField fx:id="realHeroFilter" prefHeight="38.0" prefWidth="82.0" styleClass="green_bordered_text_field" stylesheets="@../styles/text-field.css" />
+            <TextField fx:id="popularityFilter" prefHeight="39.0" prefWidth="86.0" styleClass="green_bordered_text_field" stylesheets="@../styles/text-field.css" />
+            <TextField fx:id="impactSpeedFilter" prefHeight="39.0" prefWidth="116.0" styleClass="green_bordered_text_field" stylesheets="@../styles/text-field.css" />
+            <TextField fx:id="weaponFilter" prefHeight="44.0" prefWidth="86.0" styleClass="green_bordered_text_field" stylesheets="@../styles/text-field.css" />
+            <TextField fx:id="moodFilter" prefHeight="30.0" prefWidth="94.0" styleClass="green_bordered_text_field" stylesheets="@../styles/text-field.css" />
+            <TextField fx:id="carCoolnessFilter" prefHeight="30.0" prefWidth="110.0" styleClass="green_bordered_text_field" stylesheets="@../styles/text-field.css" />
+            <TextField fx:id="carSpeedFilter" prefHeight="30.0" prefWidth="98.0" styleClass="green_bordered_text_field" stylesheets="@../styles/text-field.css" />
+            <TextField fx:id="authorFilter" prefHeight="30.0" prefWidth="106.0" styleClass="green_bordered_text_field" stylesheets="@../styles/text-field.css" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

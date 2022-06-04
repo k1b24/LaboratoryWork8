@@ -1,0 +1,11 @@
+.vis_pane{
+    -fx-background-color: #F4F1F2;
+    -fx-pref-width: 1100.0;
+    -fx-pref-height: 503.0;
+    -fx-max-width: 1100.0;
+    -fx-max-height: 503.0;
+}
+
+.table{
+    -fx-background-color: #F4F1F2;
+}

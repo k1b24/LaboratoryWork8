@@ -1,0 +1,30 @@
+.left_menu_pane{
+    -fx-background-color:  #4BBB56;
+    -fx-pref-height: 407.0;
+    -fx-pref-width: 206.0;
+    -fx-max-height: 407.0;
+    -fx-max-width: 206.0;
+}
+
+.openable_add_pane{
+    -fx-pref-height: 600.0;
+    -fx-pref-width: 350.0;
+    -fx-max-height: 600.0;
+    -fx-max-width: 350.0;
+}
+
+.openable_profile_pane{
+    -fx-background-color: #d5d3d3;
+    -fx-pref-height: 500.0;
+    -fx-pref-width: 500.0;
+    -fx-max-height: 500.0;
+    -fx-max-width: 500.0;
+}
+
+.openable_remove_pane{
+    -fx-background-color: #d5d3d3;
+    -fx-pref-height: 150.0;
+    -fx-pref-width: 400.0;
+    -fx-max-height: 150.0;
+    -fx-max-width: 400.0;
+}
